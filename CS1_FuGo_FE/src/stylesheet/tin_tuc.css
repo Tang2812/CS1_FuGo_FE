@@ -71,7 +71,7 @@ nav ul li a {
   border-radius: 50%;
 }
 
-/* Hero section styles */
+/* banner section styles */
 .hero {
   position: relative;
   height: 400px;
@@ -84,23 +84,6 @@ nav ul li a {
   object-fit: cover;
 }
 
-.hero-content {
-  position: absolute;
-  top: 50%;
-  left: 5%;
-  transform: translateY(-50%);
-  color: #fff;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.hero-content h1 {
-  font-size: 3rem;
-  margin-bottom: 0.5rem;
-}
-
-.hero-content h1 span {
-  color: #ff6600;
-}
 
 .cta-button {
   display: inline-block;

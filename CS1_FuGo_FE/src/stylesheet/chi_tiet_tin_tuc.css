@@ -31,10 +31,8 @@ nav {
   padding: 1rem 5%;
 }
 
-.logo {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #0066cc;
+.logo img {
+  height: 40px;
 }
 
 nav ul {
@@ -51,13 +49,26 @@ nav ul li a {
   color: #333;
 }
 
-.user-profile {
+.user-controls {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.notification {
+  background-color: #ff6600;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  margin-right: 10px;
+}
+
+.user-avatar {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  background-color: #ddd;
 }
-
 /* Hero section styles */
 main {
   width: 100%;
@@ -117,8 +128,8 @@ main {
   margin-right: 2rem;
 }
 
-.content__info{
-    color: rgba(153, 153, 153, 1)
+.content__info {
+  color: rgba(153, 153, 153, 1);
 }
 
 article {
@@ -130,9 +141,9 @@ article {
 }
 
 .line {
-    width: 100%;
-    height: 1px;
-    background-color:rgba(225, 225, 225, 1);
+  width: 100%;
+  height: 1px;
+  background-color: rgba(225, 225, 225, 1);
 }
 .hero__image {
   display: flex;
@@ -146,58 +157,91 @@ aside {
 
 /* Sidebar styles */
 .sidebar {
-    flex: 1;
-  }
-  
-  .sidebar-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 42px;
-  }
-  
-  .sidebar-buttons button {
-    display: block;
-    width: 100%;
-    padding: 0.5rem;
-    margin-bottom: 0.5rem;
-    background-color: #0066cc;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .sidebar-content {
-      display: flex;
-      flex-direction: column;
-      padding: 8px;
-      padding-top: 0px;
-      background-color: rgba(217, 217, 217, 1);
-      gap: 24px;
-  }
-  
-  .sidebar-content h3 {
-    display: flex;
-    justify-content: center;
-    color: #f8f8f8;
-  
-    margin-bottom: 1rem;
-    background-color: #0066cc;
-  }
-  
-  .handbook-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-  
-  .handbook-item img {
-    width: 80px;
-    height: 60px;
-    object-fit: cover;
-    margin-right: 1rem;
-    border-radius: 5px;
-  }
+  flex: 1;
+}
+
+.sidebar-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+
+.sidebar-buttons button {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.sidebar-content {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  padding-top: 0px;
+  background-color: rgba(217, 217, 217, 1);
+  gap: 24px;
+}
+
+.sidebar-content h3 {
+  display: flex;
+  justify-content: center;
+  color: #f8f8f8;
+
+  margin-bottom: 1rem;
+  background-color: #0066cc;
+}
+
+.handbook-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.handbook-item img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  margin-right: 1rem;
+  border-radius: 5px;
+}
+
+/* quang cao style */
+.quang-cao {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.quang-cao__news-item {
+  width: 400px ;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  margin-bottom: 2rem;
+}
+
+.quang-cao__news-item img {
+  width: 130px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+
+.quang-cao__news-item h3 {
+  margin-bottom: 0.5rem;
+}
+
+.news-meta {
+  display: flex;
+  gap: 50px;
+  color: dimgrey;
+}
 /* Footer styles */
 footer {
   background-color: #f8f8f8;
