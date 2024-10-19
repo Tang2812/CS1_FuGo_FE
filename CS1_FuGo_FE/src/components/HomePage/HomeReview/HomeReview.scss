@@ -1,0 +1,49 @@
+.homeReview-container {
+    padding: 20px;
+
+    .homeReview-title {
+        display: flex;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: 600;
+        padding: 12px;
+    }
+
+    .reviews-contents {
+        margin-left: 20px;
+
+        .review-tag {
+            width: 85%;
+            padding: 12px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            border-radius: 8px;
+
+            .tag-header {
+                display: flex;
+                gap: 10px;
+
+                .tag-header-img {
+                    width: 10rem;
+                    border-radius: 100%;
+                    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                    margin-bottom: 12px;
+                }
+
+                .tag-header-info {
+                    margin: 12px 0;
+
+                    .tag-header-name {
+                        font-weight: 600;
+                        font-size: 16px;
+                        margin-top: 16px;
+                    }
+
+                }
+            }
+
+            .tag-content {
+                text-wrap: wrap;
+            }
+        }
+    }
+}
