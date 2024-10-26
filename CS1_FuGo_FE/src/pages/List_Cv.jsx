@@ -1,0 +1,182 @@
+import { useEffect, useState } from "react";
+
+const List_Cv = () => {
+    const { ListCV, setListCV } = useState([]);
+    useEffect(() => {
+        getALlCv();
+    }, []);
+
+    const getALlCv = async () => {
+        setListCV(response.content);
+        setTotalPages(response.totalPages);
+    };
+    return (
+
+        <>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <title>FuGo - Quản lý CV</title>
+            <link
+                href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+                rel="stylesheet"
+            />
+            <link rel="stylesheet" href="/src/stylesheet/list_cv.css" />
+            <main className="container mx-auto px-4 py-8 flex gap-24">
+                {/* Sidebar */}
+                <aside className="w-64 rounded-lg shadow-sm h-fit">
+                    <div className="list-function">
+                        <a className="fc-choice" href="#">
+                            <img src="/src/img/icon_ca_nhan.svg" alt="personal info icon" />
+                            <span className="text--sm font-primary">Tạo mới CV</span>
+                        </a>
+                        <a className="fc-choice" href="#">
+                            <img src="/src/img/icon_bao_mat.svg" alt="login and security icon" />
+                            <span className="text--sm font-primary">Đặt lại mật khẩu</span>
+                        </a>
+                        <a className="fc-choice" href="#">
+                            <img src="/src/img/icon_thong_tin_ca_nhan.svg" alt="payment icon" />
+                            <span className="text--sm font-primary">Thông tin cá nhân</span>
+                        </a>
+                        <a className="fc-choice" href="#">
+                            <img src="/src/img/icon_thong_bao.svg" alt="notification icon" />
+                            <span className="text--sm font-primary">Thông báo</span>
+                        </a>
+                        <a className="fc-choice" href="#">
+                            <img src="/src/img/icon_quan_li_Cv.svg" alt="Quan li Cv icon" />
+                            <span className="text--sm font-primary">Quản lí CV </span>
+                        </a>
+                    </div>
+                </aside>
+                {/* Main Content */}
+                <div className="flex-1">
+                    <h1 className="text-2xl font-semibold mb-6">Quản lý CV</h1>
+                    {/* CV Cards */}
+                    <div className="space-y-6">
+                        {/* loop */}
+                        {ListCV?.map((Cv) => (
+                            <div className="bg-white rounded-lg p-6 shadow-sm">
+                                <div className="flex justify-between items-start">
+                                    <div className="space-y-6">
+                                        <div className="flex items-center gap-8">
+                                            <img src="/src/img/icon_ca_nhan.svg" alt="" />
+                                            {/* name */}
+                                            <span className="font-medium">{Cv.ten}</span>
+                                            {/* ,type */}
+                                            <span className="status-tag">{Cv.loai}</span>
+                                        </div>
+                                        <div className="text-gray-600 flex items-center gap-8">
+                                            <img src="/src/img/icon_phone.svg" alt="" />
+                                            <span>{Cv.SoDienThoai}</span>
+                                        </div>
+                                        <div className="text-gray-600 flex items-center gap-8">
+                                            <img src="/src/img/icon_cong_viec.svg" alt="" />
+                                            <span>{Cv.ngheNghiep}</span>
+                                        </div>
+                                        <div className="flex items-center gap-8 text-gray-500">
+                                            <img src="/src//img/icon_lich.svg" alt="" />
+                                            <span>{Cv.thoiGian}</span>
+                                        </div>
+                                    </div>
+                                    <button className="edit-button">Chỉnh sửa</button>
+                                </div>
+                            </div>
+                        ))}
+
+                        {/* CV Card Template */}
+                        <div className="bg-white rounded-lg p-6 shadow-sm">
+                            <div className="flex justify-between items-start">
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-8">
+                                        <img src="/src/img/icon_ca_nhan.svg" alt="" />
+                                        {/* name */}
+                                        <span className="font-medium">Hung</span>
+                                        {/* ,type */}
+                                        <span className="status-tag">XKLD</span>
+                                    </div>
+                                    <div className="text-gray-600 flex items-center gap-8">
+                                        <img src="/src/img/icon_phone.svg" alt="" />
+                                        <span>0905123456</span>
+                                    </div>
+                                    <div className="text-gray-600 flex items-center gap-8">
+                                        <img src="/src/img/icon_cong_viec.svg" alt="" />
+                                        <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
+                                    </div>
+                                    <div className="flex items-center gap-8 text-gray-500">
+                                        <img src="/src//img/icon_lich.svg" alt="" />
+                                        <span>09-10-2024</span>
+                                    </div>
+                                </div>
+                                <button className="edit-button">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                        <div className="bg-white rounded-lg p-6 shadow-sm">
+                            <div className="flex justify-between items-start">
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-8">
+                                        <img src="/src/img/icon_ca_nhan.svg" alt="" />
+                                        {/* name */}
+                                        <span className="font-medium">Hung</span>
+                                        {/* ,type */}
+                                        <span className="status-tag">XKLD</span>
+                                    </div>
+                                    <div className="text-gray-600 flex items-center gap-8">
+                                        <img src="/src/img/icon_phone.svg" alt="" />
+                                        <span>0905123456</span>
+                                    </div>
+                                    <div className="text-gray-600 flex items-center gap-8">
+                                        <img src="/src/img/icon_cong_viec.svg" alt="" />
+                                        <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
+                                    </div>
+                                    <div className="flex items-center gap-8 text-gray-500">
+                                        <img src="/src//img/icon_lich.svg" alt="" />
+                                        <span>09-10-2024</span>
+                                    </div>
+                                </div>
+                                <button className="edit-button">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                        <div className="bg-white rounded-lg p-6 shadow-sm">
+                            <div className="flex justify-between items-start">
+                                <div className="space-y-6">
+                                    <div className="flex items-center gap-8">
+                                        <img src="/src/img/icon_ca_nhan.svg" alt="" />
+                                        {/* name */}
+                                        <span className="font-medium">Hung</span>
+                                        {/* ,type */}
+                                        <span className="status-tag">XKLD</span>
+                                    </div>
+                                    <div className="text-gray-600 flex items-center gap-8">
+                                        <img src="/src/img/icon_phone.svg" alt="" />
+                                        <span>0905123456</span>
+                                    </div>
+                                    <div className="text-gray-600 flex items-center gap-8">
+                                        <img src="/src/img/icon_cong_viec.svg" alt="" />
+                                        <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
+                                    </div>
+                                    <div className="flex items-center gap-8 text-gray-500">
+                                        <img src="/src//img/icon_lich.svg" alt="" />
+                                        <span>09-10-2024</span>
+                                    </div>
+                                </div>
+                                <button className="edit-button">Chỉnh sửa</button>
+                            </div>
+                        </div>
+                    </div>
+                    {/* Bottom Actions */}
+                    <div className="mt-8 flex items-center gap-16">
+                        <button className="bg-blue-500 text-white px-6 py-2 rounded-lg">
+                            Tạo mới CV
+                        </button>
+                        <button className="text-gray-600 flex items-center gap-2">
+                            <span>×</span>
+                            Xóa tất cả
+                        </button>
+                    </div>
+                </div>
+            </main>
+        </>
+
+    )
+};
+
+export default List_Cv;
