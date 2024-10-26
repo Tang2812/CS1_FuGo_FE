@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FuGo - Quản lý CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" href="/src/stylesheet/list_cv.css">
+</head>
+
+<body class="bg-gray-50">
+    <main class="container mx-auto px-4 py-8 flex gap-24">
+        <!-- Sidebar -->
+        <aside class="w-64 rounded-lg shadow-sm h-fit">
+            <div class="list-function">
+                <a class="fc-choice" href="#">
+                    <img src="/src/img/icon_ca_nhan.svg" alt="personal info icon" />
+                    <span class="text--sm font-primary">Tạo mới CV</span>
+                </a>
+                <a class="fc-choice" href="#">
+                    <img src="/src/img/icon_bao_mat.svg" alt="login and security icon" />
+                    <span class="text--sm font-primary">Đặt lại mật khẩu</span>
+                </a>
+                <a class="fc-choice" href="#">
+                    <img src="/src/img/icon_thong_tin_ca_nhan.svg" alt="payment icon" />
+                    <span class="text--sm font-primary">Thông tin cá nhân</span>
+                </a>
+                <a class="fc-choice" href="#">
+                    <img src="/src/img/icon_thong_bao.svg" alt="notification icon" />
+                    <span class="text--sm font-primary">Thông báo</span>
+                </a>
+                <a class="fc-choice" href="#">
+                    <img src="/src/img/icon_quan_li_Cv.svg" alt="Quan li Cv icon" />
+                    <span class="text--sm font-primary">Quản lí CV </span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1">
+            <h1 class="text-2xl font-semibold mb-6">Quản lý CV</h1>
+
+            <!-- CV Cards -->
+            <div class="space-y-6">
+                <!-- CV Card Template -->
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-8">
+                                <img src="/src/img/icon_ca_nhan.svg" alt="">
+                                <!-- name -->
+                                <span class="font-medium">Hung</span>
+                                <!-- ,type -->
+                                <span class="status-tag">XKLD</span>
+                            </div>
+                            <div class="text-gray-600 flex items-center gap-8">
+                                <img src="/src/img/icon_phone.svg" alt="">
+                                <span>0905123456</span>
+                            </div>
+                            <div class="text-gray-600 flex items-center gap-8">
+                                <img src="/src/img/icon_cong_viec.svg" alt="">
+                                <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
+                            </div>
+                            <div class="flex items-center gap-8 text-gray-500">
+                                <img src="/src//img/icon_lich.svg" alt="">
+                                <span>09-10-2024</span>
+                            </div>
+                        </div>
+                        <button class="edit-button">Chỉnh sửa</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-8">
+                                <img src="/src/img/icon_ca_nhan.svg" alt="">
+                                <!-- name -->
+                                <span class="font-medium">Hung</span>
+                                <!-- ,type -->
+                                <span class="status-tag">XKLD</span>
+                            </div>
+                            <div class="text-gray-600 flex items-center gap-8">
+                                <img src="/src/img/icon_phone.svg" alt="">
+                                <span>0905123456</span>
+                            </div>
+                            <div class="text-gray-600 flex items-center gap-8">
+                                <img src="/src/img/icon_cong_viec.svg" alt="">
+                                <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
+                            </div>
+                            <div class="flex items-center gap-8 text-gray-500">
+                                <img src="/src//img/icon_lich.svg" alt="">
+                                <span>09-10-2024</span>
+                            </div>
+                        </div>
+                        <button class="edit-button">Chỉnh sửa</button>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <div class="flex justify-between items-start">
+                        <div class="space-y-6">
+                            <div class="flex items-center gap-8">
+                                <img src="/src/img/icon_ca_nhan.svg" alt="">
+                                <!-- name -->
+                                <span class="font-medium">Hung</span>
+                                <!-- ,type -->
+                                <span class="status-tag">XKLD</span>
+                            </div>
+                            <div class="text-gray-600 flex items-center gap-8">
+                                <img src="/src/img/icon_phone.svg" alt="">
+                                <span>0905123456</span>
+                            </div>
+                            <div class="text-gray-600 flex items-center gap-8">
+                                <img src="/src/img/icon_cong_viec.svg" alt="">
+                                <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
+                            </div>
+                            <div class="flex items-center gap-8 text-gray-500">
+                                <img src="/src//img/icon_lich.svg" alt="">
+                                <span>09-10-2024</span>
+                            </div>
+                        </div>
+                        <button class="edit-button">Chỉnh sửa</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Actions -->
+            <div class="mt-8 flex items-center gap-16">
+                <button class="bg-blue-500 text-white px-6 py-2 rounded-lg">Tạo mới CV</button>
+                <button class="text-gray-600 flex items-center gap-2">
+                    <span>×</span>
+                    Xóa tất cả
+                </button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
