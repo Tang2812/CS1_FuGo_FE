@@ -91,6 +91,10 @@ header {
   align-items: center;
   width: 100%;
   gap: 20px;
+  h1 {
+    font-size: 32px;
+  font-weight: 700;
+  }
 }
 
 .input__box {
@@ -98,12 +102,15 @@ header {
   justify-content: center;
   align-items: center;
   width: 100%;
+
 }
 
 .input__string {
   border-radius: 16px;
   width: 80%;
   height: 50px;
+  padding: 8px;
+  border: solid 2px black;
 }
 h1 {
     text-align: center;
@@ -136,6 +143,10 @@ h1 {
   flex-direction: column;
   gap: 8px;
   padding: 30px;
+  
+  h2{
+    font-size:18px;
+  }
 }
 
 .job-card__info {
@@ -145,7 +156,8 @@ h1 {
 
 .job-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 20px;
 }
 

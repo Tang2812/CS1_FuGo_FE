@@ -1,22 +1,36 @@
 import { useEffect, useState } from 'react';
 import '../stylesheet/tim_kiem.css'
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { get } from 'react-hook-form';
 const Job_find = () => {
 
-    const { jobs, setJobs } = useState([]);
+    const [jobs, setJobs] = useState([]);
     const [keyWord, setKeyWord] = useState("");
     const [page, setPage] = useState(0);
     const navigate = useNavigate();
 
     useEffect(() => {
-        getAllJobs();
-    }, [], keyWord);
+        const fetchJob = async () => {
+            try {
+              const response = await axios.get(
+                "http://localhost:3000/api/v1/jobs/"
+              );
+              
+              console.log("Response",response.data.data)
+              setJobs(response.data.data);
+       
+              console.log("Jobs"+jobs);
+            } catch (error) {
+              if (error.response && !error.response.data.success) {
+                alert(error.response.data.error);
+              }
+            }
+          };
+          fetchJob();
+       
+    },[]);
 
-    const getAllJobs = async () => {
-        // const response = await CustomerService.getCustomers(keyWord);
-        // setCustomers(response.content);
-        // setTotalPages(response.totalPages);
-    };
 
     return (
 
@@ -58,27 +72,27 @@ const Job_find = () => {
                 </div>
                 <div className="job-list">
                     {/* loop for list jobs */}
-                    {jobs?.map((job) => (
-                        <div className="job-card">
+                    {jobs?.map((job,index) => (
+                        <div key={index} className="job-card">
                             {/* image jobs */}
                             <img src="/src/img/anh_cong_viec.png" alt="" />
                             <div className="job-card__content">
                                 {/* name job */}
-                                <h3>{job.ten_viec_lam}</h3>
+                                <h2>{job.title}</h2>
                                 <div className="job-card__info">
                                     {/*Salary  */}
                                     <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                    <p>{job.luong}</p>
+                                    <p>{job.minSalary} ~ {job.maxSalary}</p>
                                 </div>
                                 <div className="job-card__info">
                                     {/* Country */}
                                     <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                    <p>{job.dia_chi}</p>
+                                    <p>{job.country}</p>
                                 </div>
                                 <div className="job-card__info">
                                     {/* Deadline */}
                                     <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                    <p>Hạn cuối: {job.thoi_gian}</p>
+                                    <p> {job.jobStatus}</p>
                                 </div>
                                 <div className="card__fc">
                                     <button className="btn--outline">Xem chi tiết</button>
@@ -91,182 +105,7 @@ const Job_find = () => {
                     )}
 
                     {/* Repeat this structure for each job listing */}
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="job-card">
-                        <img src="/src/img/anh_cong_viec.png" alt="" />
-                        <div className="job-card__content">
-                            <h3>Lắp ráp linh kiện điện tử</h3>
-                            <div className="job-card__info">
-                                <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                <p>25-30 triệu</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                <p>NAGASAKI</p>
-                            </div>
-                            <div className="job-card__info">
-                                <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                <p>Hạn cuối: 06/09/2025</p>
-                            </div>
-                            <div className="card__fc">
-                                <button className="btn--outline">Xem chi tiết</button>
-                                <button className="btn--outline">Ứng tuyển</button>
-                            </div>
-                        </div>
-                    </div>
+
                     {/* More job cards... */}
                 </div>
                 <div className="pagination">
