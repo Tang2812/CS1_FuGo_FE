@@ -1,53 +1,53 @@
 import tagHeader from "../../img/tagImg.jpg";
-import "../../stylesheet/HomePageNews.scss";
+
 const HomePageNews = () => {
     return (
-        <div className="homePageNews-container">
-            <h1 className="text-xl font-medium flex justify-start">
+        <div className="homePageNews-container bg-[#F6F6F6] w-full pl-[90px] pb-[20px]">
+            <h1 className="text-xl font-semibold flex justify-start">
                 Tin tức xuất khẩu lao động - du học
             </h1>
-            <div className="homePageNews-content grid grid-cols-3">
-                <div className="content-tag">
-                    <div className="content-tag-header">
-                        <div className="tag-header-img ml-3">
+            <div className="homePageNews-content grid grid-cols-3 mt-2">
+                <div className="content-tag bg-white rounded-[10px] shadow-2xl p-[12px] w-[80%] hover:mt-[-4px]">
+                    <div className="content-tag-header flex">
+                        <div className="tag-header-img ml-3 w-40 border-black border-2 border-solid">
                             <img src={tagHeader} alt="" />
                         </div>
                         <div className="tag-header ml-3">
-                            <p className="tag-header-title">Vệ sinh tòa nhà</p>
-                            <p className="tag-header-date">3/10/2024</p>
+                            <p className="tag-header-title text-[20px] font-semibold">Vệ sinh tòa nhà</p>
+                            <p className="tag-header-date text-[#555]">3/10/2024</p>
                         </div>
                     </div>
-                    <div className="tag-content mt-3 ml-3">
+                    <div className="tag-content mt-3 ml-3 text-base font-normal">
                         <p>Vệ sinh tòa nhà, văn phòng, sân bay tại các thành phố lớn</p>
                     </div>
                 </div>
 
-                <div className="content-tag">
-                    <div className="content-tag-header">
-                        <div className="tag-header-img ml-3">
+                <div className="content-tag bg-white rounded-[10px] shadow-2xl p-[12px] w-[80%] hover:mt-[-4px]">
+                    <div className="content-tag-header flex">
+                        <div className="tag-header-img ml-3 w-40 border-black border-2 border-solid">
                             <img src={tagHeader} alt="" />
                         </div>
                         <div className="tag-header ml-3">
-                            <p className="tag-header-title">Vệ sinh tòa nhà</p>
-                            <p className="tag-header-date">3/10/2024</p>
+                            <p className="tag-header-title text-[20px] font-semibold">Vệ sinh tòa nhà</p>
+                            <p className="tag-header-date text-[#555]">3/10/2024</p>
                         </div>
                     </div>
-                    <div className="tag-content mt-3 ml-3">
+                    <div className="tag-content mt-3 ml-3 text-base font-normal">
                         <p>Vệ sinh tòa nhà, văn phòng, sân bay tại các thành phố lớn</p>
                     </div>
                 </div>
 
-                <div className="content-tag">
-                    <div className="content-tag-header">
-                        <div className="tag-header-img ml-3">
+                <div className="content-tag bg-white rounded-[10px] shadow-2xl p-[12px] w-[80%] hover:mt-[-4px]">
+                    <div className="content-tag-header flex">
+                        <div className="tag-header-img ml-3 w-40 border-black border-2 border-solid">
                             <img src={tagHeader} alt="" />
                         </div>
                         <div className="tag-header ml-3">
-                            <p className="tag-header-title">Vệ sinh tòa nhà</p>
-                            <p className="tag-header-date">3/10/2024</p>
+                            <p className="tag-header-title text-[20px] font-semibold">Vệ sinh tòa nhà</p>
+                            <p className="tag-header-date text-[#555]">3/10/2024</p>
                         </div>
                     </div>
-                    <div className="tag-content mt-3 ml-3">
+                    <div className="tag-content mt-3 ml-3 text-base font-normal">
                         <p>Vệ sinh tòa nhà, văn phòng, sân bay tại các thành phố lớn</p>
                     </div>
                 </div>
