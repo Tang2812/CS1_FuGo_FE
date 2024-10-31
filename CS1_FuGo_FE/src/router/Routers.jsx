@@ -11,7 +11,7 @@ import JobForm from "../components/ApplicationForm/JobForm";
 
 const Routers = () => {
   return (
-    <BrowserRouter>
+
       <Routes>
         <Route path="/" element={<Navigate to="/home" />} />
         <Route path="/home" element={<Home />} />
@@ -24,7 +24,7 @@ const Routers = () => {
         <Route path="/profile" element={<Profile />} />
         <Route path="/application/job" element={<JobForm />} />
       </Routes>
-    </BrowserRouter>
+   
   );
 };
 

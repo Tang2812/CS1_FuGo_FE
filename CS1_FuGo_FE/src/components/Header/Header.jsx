@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Header = () => {
   return (
 <>
@@ -12,25 +14,25 @@ const Header = () => {
       </div>
       <ul>
         <li>
-          <a href="#">Trang chủ</a>
+          <Link to="/home">Trang chủ</Link>
         </li>
         <li>
-          <a href="#">Lịch sử</a>
+          <Link to="/">Lịch sử</Link>
         </li>
         <li>
-          <a href="#">Việc làm</a>
+          <Link to="/">Việc làm</Link>
         </li>
         <li>
-          <a href="#">Tin tức</a>
+          <Link to="/news">Tin tức</Link>
         </li>
         <li>
-          <a href="#">Hỗ trợ</a>
+          <Link to="/">Hỗ trợ</Link>
         </li>
         <li>
-          <a href="#">Chia sẻ</a>
+          <Link to="/">Chia sẻ</Link>
         </li>
         <li>
-          <a href="#">Quản lí CV</a>
+          <Link to="/">Quản lí CV</Link>
         </li>
       </ul>
       <div className="user-controls">
