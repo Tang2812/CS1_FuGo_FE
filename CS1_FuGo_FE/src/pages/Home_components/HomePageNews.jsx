@@ -3,7 +3,7 @@ import tagHeader from "../../img/tagImg.jpg";
 const HomePageNews = () => {
     return (
         <div className="homePageNews-container bg-[#F6F6F6] w-full pl-[90px] pb-[20px]">
-            <h1 className="text-xl font-semibold flex justify-start">
+            <h1 className="text-xl font-semibold flex justify-start p-3">
                 Tin tức xuất khẩu lao động - du học
             </h1>
             <div className="homePageNews-content grid grid-cols-3 mt-2">

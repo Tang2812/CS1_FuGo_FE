@@ -3,7 +3,7 @@ import '../stylesheet/tim_kiem.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { get } from 'react-hook-form';
-const Job_find = () => {
+const Study_find = () => {
 
     const [jobs, setJobs] = useState([]);
     const [keyWord, setKeyWord] = useState("");
@@ -118,4 +118,4 @@ const Job_find = () => {
     )
 };
 
-export default Job_find;
+export default Study_find;
