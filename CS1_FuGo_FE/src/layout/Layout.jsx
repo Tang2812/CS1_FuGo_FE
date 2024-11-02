@@ -5,7 +5,7 @@ import PartnerRouter from "../router/PartnerRouter";
 
 
 const Layout = () => {
-  const user = "partner";
+  const user = "user";
   return (
     <>
       {user === "user" ? (
@@ -15,10 +15,10 @@ const Layout = () => {
           <Footer />
         </>
       ) : (
-        <PartnerRouter/>
+        <PartnerRouter />
       )}
     </>
- 
+
   );
 };
 

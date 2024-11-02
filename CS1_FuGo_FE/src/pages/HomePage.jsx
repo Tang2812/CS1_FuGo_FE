@@ -1,16 +1,20 @@
 import HomePageBanner from "../components/Home_components/HomePageBanner";
 import HomePageNews from "../components/Home_components/HomePageNews";
-import HomePagePartners from "../components/Home_components/HomePagePartners";
+import HomePagePartnersJob from "../components/Home_components/HomePagePartnersJob";
+import HomePagePartnersStudy from "../components/Home_components/HomePagePartnersStudy";
+import HomeSuggestJob from "../components/Home_components/HomeSuggestJob";
+import HomeSuggestStudy from "../components/Home_components/HomeSuggestStudy";
 import HomeReview from "../components/Home_components/HomeReview";
-import HomeSuggest from "../components/Home_components/HomeSuggest";
 
 const HomePage = () => {
     return (
         <div>
             <HomePageBanner />
             <HomePageNews />
-            <HomePagePartners />
-            <HomeSuggest />
+            <HomePagePartnersJob />
+            <HomeSuggestJob />
+            <HomePagePartnersStudy />
+            <HomeSuggestStudy />
             <HomeReview />
         </div>
     );
