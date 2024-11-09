@@ -5,10 +5,12 @@ html {
   font-family: Arial, sans-serif;
   height: 100%;
 }
-.container {    
+
+.container {
   display: flex;
   height: 100%;
 }
+
 .form-section {
   display: flex;
   flex-direction: column;
@@ -30,29 +32,34 @@ html {
   background-size: cover;
   background-position: center;
 }
+
 .logo {
   width: 100px;
-  margin-bottom: 20px;
 }
+
 h2 {
   margin-bottom: 20px;
   color: #333;
 }
+
 .role-buttons {
   display: flex;
   gap: 10px;
   margin-bottom: 20px;
 }
+
 .role-button {
   padding: 10px 20px;
   border: 1px solid #ccc;
   background-color: #fff;
   cursor: pointer;
 }
+
 .role-button.active {
   background-color: #2196f3;
   color: white;
 }
+
 input[type="text"],
 input[type="email"],
 input[type="password"] {
@@ -62,12 +69,14 @@ input[type="password"] {
   border: 1px solid #ccc;
   border-radius: 6px;
 }
+
 .checkbox-container {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 15px;
 }
+
 .signup-button {
   width: 100%;
   padding: 10px;
@@ -77,11 +86,13 @@ input[type="password"] {
   border-radius: 4px;
   cursor: pointer;
 }
+
 .login-link {
   width: 60%;
   text-align: center;
   margin-top: 15px;
 }
+
 .login-link a {
   color: #2196f3;
   text-decoration: none;

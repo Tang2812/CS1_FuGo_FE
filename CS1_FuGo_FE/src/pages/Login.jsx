@@ -1,37 +1,54 @@
-
-import { useForm } from "react-hook-form";
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import axios from "axios";
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    setValue,
-    formState: { errors },
-  } = useForm();
-  const { idUser, setIdUser } = useState;
-  const navigate = useNavigate()
-  useEffect(() => {
-    getIdUser();
-  }, []);
 
-  const getIdUser = async () => {
-    try {
-    } catch (error) {
-      console.log(error);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!email || !password) {
+      alert("Please enter both username and password.");
+      return;
     }
-  };
-
-
-  const onSubmit = async (data) => {
     try {
-      navigate(`/home`)
-    } catch (error) {
-      console.log(error);
-    }
-  };
+      const loginURL = `http://localhost:3000/api/v1/auth/login`;
+      const data = {
+        email,
+        password,
+      };
+      const res = await axios.post(loginURL, data);
+      console.log(">>Check res: ", res);
+      if (!res.data.token) {
+        alert("Login succesfully");
+        // set token
+        setAuth({
+          ...auth,
+          user: res?.data?.data,
+          token: res?.data?.accessToken,
+        });
+        // console.log(">>check user: ", res?.data?.data);
+        // console.log(">>check token: ", res?.data?.accessToken);
+        const authToken = {
+          user: res?.data?.data,
+          token: res?.data?.accessToken,
+        };
+        console.log(">>check authToken: ", authToken)
+        localStorage.setItem("auth", JSON.stringify(authToken));
+        navigate("/");
+      } else {
+        alert("Failed to login");
 
+      }
+
+    } catch (error) {
+      alert(error.message);
+    }
+  }
 
   return (
     <>
@@ -41,34 +58,18 @@ const Login = () => {
       <link rel="stylesheet" href="/src/stylesheet/dang_nhap.css" />
       <div className="container">
         <div className="form-section">
-          <img src="/src/img/logo.png" alt="FuGo Logo" className="logo" />
+          <img src="/src/img/logo.png" alt="FuGo Logo" className="logo mb-5" />
           <h2 className="text-xl font-semibold">Đăng nhập</h2>
           <form className="form-dang-ky">
-            <input type="text" {...register("tenDangNhap", { required: 'Tên đăng nhập không được để trống' })} placeholder="Tên đăng nhập" />
-            {/* <input type="email" placeholder="Gmail"  {...register("gmail", { required: 'Gmail không được để trống' })} /> */}
-            <input type="password" placeholder="Mật khẩu" {...register("MatKhau", { required: 'Mật khẩu  không được để trống' })} />
-
-            {/*onChange xử lí so sánh mật khẩu  */}
-            {/* <input
-              type="password"
-              placeholder="Nhập lại mật khẩu"
-              required=""
-            /> */}
-
-            {/* disable nút đăng ký cho tới khi check nút này? */}
-            {/* <div className="checkbox-container">
-              <input type="checkbox" id="terms" required="" />
-              <label htmlFor="terms">
-                Tôi đồng ý với các điều khoản dịch vụ
-              </label>
-            </div> */}
-            <button type="submit" className="login-button">
+            <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+            <input type="password" placeholder="Mật khẩu" onChange={(e) => setPassword(e.target.value)} />
+            <button type="submit" className="login-button" onClick={handleSubmit}>
               Đăng nhập
             </button>
           </form>
           <div className="signup-link">
             <p>
-              Bạn chưa có tài khoản? <a href="#">Đăng ký</a>
+              Bạn chưa có tài khoản? <a href="/register">Đăng ký</a>
             </p>
           </div>
         </div>
