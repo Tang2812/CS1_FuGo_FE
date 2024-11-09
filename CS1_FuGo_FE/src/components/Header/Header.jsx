@@ -1,12 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    alert("Logout Successfully");
+    toast.success("Logout Successfully");
     setAuth({
       ...auth,
       user: null,
