@@ -1,0 +1,31 @@
+.tan--bgr__green {
+    background-color: #84cc16;
+}
+
+.title--side-bar {
+    background-color: green;
+    padding: 8px 10px;
+
+    h3 {
+        color: white;
+    }
+}
+
+.rcm__side-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card__primary-part {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-bottom: black solid 1px;
+    padding-bottom: 8px;
+}
+.card__secondary-part{
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+}

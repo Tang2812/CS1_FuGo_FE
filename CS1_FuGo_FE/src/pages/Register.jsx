@@ -10,23 +10,13 @@ const Register = () => {
     setValue,
     formState: { errors },
   } = useForm();
-  const { idUser, setIdUser } = useState;
+  // const { idUser, setIdUser } = useState;
   const navigate = useNavigate()
-  useEffect(() => {
-    getIdUser();
-  }, []);
-
-  const getIdUser = async () => {
-    try {
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
 
   const onSubmit = async (data) => {
+    console.log(data)
     try {
-      navigate(`/home`)
+      // navigate(`/home`)
     } catch (error) {
         console.log(error);
     }
@@ -48,25 +38,12 @@ const Register = () => {
             <button className="role-button active">Ứng viên</button>
             <button className="role-button">Nhà tuyển dụng</button>
           </div>
-          <form className="form-dang-ky">
-            <input type="text" {...register("tenDangNhap",{required:'Tên đăng nhập không được để trống'})} placeholder="Tên đăng nhập"/>
-            <input type="email" placeholder="Gmail"  {...register("gmail",{required:'Gmail không được để trống'})} />
-            <input type="password" placeholder="Mật khẩu" {...register("MatKhau",{required:'Mật khẩu  không được để trống'})} />
+          <form className="form-dang-ky" onSubmit={handleSubmit(onSubmit)}>
+            <input type="email" placeholder="Gmail"  {...register("email",{required:'Gmail không được để trống'})} />
+            {errors.email && <p>This field is required</p>}
+            <input type="password" placeholder="Mật khẩu" {...register("password",{required:'Mật khẩu  không được để trống'})} />
+            {errors.password && <p>This field is required</p>}
 
-            {/*onChange xử lí so sánh mật khẩu  */}
-            <input
-              type="password"
-              placeholder="Nhập lại mật khẩu"
-              required=""
-            />
-
-            {/* disable nút đăng ký cho tới khi check nút này? */}
-            <div className="checkbox-container">
-              <input type="checkbox" id="terms" required="" />
-              <label htmlFor="terms">
-                Tôi đồng ý với các điều khoản dịch vụ
-              </label>
-            </div>
             <button type="submit" className="signup-button">
               Đăng ký
             </button>
