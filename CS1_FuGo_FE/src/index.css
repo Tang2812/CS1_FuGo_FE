@@ -67,6 +67,11 @@ button:focus-visible {
   }
 } */
 
+.Toastify__toast-container {
+  margin-top: 48px;
+
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

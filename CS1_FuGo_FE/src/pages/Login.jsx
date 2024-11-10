@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
+import { toast } from 'react-toastify';
 const Login = () => {
 
   const [email, setEmail] = useState("");
@@ -24,7 +25,7 @@ const Login = () => {
       const res = await axios.post(loginURL, data);
       console.log(">>Check res: ", res);
       if (!res.data.token) {
-        alert("Login succesfully");
+        toast.success("Login succesfully");
         // set token
         setAuth({
           ...auth,
@@ -37,11 +38,11 @@ const Login = () => {
           user: res?.data?.data,
           token: res?.data?.accessToken,
         };
-        console.log(">>check authToken: ", authToken)
+        // console.log(">>check authToken: ", authToken);
         localStorage.setItem("auth", JSON.stringify(authToken));
         navigate("/");
       } else {
-        alert("Failed to login");
+        toast.error("Failed to login");
 
       }
 
