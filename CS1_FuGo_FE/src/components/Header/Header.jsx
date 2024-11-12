@@ -53,7 +53,7 @@ const Header = () => {
               <Link to="/" className="font-semibold hover:text-blue-700">Chia sẻ</Link>
             </li>
             <li>
-              <Link to="/" className="font-semibold hover:text-blue-700">Quản lí CV</Link>
+              <Link to="/list-cv" className="font-semibold hover:text-blue-700">Quản lí CV</Link>
             </li>
           </ul>
           {
@@ -109,29 +109,29 @@ const Header = () => {
                       {/* avt function */}
                       <div className="header__list-property">
                         <div className="property__primary">
-                          <a href="#" className="property__choice">
+                          <Link to="/profile" className="property__choice">
                             <img src="/src/img/icon_ca_nhan.svg" alt="Thông tin cá nhân"/>
                             <span>Thông tin cá nhân</span>
-                          </a>
-                          <a href="#" className="property__choice">
+                          </Link>
+                          <Link to="#" className="property__choice">
                             <AiFillTag/>
                             <span>Liên kết tài khoản</span>
-                          </a>
-                          <a href="#" className="property__choice">
+                          </Link>
+                          <Link to="#" className="property__choice">
                             <AiOutlineAudit/>
                             <span>Chỉnh sửa trang các nhân</span>
-                          </a>
+                          </Link>
                         </div>
                         <div className="property-line"/>
                         <div className="property__primary">
-                          <a href="#" className="property__choice">
+                          <Link to="#" className="property__choice">
                             <AiFillTool/>
                             <span>Cài đặt</span>
-                          </a>
-                          <a href="#" className="property__choice">
+                          </Link>
+                          <Link to="#" className="property__choice">
                             <AiOutlineLock/>
                             <span>Đổi mật khẩu</span>
-                          </a>
+                          </Link>
                         </div>
                         <div className="property__list-fc">
                           <button className="btn btn--outline property__btn">Đổi tài khoản</button>

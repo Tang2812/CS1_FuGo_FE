@@ -98,9 +98,8 @@ nav ul li a {
   background-color: rgba(23,23,23,0.44);
 }
 
-.property__choice:hover,
-.property__choice:focus-visible {
-  /*color: var(--neutral-1);*/
+.property__choice:hover {
+  color: #141416;
 }
 
 .property__list-fc {
