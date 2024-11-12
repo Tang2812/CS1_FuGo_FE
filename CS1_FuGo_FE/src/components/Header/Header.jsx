@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
+import { AiFillTag, AiFillTool, AiOutlineAudit, AiOutlineLock } from "react-icons/ai";
 
 
 const Header = () => {
@@ -57,21 +58,58 @@ const Header = () => {
           </ul>
           {
             auth.user ? (
-              <div className="user-controls">
-                <img src="/src/img/Notification - Bell.png" alt="Notification" />
-                <img
-                  src="/src/img/avatar.png"
-                  alt="User profile"
-                  className="user-avatar"
-                />
-                <button
-                  className="text-white bg-black p-1 px-2 rounded-md font-semibold hover:bg-blue-900"
-                  onClick={handleLogout}
-                >Logout</button>
-              </div>
-            ) : (
-              <div className="login-signup flex gap-4 font-semibold items-center">
-                <Link to="/login" className="login__btn hover:text-blue-700">Đăng nhập</Link>
+                <div className="user-controls">
+                  <img src="/src/img/Notification - Bell.png" alt="Notification"/>
+                  <button
+                      className="header-right__avt-info"
+                      type="button"
+                      title="avt button"
+                  >
+                    <img
+                        src="/src/img/avatar.png"
+                        alt="User profile"
+                        className="user-avatar"
+                    />
+                  </button>
+                    <>
+                      {/* avt function */}
+                      <div className="header__list-property">
+                        <div className="property__primary">
+                          <a href="#" className="property__choice">
+                            <img src="/src/img/icon_ca_nhan.svg" alt="Thông tin cá nhân"/>
+                            <span>Thông tin cá nhân</span>
+                          </a>
+                          <a href="#" className="property__choice">
+                            <AiFillTag />
+                            <span>Liên kết tài khoản</span>
+                          </a>
+                          <a href="#" className="property__choice">
+                            <AiOutlineAudit />
+                            <span>Chỉnh sửa trang các nhân</span>
+                          </a>
+                        </div>
+                        <div className="property-line"/>
+                        <div className="property__primary">
+                          <a href="#" className="property__choice">
+                            <AiFillTool />
+                            <span>Cài đặt</span>
+                          </a>
+                          <a href="#" className="property__choice">
+                            <AiOutlineLock />
+                            <span>Đổi mật khẩu</span>
+                          </a>
+                        </div>
+                        <div className="property__list-fc">
+                          <button className="btn btn--outline property__btn">Đổi tài khoản</button>
+                          <button className="btn btn--outline property__btn" onClick={handleLogout}>Đăng Xuất</button>
+                        </div>
+                      </div>
+                    </>
+                </div>
+            )
+                : (
+            <div className="login-signup flex gap-4 font-semibold items-center">
+            <Link to="/login" className="login__btn hover:text-blue-700">Đăng nhập</Link>
                 <span className="text-xl">/</span>
                 <Link to="/register" className="signup__btn hover:text-blue-700">Đăng ký</Link>
               </div>
