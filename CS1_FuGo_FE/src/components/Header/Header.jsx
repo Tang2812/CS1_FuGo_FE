@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
-import { AiFillTag, AiFillTool, AiOutlineAudit, AiOutlineLock } from "react-icons/ai";
+import { AiFillTag, AiFillTool, AiOutlineAudit, AiOutlineLock, AiOutlineMail, AiTwotoneWarning} from "react-icons/ai";
 
 
 const Header = () => {
@@ -59,18 +59,52 @@ const Header = () => {
           {
             auth.user ? (
                 <div className="user-controls">
-                  <img src="/src/img/Notification - Bell.png" alt="Notification"/>
-                  <button
-                      className="header-right__avt-info"
-                      type="button"
-                      title="avt button"
-                  >
-                    <img
-                        src="/src/img/avatar.png"
-                        alt="User profile"
-                        className="user-avatar"
-                    />
+                  <button className=" header-right__notification" type="button" title="notification">
+                    <img src="/src/img/Notification - Bell.png" alt="Notification"/>
                   </button>
+
+
+                  <div className="header__notification">
+                      <h2>Notification</h2>
+                      <div className="notification__container">
+                        <div className="notification__message">
+                          <AiOutlineMail size={50} />
+                          <div className="message">
+                            <span className="message__user-name">Hồ sơ của bạn đã được duyệt!!! </span>
+                            <span className="message__content"
+                            >Công ty TNHH The King</span
+                            >
+                            <span className="message__time">1 phút trước</span>
+                          </div>
+                        </div>
+                        <div className="notification__active"></div>
+                      </div>
+                      <div className="notification__container">
+                        <div className="notification__message">
+                          <AiTwotoneWarning size={50} />
+                          <div className="message">
+                            <span className="message__user-name">Hồ sơ của bạn đã bị từ chối!!!</span>
+                            <span className="message__content"
+                            >Công ty dệt may kawashaki</span
+                            >
+                            <span className="message__time">30 phút trước</span>
+                          </div>
+                        </div>
+                        <div className="notification__active"></div>
+                      </div>
+                    </div>
+
+                    <button
+                        className="header-right__avt-info"
+                        type="button"
+                        title="avt button"
+                    >
+                      <img
+                          src="/src/img/avatar.png"
+                          alt="User profile"
+                          className="user-avatar"
+                      />
+                    </button>
                     <>
                       {/* avt function */}
                       <div className="header__list-property">
@@ -80,22 +114,22 @@ const Header = () => {
                             <span>Thông tin cá nhân</span>
                           </a>
                           <a href="#" className="property__choice">
-                            <AiFillTag />
+                            <AiFillTag/>
                             <span>Liên kết tài khoản</span>
                           </a>
                           <a href="#" className="property__choice">
-                            <AiOutlineAudit />
+                            <AiOutlineAudit/>
                             <span>Chỉnh sửa trang các nhân</span>
                           </a>
                         </div>
                         <div className="property-line"/>
                         <div className="property__primary">
                           <a href="#" className="property__choice">
-                            <AiFillTool />
+                            <AiFillTool/>
                             <span>Cài đặt</span>
                           </a>
                           <a href="#" className="property__choice">
-                            <AiOutlineLock />
+                            <AiOutlineLock/>
                             <span>Đổi mật khẩu</span>
                           </a>
                         </div>
@@ -107,13 +141,13 @@ const Header = () => {
                     </>
                 </div>
             )
-                : (
+            : (
             <div className="login-signup flex gap-4 font-semibold items-center">
-            <Link to="/login" className="login__btn hover:text-blue-700">Đăng nhập</Link>
-                <span className="text-xl">/</span>
-                <Link to="/register" className="signup__btn hover:text-blue-700">Đăng ký</Link>
-              </div>
-            )
+                      <Link to="/login" className="login__btn hover:text-blue-700">Đăng nhập</Link>
+                      <span className="text-xl">/</span>
+                      <Link to="/register" className="signup__btn hover:text-blue-700">Đăng ký</Link>
+                    </div>
+                )
           }
         </nav>
       </header>

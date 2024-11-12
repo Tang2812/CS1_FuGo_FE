@@ -153,3 +153,92 @@ nav ul li a {
 .btn--outline {
   border: 2px solid black;;
 }
+
+.header__notification {
+  position: absolute;
+  z-index: 9999;
+  /* on top of the layout */
+  top: 72px;
+  right: 40px;
+  max-width: 354px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 16px 32px 16px;
+  background-color: white;
+  border-bottom-right-radius: 24px;
+  border-bottom-left-radius: 24px;
+  box-shadow: 0 16px 64px -48px rgba(31, 47, 70, 0.4);
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+}
+
+.notification__container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding-right: 14px;
+}
+
+.notification__container:hover {
+  cursor: pointer;
+  background-color: #e6e8ec;
+}
+
+.notification__message {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  gap: 24px;
+  padding: 16px;
+}
+
+.message__user-avt {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.message {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.message__user-name {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.message__content {
+  /*font-family: var(--font-secondary);*/
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 24px;
+  color: #353945;
+}
+
+.message__time {
+  /*font-family: var(--font-secondary);*/
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  color: #777e90;
+}
+
+.notification__active {
+  width: 12px;
+  height: 12px;
+  background-color: #3b71fe;
+  border-radius: 16px;
+}
+
+.header-right__notification:focus ~ .header__notification {
+  visibility: visible;
+  opacity: 1;
+}
