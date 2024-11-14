@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const List_Cv = () => {
     const { ListCV, setListCV } = useState([]);
@@ -25,7 +26,7 @@ const List_Cv = () => {
                 {/* Sidebar */}
                 <aside className="w-64 rounded-lg shadow-sm h-fit">
                     <div className="list-function">
-                        <a className="fc-choice" href="#">
+                        <a className="fc-choice" to="/#">
                             <img src="/src/img/icon_ca_nhan.svg" alt="personal info icon" />
                             <span className="text--sm font-primary">Tạo mới CV</span>
                         </a>
@@ -54,81 +55,88 @@ const List_Cv = () => {
                     <div className="space-y-6">
                         {/* loop */}
                         {ListCV?.map((Cv) => (
+                            // eslint-disable-next-line react/jsx-key
+                            <Link to={"/Job_cv_detail"}>
+                                <div className="bg-white rounded-lg p-6 shadow-sm">
+                                    <div className="flex justify-between items-start">
+                                        <div className="space-y-6">
+                                            <div className="flex items-center gap-8">
+                                                <img src="/src/img/icon_ca_nhan.svg" alt=""/>
+                                                {/* name */}
+                                                <span className="font-medium">{Cv.ten}</span>
+                                                {/* ,type */}
+                                                <span className="status-tag">{Cv.loai}</span>
+                                            </div>
+                                            <div className="text-gray-600 flex items-center gap-8">
+                                                <img src="/src/img/icon_phone.svg" alt=""/>
+                                                <span>{Cv.SoDienThoai}</span>
+                                            </div>
+                                            <div className="text-gray-600 flex items-center gap-8">
+                                                <img src="/src/img/icon_cong_viec.svg" alt=""/>
+                                                <span>{Cv.ngheNghiep}</span>
+                                            </div>
+                                            <div className="flex items-center gap-8 text-gray-500">
+                                                <img src="/src//img/icon_lich.svg" alt=""/>
+                                                <span>{Cv.thoiGian}</span>
+                                            </div>
+                                        </div>
+                                        <button className="edit-button">Chỉnh sửa</button>
+                                    </div>
+                                </div>
+                            </Link>
+
+                        ))}
+
+                        {/* CV Card Template */}
+                        <Link to={"/Job_cv_detail"}>
                             <div className="bg-white rounded-lg p-6 shadow-sm">
                                 <div className="flex justify-between items-start">
                                     <div className="space-y-6">
                                         <div className="flex items-center gap-8">
-                                            <img src="/src/img/icon_ca_nhan.svg" alt="" />
+                                            <img src="/src/img/icon_ca_nhan.svg" alt=""/>
                                             {/* name */}
-                                            <span className="font-medium">{Cv.ten}</span>
+                                            <span className="font-medium">Hung</span>
                                             {/* ,type */}
-                                            <span className="status-tag">{Cv.loai}</span>
+                                            <span className="status-tag">XKLD</span>
                                         </div>
                                         <div className="text-gray-600 flex items-center gap-8">
-                                            <img src="/src/img/icon_phone.svg" alt="" />
-                                            <span>{Cv.SoDienThoai}</span>
+                                            <img src="/src/img/icon_phone.svg" alt=""/>
+                                            <span>0905123456</span>
                                         </div>
                                         <div className="text-gray-600 flex items-center gap-8">
-                                            <img src="/src/img/icon_cong_viec.svg" alt="" />
-                                            <span>{Cv.ngheNghiep}</span>
+                                            <img src="/src/img/icon_cong_viec.svg" alt=""/>
+                                            <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
                                         </div>
                                         <div className="flex items-center gap-8 text-gray-500">
-                                            <img src="/src//img/icon_lich.svg" alt="" />
-                                            <span>{Cv.thoiGian}</span>
+                                            <img src="/src//img/icon_lich.svg" alt=""/>
+                                            <span>09-10-2024</span>
                                         </div>
                                     </div>
                                     <button className="edit-button">Chỉnh sửa</button>
                                 </div>
                             </div>
-                        ))}
+                        </Link>
 
-                        {/* CV Card Template */}
                         <div className="bg-white rounded-lg p-6 shadow-sm">
                             <div className="flex justify-between items-start">
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-8">
-                                        <img src="/src/img/icon_ca_nhan.svg" alt="" />
+                                        <img src="/src/img/icon_ca_nhan.svg" alt=""/>
                                         {/* name */}
                                         <span className="font-medium">Hung</span>
                                         {/* ,type */}
                                         <span className="status-tag">XKLD</span>
                                     </div>
                                     <div className="text-gray-600 flex items-center gap-8">
-                                        <img src="/src/img/icon_phone.svg" alt="" />
+                                        <img src="/src/img/icon_phone.svg" alt=""/>
                                         <span>0905123456</span>
                                     </div>
                                     <div className="text-gray-600 flex items-center gap-8">
-                                        <img src="/src/img/icon_cong_viec.svg" alt="" />
+                                        <img src="/src/img/icon_cong_viec.svg" alt=""/>
                                         <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
                                     </div>
                                     <div className="flex items-center gap-8 text-gray-500">
-                                        <img src="/src//img/icon_lich.svg" alt="" />
-                                        <span>09-10-2024</span>
-                                    </div>
-                                </div>
-                                <button className="edit-button">Chỉnh sửa</button>
-                            </div>
-                        </div>
-                        <div className="bg-white rounded-lg p-6 shadow-sm">
-                            <div className="flex justify-between items-start">
-                                <div className="space-y-6">
-                                    <div className="flex items-center gap-8">
-                                        <img src="/src/img/icon_ca_nhan.svg" alt="" />
-                                        {/* name */}
-                                        <span className="font-medium">Hung</span>
-                                        {/* ,type */}
-                                        <span className="status-tag">XKLD</span>
-                                    </div>
-                                    <div className="text-gray-600 flex items-center gap-8">
-                                        <img src="/src/img/icon_phone.svg" alt="" />
-                                        <span>0905123456</span>
-                                    </div>
-                                    <div className="text-gray-600 flex items-center gap-8">
-                                        <img src="/src/img/icon_cong_viec.svg" alt="" />
-                                        <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
-                                    </div>
-                                    <div className="flex items-center gap-8 text-gray-500">
-                                        <img src="/src//img/icon_lich.svg" alt="" />
+                                        <img src="/src//img/icon_lich.svg" alt=""/>
                                         <span>09-10-2024</span>
                                     </div>
                                 </div>

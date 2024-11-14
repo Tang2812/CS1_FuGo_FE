@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from 'react-toastify';
+
 const Register = () => {
   const [role, setRole] = useState("");
   const [username, setUsername] = useState("");
@@ -25,22 +27,22 @@ const Register = () => {
         password,
       };
       if (confirmPassword !== data.password) {
-        return alert(
+        return toast.error(
           "Password and confirm password do not match!"
         );
       }
 
       const res = await axios.post(registerURL, data);
       if (res.data.success === true) {
-        console.log(">> Check res: ", res);
+        // console.log(">> Check res: ", res);
         navigate("/login")
       }
       else {
-        alert("Failed to register");
+        toast.error("Failed to register");
       }
 
     } catch (error) {
-      alert("Failed to register");
+      toast.error(error.message);
     }
   }
 

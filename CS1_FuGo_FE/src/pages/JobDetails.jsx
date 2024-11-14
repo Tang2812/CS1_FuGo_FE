@@ -1,113 +1,163 @@
+import React from 'react';
+import { Facebook, Twitter, Linkedin, Youtube, Clock, MapPin, Share2 } from 'lucide-react';
 import tagImg from "../img/tagImg.jpg";
-import { FaShoppingBag } from "react-icons/fa";
-import { MdPlace } from "react-icons/md";
-import { MdEditNote } from "react-icons/md";
-import { FaMoneyBillWave } from "react-icons/fa";
-import { IoCalendarNumber } from "react-icons/io5";
-import { IoPersonOutline } from "react-icons/io5";
-import { FaRegLightbulb } from "react-icons/fa";
-import { LuPackage } from "react-icons/lu";
 
-const JobDetail = () => {
+const JobDetails = () => {
     return (
-        <div className="job-detail__container container p-10 flex gap-10">
-            <div className="job-detail-right">
-                <img src={tagImg} alt="" className="w-[600px]" />
-                <button className="bg-emerald-500 text-white mt-5 w-[600px] py-4 rounded-md hover:bg-emerald-400 font-semibold text-lg" type="submit">Ứng tuyển</button>
-            </div>
-            <div className="job-detail-right">
-                <div className="job-detail__header">
-                    <h2 className="font-semibold text-3xl mb-5">Vệ sinh tòa nhà</h2>
-                    <div className="job-detail__info flex gap-8">
-                        <div className="job-detail-market flex gap-2 items-center">
-                            <FaShoppingBag />
-                            <h3 className="font-semibold mr-2">Thị trường:</h3>
-                            <p>Nhật bản</p>
+        <div className="min-h-screen bg-gray-50">
+
+
+            {/* Main Content */}
+            <div className="max-w-7xl mx-auto px-4 py-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {/* Left Column - Job Details */}
+                    <div className="md:col-span-2">
+                        {/* Company Header */}
+                        <div className="bg-white rounded-lg p-6 mb-6 shadow-sm">
+                            <div className="flex items-start justify-between">
+                                <div className="flex space-x-4">
+                                    <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
+                                    <div>
+                                        <h1 className="text-xl font-bold mb-2">TOKYO - 1 nam/nữ phiên dịch</h1>
+                                        <p className="text-gray-600 mb-2">Công ty Cổ phần SPRINGHILL SUITES VIỆT NAM</p>
+                                        <div className="flex items-center space-x-2 text-gray-500">
+                                            <Clock className="w-4 h-4" />
+                                            <span>Dự kiến xuất cảnh: 12/2024</span>
+                                        </div>
+                                        <div className="flex items-center space-x-2 text-gray-500">
+                                            <MapPin className="w-4 h-4" />
+                                            <span>Tokyo, Nhật Bản</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="space-y-2">
+                                    <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md">
+                                        Ứng tuyển ngay
+                                    </button>
+                                    <button className="w-full border border-green-500 text-green-500 px-4 py-2 rounded-md">
+                                        Lưu tin
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div className="job-detail-location flex gap-2 items-center">
-                            <MdPlace />
-                            <h3 className="font-semibold mr-2">Nơi làm việc:</h3>
-                            <p>Aichi</p>
+
+                        {/* Job Information Sections */}
+                        <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+                            {/* Chi tiết thông tin */}
+                            <div className="border-b">
+                                <div className="bg-[#95c11f] px-4 py-2">
+                                    <h2 className="text-white font-semibold">CHI TIẾT THÔNG TIN</h2>
+                                </div>
+                                <div className="p-4">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <p className="font-semibold mb-2">Hình thức:</p>
+                                            <p>Xuất khẩu lao động</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold mb-2">Đối tượng:</p>
+                                            <p>Xuất khẩu lao động trọn gói</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Yêu cầu ứng viên */}
+                            <div className="border-b">
+                                <div className="bg-[#95c11f] px-4 py-2">
+                                    <h2 className="text-white font-semibold">YÊU CẦU ỨNG VIÊN</h2>
+                                </div>
+                                <div className="p-4">
+                                    <div className="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <p className="font-semibold mb-2">Giới tính:</p>
+                                            <p>Nam</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold mb-2">Số lượng thi tuyển:</p>
+                                            <p>10</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Contact Information */}
+                            <div>
+                                <div className="bg-[#95c11f] px-4 py-2">
+                                    <h2 className="text-white font-semibold">THÔNG TIN LIÊN HỆ</h2>
+                                </div>
+                                <div className="p-4">
+                                    <div className="space-y-2">
+                                        <p><span className="font-semibold">Họ tên:</span> Nguyễn Hoàng</p>
+                                        <p><span className="font-semibold">Chức vụ:</span> Nhân viên</p>
+                                        <p><span className="font-semibold">Điện thoại:</span> 0903367182</p>
+                                        <p><span className="font-semibold">Email:</span> huongquyen.tuyendung@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div className="job-detail-job flex gap-2 items-center">
-                            <FaShoppingBag />
-                            <h3 className="font-semibold mr-2">Ngành nghề:</h3>
-                            <p>Vệ sinh tòa nhà</p>
+                    </div>
+
+                    {/* Right Column - Related Jobs */}
+                    <div className="space-y-6">
+                        {/* Share Section */}
+                        <div className="bg-white rounded-lg p-4 shadow-sm">
+                            <h3 className="font-semibold text-green-600 mb-4">CHIA SẺ TIN TUYỂN DỤNG</h3>
+                            <div className="flex space-x-4">
+                                <Facebook className="w-6 h-6 text-blue-600" />
+                                <Twitter className="w-6 h-6 text-blue-400" />
+                                <Linkedin className="w-6 h-6 text-blue-700" />
+                                <Share2 className="w-6 h-6 text-gray-600" />
+                            </div>
+                        </div>
+
+                        {/* Similar Jobs */}
+                        <div className="bg-white rounded-lg shadow-sm">
+                            <h3 className="font-semibold bg-green-600 text-white mb-4 py-2 px-5 rounded-t-lg">VIỆC LÀM CÙNG CÔNG TY</h3>
+                            <div className="space-y-4">
+                                {[1, 2, 3, 4]?.map((job) => (
+                                    <div key={job} className="border-b px-4 pt-2 last:border-b-4 last:pb-4">
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h4 className="font-medium">XKLD - Nam Đóng Gói Thực Phẩm</h4>
+                                                <p className="text-sm text-gray-500">CÔNG TY CỔ PHẦN T-GROUP VIỆT</p>
+                                                <p className="text-sm text-gray-600">$ 167,120 JPY / tháng</p>
+                                            </div>
+                                            <button className="bg-green-500 text-white px-3 py-1 rounded-md text-sm">
+                                                Nhật Bản
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        {/* Related Jobs */}
+                        <div className="bg-white rounded-lg shadow-sm">
+                            <h3 className="font-semibold bg-green-600 text-white mb-4 py-2 px-5 rounded-t-lg">VIỆC LÀM ĐỀ XUẤT</h3>
+                            <div className="space-y-4">
+                                {[1, 2, 3, 4]?.map((job) => (
+                                    <div key={job} className="border-b px-4 pt-2 last:border-b-4 last:pb-4">
+                                        <div className="flex justify-between items-start">
+                                            <div>
+                                                <h4 className="font-medium">XKLD - Nam Đóng Gói Thực Phẩm</h4>
+                                                <p className="text-sm text-gray-500">CÔNG TY CỔ PHẦN T-GROUP VIỆT</p>
+                                                <p className="text-sm text-gray-600">$ 167,120 JPY / tháng</p>
+                                            </div>
+                                            <button className="bg-green-500 text-white px-3 py-1 rounded-md text-sm">
+                                                Nhật Bản
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <div className="job-detail-content mt-3">
-                    <div className="job-content">
-                        <div className="job-content__header flex gap-2 items-center">
-                            <MdEditNote className="text-xl" />
-                            <h3 className="font-semibold mr-2">Nội dung công việc:</h3>
-                        </div>
-                        <div className="job-content__content">
-                            <p>
-                                Làm vệ sinh, dọn dẹp tòa nhà, văn phòng sân bay.
-                            </p>
-                            <p>
-                                Làm trong nhà 100%
-                            </p>
-                            <p>
-                                Tuyển 4 bạn sẽ chia làm 3 xí nghiệp: sân bay Haneda, Tokyo, Kanagawa
-                            </p>
-                            <p>
-
-                                Xí nghiệp đã có 33 lao động Việt nam, đang làm ở cả 3 xí nghiệp
-                            </p>
-                        </div>
-                    </div>
-                    <div className="job-salary mt-2 flex gap-2 items-center">
-                        <FaMoneyBillWave className="text-xl mr-2" />
-                        <p>100,000,000</p>
-                    </div>
-                    <div className="job-due mt-2 flex gap-2 items-center">
-                        <IoCalendarNumber className="text-xl mr-2" />
-                        <p>14/10/2024</p>
-                    </div>
-
-                    <div className="job-request mt-2">
-                        <div className="job-request-quantity mt-2 flex gap-2 items-center">
-                            <IoPersonOutline />
-                            <h3 className="font-semibold mr-2">Số lượng</h3>
-                            <p>3</p>
-                        </div>
-                        <div className="job-request-age mt-2 flex gap-2 items-center">
-                            <IoPersonOutline />
-                            <h3 className="font-semibold mr-2">Độ tuổi: </h3>
-                            <p>19-33</p>
-                        </div>
-                        <div className="job-request-study mt-2 flex gap-2 items-center">
-                            <FaRegLightbulb />
-                            <h3 className="font-semibold mr-2">Trình độ học vấn: </h3>
-                            <p>Không yêu cầu</p>
-                        </div>
-                        <div className="job-request-study mt-2 flex gap-2 items-center">
-                            <LuPackage />
-                            <h3 className="font-semibold mr-2">Trình độ tay nghề: </h3>
-                            <p>Không yêu cầu</p>
-                        </div>
-                        <div className="job-request-request">
-                            <div className="job-request-required-header mt-2 flex gap-2 items-center">
-                                <MdEditNote />
-                                <h3 className="font-semibold mr-2">Yêu cầu: </h3>
-                            </div>
-                            <div className="job-request-required-content">
-                                <p>Giới tính: Nam</p>
-                                <p>Độ tuổi: 19-33 tuổi</p>
-                                <p>Trình độ: Không yêu cầu</p>
-                                <p>Sức khỏe: Tốt, chịu được cường độ làm việc cao</p>
-                                <p>Kỹ năng: Khéo léo, tỉ mỉ, có khả năng làm việc nhóm</p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </div>
+
+
         </div>
     );
 };
 
-export default JobDetail;
+export default JobDetails;
