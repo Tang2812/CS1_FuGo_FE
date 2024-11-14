@@ -1,121 +1,201 @@
-import { useEffect, useState } from 'react';
-import '../stylesheet/tim_kiem.css'
-import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-import { get } from 'react-hook-form';
+import { useEffect, useState } from "react";
+import "../stylesheet/tim_kiem.css";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { get } from "react-hook-form";
 const Job_find = () => {
+  const [jobs, setJobs] = useState([]);
+  const [keyWord, setKeyWord] = useState("");
+  const [page, setPage] = useState(0);
+  const navigate = useNavigate();
 
-    const [jobs, setJobs] = useState([]);
-    const [keyWord, setKeyWord] = useState("");
-    const [page, setPage] = useState(0);
-    const navigate = useNavigate();
+  const [conditions, setConditions] = useState({
+    title: "",
+    country: "",
+    minSalary: "",
+    maxSalary: "",
+    educationalLevel: "",
+    profession: "",
+    experience: "",
+  });
 
-    useEffect(() => {
-        const fetchJob = async () => {
-            try {
-              const response = await axios.get(
-                "http://localhost:3000/api/v1/jobs/"
-              );
-              
-              console.log("Response",response.data.data)
-              setJobs(response.data.data);
-       
-              console.log("Jobs"+jobs);
-            } catch (error) {
-              if (error.response && !error.response.data.success) {
-                alert(error.response.data.error);
-              }
-            }
-          };
-          fetchJob();
-       
-    },[]);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    if (name === "salary") {
+      const [min, max] = value.split("-"); // Split value into min and max
+      setConditions((prevState) => ({
+        ...prevState,
+        minSalary: min || "",
+        maxSalary: max || "",
+      }));
+    } else {
+      setConditions((prevState) => ({ ...prevState, [name]: value }));
+    }
+  };
 
+  const handleSearch = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/v1/jobs/search/getJobBySearch",
+        conditions
+      );
+      setJobs(response.data.data);
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
+  };
 
-    return (
+  useEffect(() => {
+    const fetchJob = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/api/v1/jobs");
+        setJobs(response.data.data);
+      } catch (error) {
+        if (error.response && !error.response.data.success) {
+          alert(error.response.data.error);
+        }
+      }
+    };
+    fetchJob();
+  }, []);
 
-        <>
-            <section className="hero">
-                <img
-                    src="/src/img/phông.png"
-                    alt="section image"
-                    className="section__background"
-                />
-            </section>
-            <main className="search-results">
-                <div className="search__header">
-                    <h1>Kết quả tìm kiếm</h1>
-                    <div className="input__box">
-                        <input
-                            type="text"
-                            className="input__string"
-                            placeholder="nhập thông tin bạn muốn tìm kiếm"
-                        />
-                    </div>
-                    <div className="filters">
-                        <select className="filter">
-                            <option>Quốc gia</option>
-                        </select>
-                        <select className="filter">
-                            <option>Mức lương</option>
-                        </select>
-                        <select className="filter">
-                            <option>Học vấn</option>
-                        </select>
-                        <select className="filter">
-                            <option>Ngành nghề</option>
-                        </select>
-                        <select className="filter">
-                            <option>Kinh nghiệm</option>
-                        </select>
-                    </div>
+  useEffect(() => {
+    handleSearch();
+  }, [conditions]);
+
+  return (
+    <>
+      <section className="hero">
+        <img
+          src="/src/img/phông.png"
+          alt="section image"
+          className="section__background"
+        />
+      </section>
+      <main className="search-results">
+        <div className="search__header">
+          <h1>Kết quả tìm kiếm</h1>
+          <div className="input__box">
+            <input
+              name="title"
+              type="text"
+              value={conditions.title}
+              className="input__string"
+              placeholder="Nhập thông tin bạn muốn tìm kiếm"
+              onChange={handleChange}
+            />
+          </div>
+          <div className="filters">
+            <select
+              value={conditions.country}
+              name="country"
+              className="filter"
+              onChange={handleChange}
+            >
+              <option value="">Quốc gia</option>
+              <option value="Đài Loan">Đài Loan</option>
+              <option value="Nhật Bản">Nhật Bản</option>
+              <option value="Hàn Quốc">Hàn Quốc</option>
+              <option value="USA">Mỹ</option>
+            </select>
+            <select
+              value={conditions.salary}
+              name="salary"
+              className="filter"
+              onChange={handleChange}
+            >
+              <option value="">Mức lương</option>
+              <option value="10000000-15000000">10-15 triệu</option>
+              <option value="15000000-20000000">15-20 triệu</option>
+              <option value="25000000-30000000">25-30 triệu</option>
+              <option value="30000000-35000000">30-35 triệu</option>
+              <option value="35000000-50000000">30-50 triệu</option>
+            </select>
+            <select
+              value={conditions.educationalLevel}
+              name="educationalLevel"
+              className="filter"
+              onChange={handleChange}
+            >
+              <option value="">Học vấn</option>
+              <option value="THPT">THPT</option>
+              <option value="Cao đẳng">Cao đẳng</option>
+              <option value="Đại học">Đại học</option>
+            </select>
+            <select
+              value={conditions.profession}
+              name="profession"
+              className="filter"
+              onChange={handleChange}
+            >
+              <option value="">Ngành nghề</option>
+              <option value="Hàn">Hàn</option>
+              <option value="Lắp ráp">Lắp ráp</option>
+              <option value="Software Engineering">Software Engineering</option>
+              <option value="Data Analyst">Data Analyst</option>
+            </select>
+            <select
+              value={conditions.experience}
+              name="experience"
+              className="filter"
+              onChange={handleChange}
+            >
+              <option value="">Kinh nghiệm</option>
+              <option value="0">Không yêu cầu</option>
+              <option value="2">2 năm</option>
+              <option value="3">3 năm</option>
+              <option value="4">4 năm</option>
+              <option value="5">5 năm</option>
+            </select>
+          </div>
+        </div>
+        <div className="job-list">
+          {/* loop for list jobs */}
+          {jobs?.map((job) => (
+            <div key= {job._id} className="job-card">
+              {/* image jobs */}
+              <img src="/src/img/anh_cong_viec.png" alt="" />
+              <div className="job-card__content">
+                {/* name job */}
+                <h2>{job.title}</h2>
+                <div className="job-card__info">
+                  {/*Salary  */}
+                  <img src="/src/img/incon_money.svg" alt="icon tien" />
+                  <p>
+                    {job.minSalary} ~ {job.maxSalary}
+                  </p>
                 </div>
-                <div className="job-list">
-                    {/* loop for list jobs */}
-                    {jobs?.map((job,index) => (
-                        <div key={index} className="job-card">
-                            {/* image jobs */}
-                            <img src="/src/img/anh_cong_viec.png" alt="" />
-                            <div className="job-card__content">
-                                {/* name job */}
-                                <h2>{job.title}</h2>
-                                <div className="job-card__info">
-                                    {/*Salary  */}
-                                    <img src="/src/img/incon_money.svg" alt="icon tien" />
-                                    <p>{job.minSalary} ~ {job.maxSalary}</p>
-                                </div>
-                                <div className="job-card__info">
-                                    {/* Country */}
-                                    <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
-                                    <p>{job.country}</p>
-                                </div>
-                                <div className="job-card__info">
-                                    {/* Deadline */}
-                                    <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
-                                    <p> {job.jobStatus}</p>
-                                </div>
-                                <div className="card__fc">
-                                    <button className="btn--outline">Xem chi tiết</button>
-                                    <button className="btn--outline">Ứng tuyển</button>
-                                </div>
-                            </div>
-                        </div>
-                    )
-
-                    )}
-
-                    {/* Repeat this structure for each job listing */}
-
-                    {/* More job cards... */}
+                <div className="job-card__info">
+                  {/* Country */}
+                  <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
+                  <p>{job.country}</p>
                 </div>
-                <div className="pagination">
-                    <button>&lt;</button>
-                    <button>&gt;</button>
+                <div className="job-card__info">
+                  {/* Deadline */}
+                  <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
+                  <p> {job.jobStatus}</p>
                 </div>
-            </main>
-        </>
+                <div className="card__fc">
+                  <button className="btn--outline">Xem chi tiết</button>
+                  <button className="btn--outline">Ứng tuyển</button>
+                </div>
+              </div>
+            </div>
+          ))}
 
-    )
+          {/* Repeat this structure for each job listing */}
+
+          {/* More job cards... */}
+        </div>
+        <div className="pagination">
+          <button>&lt;</button>
+          <button>&gt;</button>
+        </div>
+      </main>
+    </>
+  );
 };
 
 export default Job_find;
