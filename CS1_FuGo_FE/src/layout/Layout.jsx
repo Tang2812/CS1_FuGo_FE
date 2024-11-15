@@ -7,7 +7,7 @@ import { useAuth } from "../context/AuthContext";
 
 const Layout = () => {
   const [auth, setAuth] = useAuth();
-  console.log(">>check auth: ", auth);
+  // console.log(">>check auth: ", auth);
 
   return (
     <>

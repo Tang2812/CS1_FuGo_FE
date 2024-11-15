@@ -3,10 +3,12 @@ import "../stylesheet/tim_kiem.css";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { get } from "react-hook-form";
+import ReactPaginate from 'react-paginate';
 const Job_find = () => {
   const [jobs, setJobs] = useState([]);
   const [keyWord, setKeyWord] = useState("");
   const [page, setPage] = useState(0);
+  const [totalPages, setTotalPages] = useState(0);
   const navigate = useNavigate();
 
   const [conditions, setConditions] = useState({
@@ -18,6 +20,7 @@ const Job_find = () => {
     profession: "",
     experience: "",
   });
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -47,23 +50,36 @@ const Job_find = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchJob = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/api/v1/jobs");
-        setJobs(response.data.data);
-      } catch (error) {
-        if (error.response && !error.response.data.success) {
-          alert(error.response.data.error);
-        }
+  const fetchData = (page) => {
+    return axios.get(`http://localhost:3000/api/v1/jobs?page=${page}`);
+  }
+
+  const fetchJob = async (page) => {
+    try {
+      const response = await fetchData(page);
+      setJobs(response?.data?.data);
+      setTotalPages(Math.ceil(response?.data?.jobCount / 8));
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
       }
-    };
-    fetchJob();
+    }
+
+  };
+
+
+  useEffect(() => {
+    fetchJob(0);
   }, []);
 
   useEffect(() => {
     handleSearch();
   }, [conditions]);
+
+  const handlePageClick = (event) => {
+    fetchJob(+event.selected);
+  }
+
 
   return (
     <>
@@ -153,8 +169,8 @@ const Job_find = () => {
         </div>
         <div className="job-list">
           {/* loop for list jobs */}
-          {jobs?.map((job) => (
-            <div key= {job._id} className="job-card">
+          {jobs?.map((job, index) => (
+            <div key={index} className="job-card">
               {/* image jobs */}
               <img src="/src/img/anh_cong_viec.png" alt="" />
               <div className="job-card__content">
@@ -190,8 +206,26 @@ const Job_find = () => {
           {/* More job cards... */}
         </div>
         <div className="pagination">
-          <button>&lt;</button>
-          <button>&gt;</button>
+          <ReactPaginate
+            nextLabel="Next >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={3}
+            marginPagesDisplayed={2}
+            pageCount={totalPages}
+            previousLabel="< Previous"
+            pageClassName="page-item"
+            pageLinkClassName="page-link"
+            previousClassName="page-item"
+            previousLinkClassName="page-link"
+            nextClassName="page-item"
+            nextLinkClassName="page-link"
+            breakLabel="..."
+            breakClassName="page-item"
+            breakLinkClassName="page-link"
+            containerClassName="pagination"
+            activeClassName="active"
+            renderOnZeroPageCount={null}
+          />
         </div>
       </main>
     </>

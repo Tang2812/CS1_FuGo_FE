@@ -3,6 +3,7 @@ import suggestTag from "../../img/tagImg.jpg";
 import { FaMoneyBillWave } from "react-icons/fa";
 import { MdPlace } from "react-icons/md";
 import { FaClock } from "react-icons/fa";
+import { motion } from "framer-motion";
 
 const HomeSuggest = () => {
     return (
@@ -15,7 +16,7 @@ const HomeSuggest = () => {
                     </h1>
                 </div>
                 <div className="suggest-all">
-                    <a href="/find-jobs" className="text-yellow-500">Xem tất cả &gt;</a>
+                    <a href="/jobs" className="text-yellow-500">Xem tất cả &gt;</a>
                 </div>
             </div>
             <div className="suggest-categories space-x-4 mb-[30px]">
@@ -32,8 +33,10 @@ const HomeSuggest = () => {
                     Đài Loan
                 </a>
             </div>
-            <div className="suggest-content grid grid-cols-4">
-                <a href="/find-jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+            <motion.div className="suggest-content grid grid-cols-4"
+                initial={{ x: -60 }}
+                whileInView={{ x: 20, transition: { duration: 0.75 } }}>
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
@@ -52,7 +55,7 @@ const HomeSuggest = () => {
                     </div>
                 </a>
 
-                <a href="/find-jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
@@ -71,7 +74,7 @@ const HomeSuggest = () => {
                     </div>
                 </a>
 
-                <a href="/find-jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
@@ -90,7 +93,7 @@ const HomeSuggest = () => {
                     </div>
                 </a>
 
-                <a href="/find-jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
@@ -109,7 +112,7 @@ const HomeSuggest = () => {
                     </div>
                 </a>
 
-            </div>
+            </motion.div>
         </div>
     );
 };

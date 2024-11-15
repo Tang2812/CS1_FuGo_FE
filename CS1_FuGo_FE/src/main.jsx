@@ -22,7 +22,6 @@ createRoot(document.getElementById("root")).render(
         draggable
         pauseOnHover
         theme="light"
-        style={{ marginTop: "40px" }}
       />
       <ToastContainer />
     </BrowserRouter>

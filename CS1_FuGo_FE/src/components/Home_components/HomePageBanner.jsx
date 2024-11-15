@@ -1,31 +1,54 @@
-import HomePageBannerImg from "../../img/HomePageBanner-1.jpg";
 import { FaPlayCircle } from "react-icons/fa";
+import { BsFillHandbagFill } from "react-icons/bs";
+import heroImg from '../../img/hero-img01.jpg';
+import heroImg02 from '../../img/hero-img02.jpg';
+import heroVideo from '../../img/hero-video.mp4';
+import { useNavigate } from "react-router-dom";
+import { motion } from "motion/react";
 
 const HomePageBanner = () => {
+    const navigate = useNavigate();
+
     return (
-        <div className="homeBanner-container mb-12">
-            <img src={HomePageBannerImg} className="homeBanner-img w-full absolute z-[1] h-[640px]" alt="" />
-            <div className="homeBanner-content relative z-10 pt-[135px] pr-[200px] pb-[200px] pl-[90px]">
-                <div className="text-5xl font-bold text-blue-900">
-                    Choose <p className="text-[#1a96de]">study aboard or job aboard</p> suit for you
-                </div>
-                <div className="text-2xl font-medium text-blue-900 text-wrap w-1/2 mt-6 mb-6">
-                    We always make our customer happy by providing
-                    as many choices as possible
-                </div>
-                <div className="btn-container flex gap-[10px]">
-                    <a href="/login">
-                        <button className="btn-get-started border-2 border-solid border-[#1a96de] rounded-[10px] p-[4px] bg-white font-semibold leading-8 text-[#1a96de] text-lg">Get started</button>
-                    </a>
-                    <a href="#">
-                        <button className="btn-watch-demo flex items-center gap-[6px] border-[2px] border-solid border-[#1a96de] rounded-[10px] p-1 font-semibold leading-8">
-                            <FaPlayCircle className="watch-demo-btn" />
-                            Watch Demo
-                        </button>
-                    </a>
+        <section>
+            <div className="container bg-[#EEEEEE] pt-5 pb-14">
+                <div className="grid grid-cols-12">
+                    <motion.div initial={{ x: 0 }} whileInView={{ x: 20, transition: { duration: 1 } }} className="hero__content col-span-6 py-8 px-32">
+                        <div className="hero__subtitle flex gap-2 items-center text-pink-500 p-3 rounded-3xl shadow-xl w-fit bg-white mt-4 mb-8">
+                            <h2 className="font-semibold text-3xl">Explore the world!</h2>
+                            <BsFillHandbagFill className="text-2xl" />
+                        </div>
+                        <h2 className="text-4xl font-semibold mt-4 mb-4">Travel to
+                            <span className="text-pink-500"> top destination </span>
+                            of the world
+                        </h2>
+                        <p className="text-lg text-[#666] mb-4">
+                            We always make our customer happy by providing
+                            as many choices as possible
+                        </p>
+                        <div className="hero__btn flex gap-4 text-base font-semibold">
+                            <button
+                                className="hero__get-started p-3 rounded-2xl bg-[#5D50C6] text-white"
+                                onClick={() => navigate("/login")}
+                            >Get Started</button>
+                            <button className="hero__watch-more flex gap-2 items-center border-solid border-[3px] border-[#5D50C6] p-3 rounded-2xl text-[#5D50C6]">
+                                <FaPlayCircle className="" />
+                                Watch More
+                            </button>
+                        </div>
+                    </motion.div>
+                    <motion.div initial={{ y: 0 }} whileInView={{ y: 10, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mx-4 mt-3">
+                        <img src={heroImg} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover" />
+                    </motion.div>
+                    <motion.div initial={{ y: 0 }} whileInView={{ y: 20, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mr-4 mt-5">
+                        <video src={heroVideo} alt="" controls className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover mt-5" />
+                    </motion.div>
+                    <motion.div initial={{ y: 0 }} whileInView={{ y: 30, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mr-4 mt-5">
+                        <img src={heroImg02} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover mt-10" />
+                    </motion.div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 };
 

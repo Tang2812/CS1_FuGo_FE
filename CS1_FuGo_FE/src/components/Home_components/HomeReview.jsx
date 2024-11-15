@@ -1,4 +1,5 @@
 import userReviewAvatar from "../../img/userReviewAvatar.jpg";
+import { motion } from "framer-motion";
 
 const HomeReview = () => {
     return (
@@ -6,7 +7,9 @@ const HomeReview = () => {
             <h1 className="homeReview-title flex justify-center text-xl font-semibold p-3">
                 Reviews
             </h1>
-            <div className="reviews-contents grid grid-cols-3 ml-5">
+            <motion.div className="reviews-contents grid grid-cols-3 ml-5"
+                initial={{ x: -60 }}
+                whileInView={{ x: 20, transition: { duration: 0.75 } }}>
                 <div className="review-tag w-[85%] p-3 shadow-2xl rounded-xl hover:mt-[-4px]">
                     <div className="tag-header flex gap-[10px]">
                         <img src={userReviewAvatar} className="tag-header-img w-32 rounded-full shadow-2xl mb-3 mr-2" alt="" />
@@ -54,7 +57,7 @@ const HomeReview = () => {
                         </p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };
