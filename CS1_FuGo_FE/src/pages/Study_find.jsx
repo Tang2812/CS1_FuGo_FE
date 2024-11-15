@@ -3,34 +3,43 @@ import '../stylesheet/tim_kiem.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { get } from 'react-hook-form';
+import ReactPaginate from 'react-paginate';
+
 const Study_find = () => {
 
     const [jobs, setJobs] = useState([]);
     const [keyWord, setKeyWord] = useState("");
     const [page, setPage] = useState(0);
+    const [totalPages, setTotalPages] = useState(0);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchJob = async () => {
-            try {
-                const response = await axios.get(
-                    "http://localhost:3000/api/v1/jobs/"
-                );
+    const fetchData = (page) => {
+        return axios.get(`http://localhost:3000/api/v1/jobs?page=${page}`);
+    }
 
-                console.log("Response", response.data.data)
-                setJobs(response.data.data);
+    const fetchJob = async (page) => {
+        try {
+            const response = await fetchData(page);
 
-                console.log("Jobs" + jobs);
-            } catch (error) {
-                if (error.response && !error.response.data.success) {
-                    alert(error.response.data.error);
-                }
+            console.log("Response", response.data.data)
+            setJobs(response?.data?.data);
+
+            console.log("Jobs" + jobs);
+            setTotalPages(Math.ceil(response?.data?.jobCount / 8));
+        } catch (error) {
+            if (error.response && !error.response.data.success) {
+                alert(error.response.data.error);
             }
-        };
-        fetchJob();
+        }
+    };
 
+    useEffect(() => {
+        fetchJob(0);
     }, []);
 
+    const handlePageClick = (event) => {
+        fetchJob(+event.selected);
+    }
 
     return (
 
@@ -109,8 +118,28 @@ const Study_find = () => {
                     {/* More job cards... */}
                 </div>
                 <div className="pagination">
-                    <button>&lt;</button>
-                    <button>&gt;</button>
+                    <div className="pagination">
+                        <ReactPaginate
+                            nextLabel="Next >"
+                            onPageChange={handlePageClick}
+                            pageRangeDisplayed={3}
+                            marginPagesDisplayed={2}
+                            pageCount={totalPages}
+                            previousLabel="< Previous"
+                            pageClassName="page-item"
+                            pageLinkClassName="page-link"
+                            previousClassName="page-item"
+                            previousLinkClassName="page-link"
+                            nextClassName="page-item"
+                            nextLinkClassName="page-link"
+                            breakLabel="..."
+                            breakClassName="page-item"
+                            breakLinkClassName="page-link"
+                            containerClassName="pagination"
+                            activeClassName="active"
+                            renderOnZeroPageCount={null}
+                        />
+                    </div>
                 </div>
             </main>
         </>

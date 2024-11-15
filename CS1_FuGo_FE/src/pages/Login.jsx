@@ -13,7 +13,7 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
-      alert("Please enter both username and password.");
+      toast.warning("Please enter both username and password.");
       return;
     }
     try {
@@ -47,7 +47,7 @@ const Login = () => {
       }
 
     } catch (error) {
-      alert(error.message);
+      toast.error(error.message);
     }
   }
 

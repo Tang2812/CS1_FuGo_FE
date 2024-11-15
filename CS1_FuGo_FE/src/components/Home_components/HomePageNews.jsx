@@ -1,12 +1,17 @@
 import tagHeader from "../../img/tagImg.jpg";
+import { motion } from "framer-motion";
 
 const HomePageNews = () => {
     return (
-        <div className="homePageNews-container bg-[#F6F6F6] w-full pl-[90px] pb-[20px]">
+        <div className="homePageNews-container bg-[#F6F6F6] w-full pl-[90px] pb-[20px]"
+        >
             <h1 className="text-xl font-semibold flex justify-start p-3">
                 Tin tức xuất khẩu lao động - du học
             </h1>
-            <div className="homePageNews-content grid grid-cols-3 mt-2">
+            <motion.div className="homePageNews-content grid grid-cols-3 mt-2"
+                initial={{ x: 60 }}
+                whileInView={{ x: 20, transition: { duration: 0.75 } }}
+            >
                 <div className="content-tag bg-white rounded-[10px] shadow-2xl p-[12px] w-[80%] hover:mt-[-4px]">
                     <div className="content-tag-header flex">
                         <div className="tag-header-img ml-3 w-40 border-black border-2 border-solid">
@@ -51,7 +56,7 @@ const HomePageNews = () => {
                         <p>Vệ sinh tòa nhà, văn phòng, sân bay tại các thành phố lớn</p>
                     </div>
                 </div>
-            </div>
+            </motion.div>
         </div>
     );
 };

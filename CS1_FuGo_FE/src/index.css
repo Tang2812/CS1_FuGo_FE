@@ -68,9 +68,20 @@ button:focus-visible {
 } */
 
 .Toastify__toast-container {
-  margin-top: 48px;
+  margin-top: 60px;
 
 }
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #5D50C6;
+  transform-origin: 0%;
+}
+
 
 @tailwind base;
 @tailwind components;
