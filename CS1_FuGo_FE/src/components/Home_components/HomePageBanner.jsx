@@ -1,8 +1,8 @@
 import { FaPlayCircle } from "react-icons/fa";
 import { BsFillHandbagFill } from "react-icons/bs";
-import heroImg from '../../img/hero-img01.jpg';
-import heroImg02 from '../../img/hero-img02.jpg';
-import heroVideo from '../../img/hero-video.mp4';
+import heroImg from '../../img/1-16.jpg';
+import heroImg02 from '../../img/xuat-khau-lao-dong.jpg';
+import heroImg03 from '../../img/14-du-hoc-hoc-bong.jpg';
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 
@@ -15,12 +15,12 @@ const HomePageBanner = () => {
                 <div className="grid grid-cols-12">
                     <motion.div initial={{ x: 0 }} whileInView={{ x: 20, transition: { duration: 1 } }} className="hero__content col-span-6 py-8 px-32">
                         <div className="hero__subtitle flex gap-2 items-center text-pink-500 p-3 rounded-3xl shadow-xl w-fit bg-white mt-4 mb-8">
-                            <h2 className="font-semibold text-3xl">Explore the world!</h2>
+                            <h2 className="font-semibold text-3xl">Your future decision</h2>
                             <BsFillHandbagFill className="text-2xl" />
                         </div>
-                        <h2 className="text-4xl font-semibold mt-4 mb-4">Travel to
-                            <span className="text-pink-500"> top destination </span>
-                            of the world
+                        <h2 className="text-4xl font-semibold mt-4 mb-4"> Choose
+                            <span className="text-pink-500"> study aboard or job aboard </span>
+                            suit for you
                         </h2>
                         <p className="text-lg text-[#666] mb-4">
                             We always make our customer happy by providing
@@ -41,7 +41,7 @@ const HomePageBanner = () => {
                         <img src={heroImg} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover" />
                     </motion.div>
                     <motion.div initial={{ y: 0 }} whileInView={{ y: 20, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mr-4 mt-5">
-                        <video src={heroVideo} alt="" controls className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover mt-5" />
+                        <img src={heroImg03} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover mt-5" />
                     </motion.div>
                     <motion.div initial={{ y: 0 }} whileInView={{ y: 30, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mr-4 mt-5">
                         <img src={heroImg02} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover mt-10" />

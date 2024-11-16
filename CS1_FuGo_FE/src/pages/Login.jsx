@@ -32,13 +32,10 @@ const Login = () => {
           user: res?.data?.data,
           token: res?.data?.accessToken,
         });
-        // console.log(">>check user: ", res?.data?.data);
-        // console.log(">>check token: ", res?.data?.accessToken);
         const authToken = {
           user: res?.data?.data,
           token: res?.data?.accessToken,
         };
-        // console.log(">>check authToken: ", authToken);
         localStorage.setItem("auth", JSON.stringify(authToken));
         navigate("/");
       } else {
@@ -47,7 +44,12 @@ const Login = () => {
       }
 
     } catch (error) {
-      toast.error(error.message);
+      if (!error.response.data.success) {
+        const message = error.response.data.message;
+        toast.error(message);
+      } else {
+        toast.error("Failure Login!");
+      }
     }
   }
 

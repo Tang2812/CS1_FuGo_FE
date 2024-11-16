@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Facebook, Twitter, Linkedin, Youtube, Clock, MapPin, Share2 } from 'lucide-react';
+import { FaMoneyBillWave } from "react-icons/fa";
 import tagImg from "../img/tagImg.jpg";
+import axios from 'axios';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const JobDetails = () => {
+
+    const [job, setJob] = useState([]);
+    const params = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const jobId = params.id;
+
+    const getJobData = (id) => {
+        return axios.get(`http://localhost:3000/api/v1/jobs/${id}`)
+    };
+
+    useEffect(() => {
+        fetchJobData();
+    }, [jobId])
+
+    const fetchJobData = async () => {
+        try {
+            const res = await getJobData(jobId);
+            setJob(res?.data?.data);
+        } catch (error) {
+            if (error.response && !error.response.data.success) {
+                toast(error.response.data.error);
+            }
+        }
+
+    };
+
     return (
         <div className="min-h-screen bg-gray-50">
 
@@ -16,22 +48,30 @@ const JobDetails = () => {
                         <div className="bg-white rounded-lg p-6 mb-6 shadow-sm">
                             <div className="flex items-start justify-between">
                                 <div className="flex space-x-4">
-                                    <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
                                     <div>
-                                        <h1 className="text-xl font-bold mb-2">TOKYO - 1 nam/nữ phiên dịch</h1>
-                                        <p className="text-gray-600 mb-2">Công ty Cổ phần SPRINGHILL SUITES VIỆT NAM</p>
+                                        <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
+                                        <h2 className=' text-green-600 font-semibold text-lg flex justify-center mt-3 shadow-md'>{job.jobStatus}</h2>
+                                    </div>
+                                    <div>
+                                        <h2 className="text-xl font-bold mb-2">{job.title}</h2>
+                                        <p className="text-gray-600 mb-2">{job.company}</p>
                                         <div className="flex items-center space-x-2 text-gray-500">
                                             <Clock className="w-4 h-4" />
                                             <span>Dự kiến xuất cảnh: 12/2024</span>
                                         </div>
                                         <div className="flex items-center space-x-2 text-gray-500">
                                             <MapPin className="w-4 h-4" />
-                                            <span>Tokyo, Nhật Bản</span>
+                                            <span>{job.location}, {job.country}</span>
+                                        </div>
+                                        <div className="flex items-center space-x-2 text-gray-500">
+                                            <FaMoneyBillWave className="w-4 h-4" />
+                                            <span>{job.minSalary} - {job.maxSalary}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md">
+                                    <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md"
+                                        onClick={() => navigate("/application/job")}>
                                         Ứng tuyển ngay
                                     </button>
                                     <button className="w-full border border-green-500 text-green-500 px-4 py-2 rounded-md">
@@ -55,6 +95,14 @@ const JobDetails = () => {
                                             <p>Xuất khẩu lao động</p>
                                         </div>
                                         <div>
+                                            <p className="font-semibold mb-2">Ngành</p>
+                                            <p>{job.profession}</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold mb-2">Kinh Nghiệm</p>
+                                            <p>{job.experience}</p>
+                                        </div>
+                                        <div>
                                             <p className="font-semibold mb-2">Đối tượng:</p>
                                             <p>Xuất khẩu lao động trọn gói</p>
                                         </div>
@@ -76,6 +124,14 @@ const JobDetails = () => {
                                         <div>
                                             <p className="font-semibold mb-2">Số lượng thi tuyển:</p>
                                             <p>10</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold mb-2">Yêu cầu:</p>
+                                            <p>{job.requirements}</p>
+                                        </div>
+                                        <div>
+                                            <p className="font-semibold mb-2">Trình độ học vấn</p>
+                                            <p>{job.educationalLevel}</p>
                                         </div>
                                     </div>
                                 </div>

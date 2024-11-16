@@ -42,7 +42,12 @@ const Register = () => {
       }
 
     } catch (error) {
-      toast.error(error.message);
+      if (!error.response.data.success) {
+        const message = error.response.data.message;
+        toast.error(message);
+      } else {
+        toast.error("Failure Registation!");
+      }
     }
   }
 

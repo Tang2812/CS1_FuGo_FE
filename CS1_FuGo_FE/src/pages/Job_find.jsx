@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import "../stylesheet/tim_kiem.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { get } from "react-hook-form";
 import ReactPaginate from 'react-paginate';
@@ -171,11 +171,12 @@ const Job_find = () => {
           {/* loop for list jobs */}
           {jobs?.map((job, index) => (
             <div key={index} className="job-card">
+
               {/* image jobs */}
               <img src="/src/img/anh_cong_viec.png" alt="" />
               <div className="job-card__content">
                 {/* name job */}
-                <h2>{job.title}</h2>
+                <h2><b>{job.title}</b></h2>
                 <div className="job-card__info">
                   {/*Salary  */}
                   <img src="/src/img/incon_money.svg" alt="icon tien" />
@@ -194,8 +195,8 @@ const Job_find = () => {
                   <p> {job.jobStatus}</p>
                 </div>
                 <div className="card__fc">
-                  <button className="btn--outline">Xem chi tiết</button>
-                  <button className="btn--outline">Ứng tuyển</button>
+                  <button className="btn--outline" onClick={() => navigate(`/jobs/${job._id}`)}>Xem chi tiết</button>
+                  <button className="btn--outline" onClick={() => navigate(`/application/job`)}>Ứng tuyển</button>
                 </div>
               </div>
             </div>
