@@ -7,6 +7,7 @@ import { AiFillTag, AiFillTool, AiOutlineAudit, AiOutlineLock, AiOutlineMail, Ai
 const Header = () => {
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+  console.log("aaaaaaaaaa looix")
 
   const handleLogout = () => {
     toast.success("Logout Successfully");
