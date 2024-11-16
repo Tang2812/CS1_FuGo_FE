@@ -1,3 +1,4 @@
+import Chatbot from "../components/chatbot";
 import HomePageBanner from "../components/Home_components/HomePageBanner";
 import HomePageNews from "../components/Home_components/HomePageNews";
 import HomePagePartners from "../components/Home_components/HomePagePartners";
@@ -12,6 +13,7 @@ const HomePage = () => {
             <HomePagePartners />
             <HomeSuggest />
             <HomeReview />
+            <Chatbot />
         </div>
     );
 };
