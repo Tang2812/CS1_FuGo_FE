@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const JobForm = () => {
   const [formData, setFormData] = useState({});
+  const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({
@@ -14,9 +19,17 @@ const JobForm = () => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    if (!auth || !auth.user) {
+      toast.warning("Your must login before applying!");
+      navigate('/login');
+      window.scrollTo(0, 0);
+    }
+  }, [auth]);
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
-      <form
+      <form form
         className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md grid gap-4 sm:grid-cols-1 lg:grid-cols-2"
         onSubmit={handleSubmit}
       >
@@ -148,8 +161,8 @@ const JobForm = () => {
             Nộp hồ sơ
           </button>
         </div>
-      </form>
-    </div>
+      </form >
+    </div >
   );
 };
 
