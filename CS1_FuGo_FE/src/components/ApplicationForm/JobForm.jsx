@@ -21,7 +21,7 @@ const JobForm = () => {
 
   useEffect(() => {
     if (!auth || !auth.user) {
-      toast.warning("Your must login before applying!");
+      toast.warning("You must login before applying!");
       navigate('/login');
       window.scrollTo(0, 0);
     }
