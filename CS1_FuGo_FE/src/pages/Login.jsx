@@ -24,7 +24,7 @@ const Login = () => {
       };
       const res = await axios.post(loginURL, data);
       console.log(">>Check res: ", res);
-      if (!res.data.token) {
+      if (res.data.accessToken) {
         toast.success("Login succesfully");
         // set token
         setAuth({
@@ -40,16 +40,10 @@ const Login = () => {
         navigate("/");
       } else {
         toast.error("Failed to login");
-
       }
 
     } catch (error) {
-      if (!error.response.data.success) {
-        const message = error.response.data.message;
-        toast.error(message);
-      } else {
-        toast.error("Failure Login!");
-      }
+      toast.error("Wrong email or password!!!!");
     }
   }
 
