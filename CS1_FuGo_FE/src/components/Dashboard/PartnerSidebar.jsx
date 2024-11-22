@@ -7,7 +7,7 @@ const PartnerSidebar = () => {
   return (
     <div className="bg-gray-800 text-white h-screen fixed left-0 top-0 bottom-0 space-y-2 w-64">
       <div className="bg-teal-600 h-12 flex items-center justify-center">
-        <h3 className="text-2xl text-center font-pacific">Partner Dashboard</h3>
+        <h3 className="text-2xl text-center font-pacific">Bảng điều khiển của nhà tuyển dụng</h3>
       </div>
       <div className="px-4">
         {/* isActive là 1 thuộc tính của NavLink kiểm tra xem đường dẫn của route có khớp với đường dẫn hiện tại không */}
@@ -33,7 +33,7 @@ const PartnerSidebar = () => {
           end
         >
           <FaPlaneDeparture />
-          <span>Study Abroad CV</span>
+          <span>CV Du Học</span>
         </NavLink>
         <NavLink
           to="/partner/create-job"
@@ -45,7 +45,7 @@ const PartnerSidebar = () => {
           end
         >
           <IoIosCreate />
-          <span>Create Job</span>
+          <span>Tạo công việc mới</span>
         </NavLink>
         <NavLink
           to="/partner/create-studyAbroad"
@@ -57,7 +57,7 @@ const PartnerSidebar = () => {
           end
         >
           <PiStudent />
-          <span>Create Study Abroad</span>
+          <span>Tạo học phần du học mới</span>
         </NavLink>
         <NavLink
           to="/partner/setting"
@@ -69,7 +69,7 @@ const PartnerSidebar = () => {
           end
         >
           <IoMdSettings />
-          <span>Setting</span>
+          <span>Cài đặt</span>
         </NavLink>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../stylesheet/tim_kiem.css";
+import "../stylesheet/find_jobs.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { get } from "react-hook-form";
@@ -85,7 +85,7 @@ const Job_find = () => {
     <>
       <section className="hero">
         <img
-          src="/src/img/phông.png"
+          src="/src/img/banner3.png"
           alt="section image"
           className="section__background"
         />
@@ -173,7 +173,7 @@ const Job_find = () => {
             <div key={index} className="job-card">
 
               {/* image jobs */}
-              <img src="/src/img/anh_cong_viec.png" alt="" />
+              <img src="/src/img/work_avt.png" alt="" />
               <div className="job-card__content">
                 {/* name job */}
                 <h2><b>{job.title}</b></h2>
@@ -186,12 +186,12 @@ const Job_find = () => {
                 </div>
                 <div className="job-card__info">
                   {/* Country */}
-                  <img src="/src/img/dia_chi.svg" alt="icon dia chi" />
+                  <img src="/src/img/address.svg" alt="icon dia chi" />
                   <p>{job.country}</p>
                 </div>
                 <div className="job-card__info">
                   {/* Deadline */}
-                  <img src="/src/img/thoi_gian.svg" alt="icon thoi gian" />
+                  <img src="/src/img/time.svg" alt="icon thoi gian" />
                   <p> {job.jobStatus}</p>
                 </div>
                 <div className="card__fc">

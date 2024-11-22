@@ -11,9 +11,10 @@ const Footer = () => {
       <div className="company-info">
         <img src="/src/img/logo.png" alt="FuGo" />
         <p>
-          Our company always tries our best to help you get closer to your
-          dream. Contact us now to get the best job.
+          Công ty của chúng tôi luôn cố gắng đem đến cho bạn
+          những công việc,những lựa chọn du học lí tưởng nhất.
         </p>
+        <p>Hãy bắt đầu giấc mơ của bạn ngay hôm nay!!!</p>
         <div className="social-icons">
           <img
             src="/src/img/facebook.png"
@@ -39,16 +40,16 @@ const Footer = () => {
       </div>
       <div className="footer-links">
         <div>
-          <h5>Company</h5>
+          <h5>Công ty</h5>
           <ul>
             <li>
-              <a href="#">About</a>
+              <a href="#">Về chúng tôi</a>
             </li>
             <li>
-              <a href="#">Career</a>
+              <a href="#">Sự nghiệp</a>
             </li>
             <li>
-              <a href="#">Mobile</a>
+              <a href="#">Điện thoại</a>
             </li>
             <li>
               <a href="#">Blog</a>
@@ -56,21 +57,21 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h5>Contact</h5>
+          <h5>Liên hệ</h5>
           <ul>
             <li>
-              <a href="#">Why choose us?</a>
+              <a href="#">Tại sao lại chọn chúng tôi</a>
             </li>
             <li>
-              <a href="#">Partner with us</a>
+              <a href="#">Hợp tác với chúng tôi</a>
             </li>
             <li>
-              <a href="#">FAQ's</a>
+              <a href="#">FAQ</a>
             </li>
           </ul>
         </div>
         <div>
-          <h5>Meet Us</h5>
+          <h5>Gặp chúng tôi</h5>
           <p>0376363141</p>
           <p>info@traviog.com</p>
           <p>205, R Street, New York BD23200</p>
