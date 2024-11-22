@@ -9,7 +9,7 @@ const Header = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    toast.success("Logout Successfully");
+    toast.success("Đăng xuất thành công");
     setAuth({
       ...auth,
       user: null,
@@ -110,7 +110,7 @@ const Header = () => {
                   <div className="header__list-property">
                     <div className="property__primary">
                       <Link to="/profile" className="property__choice">
-                        <img src="/src/img/icon_ca_nhan.svg" alt="Thông tin cá nhân" />
+                        <img src="/src/img/icon_personal.svg" alt="Thông tin cá nhân" />
                         <span>Thông tin cá nhân</span>
                       </Link>
                       <Link to="#" className="property__choice">

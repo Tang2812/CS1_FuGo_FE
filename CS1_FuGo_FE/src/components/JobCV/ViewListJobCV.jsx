@@ -5,7 +5,7 @@ const ViewListJobCV = () => {
   return (
     <div className="p-5">
     <div className="text-center">
-      <h3 className="text-2xl font-bold">Manage Jobs</h3>
+      <h3 className="text-2xl font-bold">Quản lí công việc</h3>
     </div>
     <div className="flex justify-between items-center">
       <input
@@ -18,7 +18,7 @@ const ViewListJobCV = () => {
         to="/admin-dashboard/add-department"
         className="px-4 py-1 bg-teal-600 rounded text-white"
       >
-        Add New Job
+        Thêm công việc mới
       </Link>
     </div>
     <div className="mt-5">

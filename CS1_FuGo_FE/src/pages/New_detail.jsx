@@ -4,11 +4,11 @@ const New_detail = () =>{
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FuGo - Đăng ký tài khoản mới</title>
-  <link rel="stylesheet" href="/src/stylesheet/chi_tiet_tin_tuc.css" />
+  <link rel="stylesheet" href="/src/stylesheet/new_detail.css" />
   <main>
     <section className="hero">
       <img
-        src="/src/img/phông.png"
+        src="/src/img/banner3.png"
         alt="section image"
         className="section__background"
       />
@@ -91,35 +91,35 @@ const New_detail = () =>{
               <h3>CẨM NANG DU HỌC</h3>
               {/* Repeat this structure for each handbook item */}
               <div className="handbook-item">
-                <img src="/src/img/camnangduho.png" alt="Handbook image" />
+                <img src="/src/img/study_abroad_handbook.png" alt="Handbook image" />
                 <p>
                   Workshop Du Học: Canada Và Úc - Lựa chọn Nào Có Lợi Hơn Cho Du
                   Học Sinh Việt...
                 </p>
               </div>
               <div className="handbook-item">
-                <img src="/src/img/camnangduho.png" alt="Handbook image" />
+                <img src="/src/img/study_abroad_handbook.png" alt="Handbook image" />
                 <p>
                   Workshop Du Học: Canada Và Úc - Lựa chọn Nào Có Lợi Hơn Cho Du
                   Học Sinh Việt...
                 </p>
               </div>
               <div className="handbook-item">
-                <img src="/src/img/camnangduho.png" alt="Handbook image" />
+                <img src="/src/img/study_abroad_handbook.png" alt="Handbook image" />
                 <p>
                   Workshop Du Học: Canada Và Úc - Lựa chọn Nào Có Lợi Hơn Cho Du
                   Học Sinh Việt...
                 </p>
               </div>
               <div className="handbook-item">
-                <img src="/src/img/camnangduho.png" alt="Handbook image" />
+                <img src="/src/img/study_abroad_handbook.png" alt="Handbook image" />
                 <p>
                   Workshop Du Học: Canada Và Úc - Lựa chọn Nào Có Lợi Hơn Cho Du
                   Học Sinh Việt...
                 </p>
               </div>
               <div className="handbook-item">
-                <img src="/src/img/camnangduho.png" alt="Handbook image" />
+                <img src="/src/img/study_abroad_handbook.png" alt="Handbook image" />
                 <p>
                   Workshop Du Học: Canada Và Úc - Lựa chọn Nào Có Lợi Hơn Cho Du
                   Học Sinh Việt...

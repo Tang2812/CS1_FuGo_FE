@@ -58,7 +58,7 @@ const Register = () => {
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>FuGo - Đăng ký tài khoản mới</title>
-      <link rel="stylesheet" href="/src/stylesheet/dang_ky.css" />
+      <link rel="stylesheet" href="/src/stylesheet/register.css" />
       <div className="container">
         <div className="form-section">
           <img src="/src/img/logo.png" alt="FuGo Logo" className="logo mb-5" />

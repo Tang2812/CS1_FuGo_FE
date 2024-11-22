@@ -1,4 +1,4 @@
-import partnerImg from "../../img/anh_cong_viec.png";
+import partnerImg from "../../img/work_avt.png";
 
 const HomePagePartners = () => {
     return (
