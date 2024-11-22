@@ -66,7 +66,7 @@ const Footer = () => {
               <a href="#">Hợp tác với chúng tôi</a>
             </li>
             <li>
-              <a href="#">FAQ's</a>
+              <a href="#">FAQ</a>
             </li>
           </ul>
         </div>
