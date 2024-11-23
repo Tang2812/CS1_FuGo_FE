@@ -7,7 +7,7 @@ const Navbar = () => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        toast.success("Logout Successfully");
+        toast.success("Đăng xuất thành công");
         setAuth({
             ...auth,
             user: null,

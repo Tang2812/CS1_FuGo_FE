@@ -54,7 +54,7 @@ const JobForm = () => {
 
   useEffect(() => {
     if (!auth || !auth.user) {
-      toast.warning("You must login before applying!");
+      toast.warning("Bạn cần đăng nhập trước khi nộp CV!");
       navigate('/login');
       window.scrollTo(0, 0);
     }

@@ -27,23 +27,23 @@ const List_Cv = () => {
                 <aside className="w-64 rounded-lg shadow-sm h-fit">
                     <div className="list-function">
                         <a className="fc-choice" to="/#">
-                            <img src="/src/img/icon_ca_nhan.svg" alt="personal info icon" />
+                            <img src="/src/img/icon_personal.svg" alt="personal info icon" />
                             <span className="text--sm font-primary">Tạo mới CV</span>
                         </a>
                         <a className="fc-choice" href="#">
-                            <img src="/src/img/icon_bao_mat.svg" alt="login and security icon" />
+                            <img src="/src/img/icon_security.svg" alt="login and security icon" />
                             <span className="text--sm font-primary">Đặt lại mật khẩu</span>
                         </a>
                         <a className="fc-choice" href="#">
-                            <img src="/src/img/icon_thong_tin_ca_nhan.svg" alt="payment icon" />
+                            <img src="/src/img/icon_personal_info.svg" alt="payment icon" />
                             <span className="text--sm font-primary">Thông tin cá nhân</span>
                         </a>
                         <a className="fc-choice" href="#">
-                            <img src="/src/img/icon_thong_bao.svg" alt="notification icon" />
+                            <img src="/src/img/icon_notification.svg" alt="notification icon" />
                             <span className="text--sm font-primary">Thông báo</span>
                         </a>
                         <a className="fc-choice" href="#">
-                            <img src="/src/img/icon_quan_li_Cv.svg" alt="Quan li Cv icon" />
+                            <img src="/src/img/icon_Cv_service.svg" alt="Quan li Cv icon" />
                             <span className="text--sm font-primary">Quản lí CV </span>
                         </a>
                     </div>
@@ -61,7 +61,7 @@ const List_Cv = () => {
                                     <div className="flex justify-between items-start">
                                         <div className="space-y-6">
                                             <div className="flex items-center gap-8">
-                                                <img src="/src/img/icon_ca_nhan.svg" alt=""/>
+                                                <img src="/src/img/icon_personal.svg" alt=""/>
                                                 {/* name */}
                                                 <span className="font-medium">{Cv.ten}</span>
                                                 {/* ,type */}
@@ -72,11 +72,11 @@ const List_Cv = () => {
                                                 <span>{Cv.SoDienThoai}</span>
                                             </div>
                                             <div className="text-gray-600 flex items-center gap-8">
-                                                <img src="/src/img/icon_cong_viec.svg" alt=""/>
+                                                <img src="/src/img/icon_work.svg" alt=""/>
                                                 <span>{Cv.ngheNghiep}</span>
                                             </div>
                                             <div className="flex items-center gap-8 text-gray-500">
-                                                <img src="/src//img/icon_lich.svg" alt=""/>
+                                                <img src="/src/img/icon_calendar.svg" alt=""/>
                                                 <span>{Cv.thoiGian}</span>
                                             </div>
                                         </div>
@@ -93,7 +93,7 @@ const List_Cv = () => {
                                 <div className="flex justify-between items-start">
                                     <div className="space-y-6">
                                         <div className="flex items-center gap-8">
-                                            <img src="/src/img/icon_ca_nhan.svg" alt=""/>
+                                            <img src="/src/img/icon_personal.svg" alt=""/>
                                             {/* name */}
                                             <span className="font-medium">Hung</span>
                                             {/* ,type */}
@@ -104,11 +104,11 @@ const List_Cv = () => {
                                             <span>0905123456</span>
                                         </div>
                                         <div className="text-gray-600 flex items-center gap-8">
-                                            <img src="/src/img/icon_cong_viec.svg" alt=""/>
+                                            <img src="/src/img/icon_work.svg" alt=""/>
                                             <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
                                         </div>
                                         <div className="flex items-center gap-8 text-gray-500">
-                                            <img src="/src//img/icon_lich.svg" alt=""/>
+                                            <img src="/src/img/icon_calendar.svg" alt=""/>
                                             <span>09-10-2024</span>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@ const List_Cv = () => {
                             <div className="flex justify-between items-start">
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-8">
-                                        <img src="/src/img/icon_ca_nhan.svg" alt=""/>
+                                        <img src="/src/img/icon_personal.svg" alt=""/>
                                         {/* name */}
                                         <span className="font-medium">Hung</span>
                                         {/* ,type */}
@@ -132,11 +132,11 @@ const List_Cv = () => {
                                         <span>0905123456</span>
                                     </div>
                                     <div className="text-gray-600 flex items-center gap-8">
-                                        <img src="/src/img/icon_cong_viec.svg" alt=""/>
+                                        <img src="/src/img/icon_work.svg" alt=""/>
                                         <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
                                     </div>
                                     <div className="flex items-center gap-8 text-gray-500">
-                                        <img src="/src//img/icon_lich.svg" alt=""/>
+                                        <img src="/src/img/icon_calendar.svg" alt=""/>
                                         <span>09-10-2024</span>
                                     </div>
                                 </div>
@@ -147,7 +147,7 @@ const List_Cv = () => {
                             <div className="flex justify-between items-start">
                                 <div className="space-y-6">
                                     <div className="flex items-center gap-8">
-                                        <img src="/src/img/icon_ca_nhan.svg" alt="" />
+                                        <img src="/src/img/icon_personal.svg" alt="" />
                                         {/* name */}
                                         <span className="font-medium">Hung</span>
                                         {/* ,type */}
@@ -158,11 +158,11 @@ const List_Cv = () => {
                                         <span>0905123456</span>
                                     </div>
                                     <div className="text-gray-600 flex items-center gap-8">
-                                        <img src="/src/img/icon_cong_viec.svg" alt="" />
+                                        <img src="/src/img/icon_work.svg" alt="" />
                                         <span> Kỹ sư IT, Kỹ sư công nghệ máy tính</span>
                                     </div>
                                     <div className="flex items-center gap-8 text-gray-500">
-                                        <img src="/src//img/icon_lich.svg" alt="" />
+                                        <img src="/src/img/icon_calendar.svg" alt="" />
                                         <span>09-10-2024</span>
                                     </div>
                                 </div>

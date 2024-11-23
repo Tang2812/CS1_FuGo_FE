@@ -24,7 +24,6 @@ const Login = () => {
       };
       const res = await axios.post(loginURL, data);
       console.log(">>Check res: ", res);
-      console.log(`${res}`)
       if (res.data.accessToken) {
         toast.success("Login succesfully");
         // set token
@@ -33,6 +32,7 @@ const Login = () => {
           user: res?.data?.data,
           token: res?.data?.accessToken,
         });
+        console.log(localStorage.getItem("auth"));
         const authToken = {
           user: res?.data?.data,
           token: res?.data?.accessToken,
@@ -53,7 +53,7 @@ const Login = () => {
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>FuGo - Đăng nhập</title>
-      <link rel="stylesheet" href="/src/stylesheet/dang_nhap.css" />
+      <link rel="stylesheet" href="/src/stylesheet/login.css" />
       <div className="container">
         <div className="form-section">
           <img src="/src/img/logo.png" alt="FuGo Logo" className="logo mb-5" />

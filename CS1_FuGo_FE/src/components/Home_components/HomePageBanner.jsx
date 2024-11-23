@@ -1,8 +1,8 @@
 import { FaPlayCircle } from "react-icons/fa";
 import { BsFillHandbagFill } from "react-icons/bs";
-import heroImg from '../../img/1-16.jpg';
-import heroImg02 from '../../img/xuat-khau-lao-dong.jpg';
-import heroImg03 from '../../img/14-du-hoc-hoc-bong.jpg';
+import heroImg from '../../img/banner1.jpg';
+import heroImg02 from '../../img/banner4.jpg';
+import heroImg03 from '../../img/banner2.jpg';
 import { useNavigate } from "react-router-dom";
 import { motion } from "motion/react";
 
@@ -15,25 +15,24 @@ const HomePageBanner = () => {
                 <div className="grid grid-cols-12">
                     <motion.div initial={{ x: 0 }} whileInView={{ x: 20, transition: { duration: 1 } }} className="hero__content col-span-6 py-8 px-32">
                         <div className="hero__subtitle flex gap-2 items-center text-pink-500 p-3 rounded-3xl shadow-xl w-fit bg-white mt-4 mb-8">
-                            <h2 className="font-semibold text-3xl">Your future decision</h2>
+                            <h2 className="font-semibold text-3xl">Quyết định tương lai của bạn</h2>
                             <BsFillHandbagFill className="text-2xl" />
                         </div>
-                        <h2 className="text-4xl font-semibold mt-4 mb-4"> Choose
-                            <span className="text-pink-500"> study aboard or job aboard </span>
-                            suit for you
+                        <h2 className="text-4xl font-semibold mt-4 mb-4"> Lựa chọn
+                            <span className="text-pink-500"> công việc và du học </span>
+                            phù hợp với chính bạn.
                         </h2>
                         <p className="text-lg text-[#666] mb-4">
-                            We always make our customer happy by providing
-                            as many choices as possible
+                           Chúng tôi luôn cố gắng làm bạn hạnh phúc bằng nhiều lựa chọn nhất có thể
                         </p>
                         <div className="hero__btn flex gap-4 text-base font-semibold">
                             <button
                                 className="hero__get-started p-3 rounded-2xl bg-[#5D50C6] text-white"
                                 onClick={() => navigate("/login")}
-                            >Get Started</button>
+                            >Bắt đầu</button>
                             <button className="hero__watch-more flex gap-2 items-center border-solid border-[3px] border-[#5D50C6] p-3 rounded-2xl text-[#5D50C6]">
                                 <FaPlayCircle className="" />
-                                Watch More
+                                Xem thêm
                             </button>
                         </div>
                     </motion.div>
