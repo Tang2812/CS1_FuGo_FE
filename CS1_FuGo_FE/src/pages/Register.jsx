@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from 'react-toastify';
@@ -15,6 +15,12 @@ const Register = () => {
   const handleRole = (role) => {
     setRole(role);
   }
+
+  useEffect(() => {
+    if (!role) {
+      setRole('user');
+    }
+  })
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,6 +41,7 @@ const Register = () => {
       const res = await axios.post(registerURL, data);
       if (res.data.success === true) {
         // console.log(">> Check res: ", res);
+        toast.success("Register successfully");
         navigate("/login")
       }
       else {

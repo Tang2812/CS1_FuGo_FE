@@ -15,7 +15,7 @@ const HomePageBanner = () => {
                 <div className="grid grid-cols-12">
                     <motion.div initial={{ x: 0 }} whileInView={{ x: 20, transition: { duration: 1 } }} className="hero__content col-span-6 py-8 px-32">
                         <div className="hero__subtitle flex gap-2 items-center text-pink-500 p-3 rounded-3xl shadow-xl w-fit bg-white mt-4 mb-8">
-                            <h2 className="font-semibold text-3xl">Quyết định tương lai của bạn</h2>
+                            <h2 className="font-semibold text-2xl">Quyết định tương lai của bạn</h2>
                             <BsFillHandbagFill className="text-2xl" />
                         </div>
                         <h2 className="text-4xl font-semibold mt-4 mb-4"> Lựa chọn
@@ -23,7 +23,7 @@ const HomePageBanner = () => {
                             phù hợp với chính bạn.
                         </h2>
                         <p className="text-lg text-[#666] mb-4">
-                           Chúng tôi luôn cố gắng làm bạn hạnh phúc bằng nhiều lựa chọn nhất có thể
+                            Chúng tôi luôn cố gắng làm bạn hạnh phúc bằng nhiều lựa chọn nhất có thể
                         </p>
                         <div className="hero__btn flex gap-4 text-base font-semibold">
                             <button

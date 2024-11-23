@@ -128,51 +128,51 @@ const Header = () => {
               </div>
 
 
-                <button
-                  className="header-right__avt-info"
-                  type="button"
-                  title="avt button"
-                >
-                  <img
-                    src="/src/img/avatar.png"
-                    alt="User profile"
-                    className="user-avatar"
-                  />
-                </button>
-                <>
-                  {/* avt function */}
-                  <div className="header__list-property">
-                    <div className="property__primary">
-                      <Link to="/profile" className="property__choice">
-                        <img src="/src/img/icon_personal.svg" alt="Thông tin cá nhân" />
-                        <span>Thông tin cá nhân</span>
-                      </Link>
-                      <Link to="#" className="property__choice">
-                        <AiFillTag />
-                        <span>Liên kết tài khoản</span>
-                      </Link>
-                      <Link to="#" className="property__choice">
-                        <AiOutlineAudit />
-                        <span>Chỉnh sửa trang các nhân</span>
-                      </Link>
-                    </div>
-                    <div className="property-line" />
-                    <div className="property__primary">
-                      <Link to="#" className="property__choice">
-                        <AiFillTool />
-                        <span>Cài đặt</span>
-                      </Link>
-                      <Link to="#" className="property__choice">
-                        <AiOutlineLock />
-                        <span>Đổi mật khẩu</span>
-                      </Link>
-                    </div>
-                    <div className="property__list-fc">
-                      <button className="btn btn--outline property__btn">Đổi tài khoản</button>
-                      <button className="btn btn--outline property__btn" onClick={handleLogout}>Đăng Xuất</button>
-                    </div>
-
+              <button
+                className="header-right__avt-info"
+                type="button"
+                title="avt button"
+              >
+                <img
+                  src="/src/img/avatar.png"
+                  alt="User profile"
+                  className="user-avatar"
+                />
+              </button>
+              <>
+                {/* avt function */}
+                <div className="header__list-property">
+                  <div className="property__primary">
+                    <Link to="/profile" className="property__choice">
+                      <img src="/src/img/icon_personal.svg" alt="Thông tin cá nhân" />
+                      <span>Thông tin cá nhân</span>
+                    </Link>
+                    <Link to="#" className="property__choice">
+                      <AiFillTag />
+                      <span>Liên kết tài khoản</span>
+                    </Link>
+                    <Link to="#" className="property__choice">
+                      <AiOutlineAudit />
+                      <span>Chỉnh sửa trang các nhân</span>
+                    </Link>
                   </div>
+                  <div className="property-line" />
+                  <div className="property__primary">
+                    <Link to="#" className="property__choice">
+                      <AiFillTool />
+                      <span>Cài đặt</span>
+                    </Link>
+                    <Link to="#" className="property__choice">
+                      <AiOutlineLock />
+                      <span>Đổi mật khẩu</span>
+                    </Link>
+                  </div>
+                  <div className="property__list-fc">
+                    <button className="btn btn--outline property__btn">Đổi tài khoản</button>
+                    <button className="btn btn--outline property__btn" onClick={handleLogout}>Đăng Xuất</button>
+                  </div>
+
+
                 </div>
               </>
             </div>
@@ -188,7 +188,7 @@ const Header = () => {
             </div>
           )}
         </nav>
-      </header>
+      </header >
     </>
   );
 };

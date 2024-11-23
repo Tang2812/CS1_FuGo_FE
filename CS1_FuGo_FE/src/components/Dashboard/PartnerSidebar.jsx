@@ -7,15 +7,14 @@ const PartnerSidebar = () => {
   return (
     <div className="bg-gray-800 text-white h-screen fixed left-0 top-0 bottom-0 space-y-2 w-64">
       <div className="bg-teal-600 h-12 flex items-center justify-center">
-        <h3 className="text-2xl text-center font-pacific">Bảng điều khiển của nhà tuyển dụng</h3>
+        <h3 className="text-2xl text-center font-pacific">Nhà tuyển dụng</h3>
       </div>
       <div className="px-4">
         {/* isActive là 1 thuộc tính của NavLink kiểm tra xem đường dẫn của route có khớp với đường dẫn hiện tại không */}
         <NavLink
           to="/partner/jobCV-application"
           className={({ isActive }) =>
-            `${
-              isActive ? "bg-teal-500" : ""
+            `${isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 py-2.5 px-4 rounded`
           }
           end
@@ -26,8 +25,7 @@ const PartnerSidebar = () => {
         <NavLink
           to="/partner/studyAbroad-application"
           className={({ isActive }) =>
-            `${
-              isActive ? "bg-teal-500" : ""
+            `${isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 py-2.5 px-4 rounded`
           }
           end
@@ -38,8 +36,7 @@ const PartnerSidebar = () => {
         <NavLink
           to="/partner/create-job"
           className={({ isActive }) =>
-            `${
-              isActive ? "bg-teal-500" : ""
+            `${isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 py-2.5 px-4 rounded`
           }
           end
@@ -50,8 +47,7 @@ const PartnerSidebar = () => {
         <NavLink
           to="/partner/create-studyAbroad"
           className={({ isActive }) =>
-            `${
-              isActive ? "bg-teal-500" : ""
+            `${isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 py-2.5 px-4 rounded`
           }
           end
@@ -62,8 +58,7 @@ const PartnerSidebar = () => {
         <NavLink
           to="/partner/setting"
           className={({ isActive }) =>
-            `${
-              isActive ? "bg-teal-500" : ""
+            `${isActive ? "bg-teal-500" : ""
             } flex items-center space-x-4 py-2.5 px-4 rounded`
           }
           end

@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import axios from "axios";
 import { toast } from 'react-toastify';
@@ -9,6 +9,25 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
+
+
+  useEffect(() => {
+    if (location.pathname === '/login') {
+      setAuth({
+        ...auth,
+        user: "",
+        token: null,
+      });
+      localStorage.getItem("auth");
+      const authToken = {
+        user: "",
+        token: null,
+      };
+      localStorage.setItem("auth", JSON.stringify(authToken));
+    }
+  }, [location.pathname]);
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,7 +51,7 @@ const Login = () => {
           user: res?.data?.data,
           token: res?.data?.accessToken,
         });
-        console.log(localStorage.getItem("auth"));
+        localStorage.getItem("auth");
         const authToken = {
           user: res?.data?.data,
           token: res?.data?.accessToken,
@@ -47,6 +66,8 @@ const Login = () => {
       toast.error("Wrong email or password!!!!");
     }
   }
+
+  console.log(auth);
 
   return (
     <>

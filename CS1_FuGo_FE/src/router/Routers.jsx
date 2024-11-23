@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
-import Home from "../pages/HomePage";
+import HomePage from "../pages/HomePage";
 import News from "../pages/News";
 import New_detail from "../pages/New_detail";
 import Register from "../pages/register";
@@ -18,7 +18,7 @@ const Routers = () => {
 
         <Routes>
             <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
+            <Route path="/home" element={<HomePage />} />
             <Route path="/news" element={<News />} />
             <Route path="/news-detail" element={<New_detail />} />
             <Route path="/register" element={<Register />} />

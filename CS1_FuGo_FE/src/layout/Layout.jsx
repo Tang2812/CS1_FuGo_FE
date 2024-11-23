@@ -18,7 +18,9 @@ const Layout = () => {
           <Footer />
         </>
       ) : auth?.user?.role === "partner" ? (
-        <PartnerRouter />
+        <>
+          <PartnerRouter />
+        </>
       ) : (
         <>
           <Header />

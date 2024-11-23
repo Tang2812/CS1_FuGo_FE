@@ -9,9 +9,10 @@ const JobForm = () => {
   const [formData, setFormData] = useState({});
   const [auth, setAuth] = useAuth();
   const [accountId, setAccountId] = useState("");
+  const [email, setEmail] = useState("");
   const navigate = useNavigate();
   const jobId = params.id;
-  
+
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -22,27 +23,52 @@ const JobForm = () => {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
 
-  }, [])
+  }, []);
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleSubmit = async (e) => {
+
+
+
     e.preventDefault();
     const formDataObj = new FormData();
     formDataObj.append("jobId", jobId);
     formDataObj.append("accountId", accountId);
-    Object.keys(formData).forEach((key)=>{
+
+    Object.keys(formData).forEach((key) => {
       formDataObj.append(key, formData[key]);
     })
+
     formDataObj.forEach((value, key) => {
       console.log(`${key}: ${value}`);
     });
+
     // console.log(auth.user._id);
-    
-    
+    console.log("formData: ", formData);
+    const isValidEmail = validateEmail(formData.email);
+    if (!isValidEmail) {
+      toast.error('Invalid email')
+      return;
+    }
+
+    if (formData && formData.phone.length !== 11) {
+      toast.error('Invalid phone')
+      return;
+    }
+
+
     try {
       const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
-      if (response.data.success){
+      if (response.data.success) {
         alert("Job successfully submitted");
       }
     } catch (error) {
@@ -53,13 +79,18 @@ const JobForm = () => {
   };
 
   useEffect(() => {
-    if (!auth || !auth.user) {
+    const storedAuth = localStorage.getItem("auth");
+    const parsedAuth = storedAuth ? JSON.parse(storedAuth) : null;
+    if (!parsedAuth || !parsedAuth.user) {
       toast.warning("Bạn cần đăng nhập trước khi nộp CV!");
       navigate('/login');
       window.scrollTo(0, 0);
     }
-    else setAccountId(auth.user._id);
-  }, [auth]);
+    else {
+      const userId = auth?.user?._id || parsedAuth?.user?._id;
+      setAccountId(userId);
+    }
+  }, [auth, navigate]);
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
@@ -80,7 +111,7 @@ const JobForm = () => {
             placeholder="Họ và tên"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
+
           />
         </div>
 
@@ -89,10 +120,9 @@ const JobForm = () => {
           <label className="block mb-2">Giới tính</label>
           <select
             name="gender"
-         
+
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
           >
             <option value="">Chọn giới tính</option>
             <option value="Nam">Nam</option>
@@ -108,10 +138,9 @@ const JobForm = () => {
             type="tel"
             name="phone"
             placeholder="**********"
-            
+
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
           />
         </div>
 
@@ -119,13 +148,11 @@ const JobForm = () => {
         <div>
           <label className="block mb-2">Email</label>
           <input
-            type="email"
+            type="text"
             name="email"
             placeholder="examples@example.com"
-            
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
           />
         </div>
 
@@ -134,10 +161,9 @@ const JobForm = () => {
           <label className="block mb-2">Trình độ học vấn</label>
           <select
             name="education"
-           
+
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
           >
             <option value="">Chọn trình độ học vấn</option>
             <option value="Cấp 3">Cấp 3</option>
@@ -153,7 +179,7 @@ const JobForm = () => {
           <input
             type="text"
             name="language"
-            
+
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             placeholder="Ví dụ: Tiếng Nhật N4"
