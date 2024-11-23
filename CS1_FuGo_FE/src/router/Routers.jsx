@@ -30,7 +30,7 @@ const Routers = () => {
             <Route path="/list-cv" element={<List_Cv />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/job_cv_detail" element={<Job_cv_detail />} />
-            <Route path="/application/job" element={<JobForm />} />
+            <Route path="/application/job/:id" element={<JobForm />} />
         </Routes>
 
     );
