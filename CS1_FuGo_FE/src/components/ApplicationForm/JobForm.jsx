@@ -1,22 +1,55 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
 
 const JobForm = () => {
+  const params = useParams();
   const [formData, setFormData] = useState({});
   const [auth, setAuth] = useAuth();
+  const [accountId, setAccountId] = useState("");
   const navigate = useNavigate();
+  const jobId = params.id;
+  
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value, files } = e.target;
+    if (name === "image") {
+      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
+    } else {
+      setFormData((prevData) => ({ ...prevData, [name]: value }));
+    }
   };
 
-  const handleSubmit = (e) => {
+  useEffect(()=>{
+
+  }, [])
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const formDataObj = new FormData();
+    formDataObj.append("jobId", jobId);
+    formDataObj.append("accountId", accountId);
+    Object.keys(formData).forEach((key)=>{
+      formDataObj.append(key, formData[key]);
+    })
+    formDataObj.forEach((value, key) => {
+      console.log(`${key}: ${value}`);
+    });
+    // console.log(auth.user._id);
+    
+    
+    try {
+      const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
+      if (response.data.success){
+        alert("Job successfully submitted");
+      }
+    } catch (error) {
+      if (error.response && !error.response.data.success) {
+        alert(error.response.data.error);
+      }
+    }
   };
 
   useEffect(() => {
@@ -25,6 +58,7 @@ const JobForm = () => {
       navigate('/login');
       window.scrollTo(0, 0);
     }
+    else setAccountId(auth.user._id);
   }, [auth]);
 
   return (
@@ -43,7 +77,6 @@ const JobForm = () => {
           <input
             type="text"
             name="fullName"
-            value={formData.fullName}
             placeholder="Họ và tên"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
@@ -56,7 +89,7 @@ const JobForm = () => {
           <label className="block mb-2">Giới tính</label>
           <select
             name="gender"
-            value={formData.gender}
+         
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             required
@@ -75,7 +108,7 @@ const JobForm = () => {
             type="tel"
             name="phone"
             placeholder="**********"
-            value={formData.phone}
+            
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             required
@@ -89,7 +122,7 @@ const JobForm = () => {
             type="email"
             name="email"
             placeholder="examples@example.com"
-            value={formData.email}
+            
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             required
@@ -101,7 +134,7 @@ const JobForm = () => {
           <label className="block mb-2">Trình độ học vấn</label>
           <select
             name="education"
-            value={formData.education}
+           
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             required
@@ -120,7 +153,7 @@ const JobForm = () => {
           <input
             type="text"
             name="language"
-            value={formData.language}
+            
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             placeholder="Ví dụ: Tiếng Nhật N4"
@@ -137,6 +170,7 @@ const JobForm = () => {
             className="w-full mt-1 p-2 border rounded-lg"
             placeholder="Mô tả bản thân bạn"
             rows="4"
+            onChange={handleChange}
           ></textarea>
         </div>
 
@@ -145,7 +179,7 @@ const JobForm = () => {
           <label className="block mb-2">Ảnh CV</label>
           <input
             type="file"
-            name="passportPhoto"
+            name="image"
             onChange={handleChange}
             className="mb-4 border border-gray-300 rounded"
             accept="image/*"

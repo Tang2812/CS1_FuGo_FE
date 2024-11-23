@@ -1,8 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { toast } from "react-toastify";
-import { AiFillTag, AiFillTool, AiOutlineAudit, AiOutlineLock, AiOutlineMail, AiTwotoneWarning } from "react-icons/ai";
-
+import {
+  AiFillTag,
+  AiFillTool,
+  AiOutlineAudit,
+  AiOutlineLock,
+  AiOutlineMail,
+  AiTwotoneWarning,
+} from "react-icons/ai";
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -28,71 +34,99 @@ const Header = () => {
       <header>
         <nav>
           <div className="logo">
-            <Link to="/home"><img src="/src/img/logo.png" alt="FuGo" /></Link>
+            <Link to="/home">
+              <img src="/src/img/logo.png" alt="FuGo" />
+            </Link>
           </div>
           <ul>
             <li>
-              <Link to="/home" className="font-semibold hover:text-blue-700">Trang chủ</Link>
+              <Link to="/home" className="font-semibold hover:text-blue-700">
+                Trang chủ
+              </Link>
             </li>
             <li>
-              <Link to="/" className="font-semibold hover:text-blue-700">Lịch sử</Link>
+              <Link to="/" className="font-semibold hover:text-blue-700">
+                Lịch sử
+              </Link>
             </li>
             <li>
-              <Link to="/jobs" className="font-semibold hover:text-blue-700">Việc làm</Link>
+              <Link to="/jobs" className="font-semibold hover:text-blue-700">
+                Việc làm
+              </Link>
             </li>
             <li>
-              <Link to="/study" className="font-semibold hover:text-blue-700">Du học</Link>
+              <Link to="/study" className="font-semibold hover:text-blue-700">
+                Du học
+              </Link>
             </li>
             <li>
-              <Link to="/news" className="font-semibold hover:text-blue-700">Tin tức</Link>
+              <Link to="/news" className="font-semibold hover:text-blue-700">
+                Tin tức
+              </Link>
             </li>
             <li>
-              <Link to="/" className="font-semibold hover:text-blue-700">Hỗ trợ</Link>
+              <Link to="/" className="font-semibold hover:text-blue-700">
+                Hỗ trợ
+              </Link>
             </li>
             <li>
-              <Link to="/" className="font-semibold hover:text-blue-700">Chia sẻ</Link>
+              <Link to="/" className="font-semibold hover:text-blue-700">
+                Chia sẻ
+              </Link>
             </li>
             <li>
-              <Link to="/list-cv" className="font-semibold hover:text-blue-700">Quản lí CV</Link>
+              <Link to="/list-cv" className="font-semibold hover:text-blue-700">
+                Quản lí CV
+              </Link>
             </li>
           </ul>
-          {
-            auth.user ? (
-              <div className="user-controls">
-                <button className=" header-right__notification" type="button" title="notification">
-                  <img src="/src/img/Notification - Bell.png" alt="Notification" />
-                </button>
+          {auth.user ? (
+            <div className="user-controls">
+              <button
+                className=" header-right__notification"
+                type="button"
+                title="notification"
+              >
+                <img
+                  src="/src/img/Notification - Bell.png"
+                  alt="Notification"
+                />
+              </button>
 
-
-                <div className="header__notification">
-                  <h2>Notification</h2>
-                  <div className="notification__container">
-                    <div className="notification__message">
-                      <AiOutlineMail size={50} />
-                      <div className="message">
-                        <span className="message__user-name">Hồ sơ của bạn đã được duyệt!!! </span>
-                        <span className="message__content"
-                        >Công ty TNHH The King</span
-                        >
-                        <span className="message__time">1 phút trước</span>
-                      </div>
+              <div className="header__notification">
+                <h2>Notification</h2>
+                <div className="notification__container">
+                  <div className="notification__message">
+                    <AiOutlineMail size={50} />
+                    <div className="message">
+                      <span className="message__user-name">
+                        Hồ sơ của bạn đã được duyệt!!!{" "}
+                      </span>
+                      <span className="message__content">
+                        Công ty TNHH The King
+                      </span>
+                      <span className="message__time">1 phút trước</span>
                     </div>
-                    <div className="notification__active"></div>
                   </div>
-                  <div className="notification__container">
-                    <div className="notification__message">
-                      <AiTwotoneWarning size={50} />
-                      <div className="message">
-                        <span className="message__user-name">Hồ sơ của bạn đã bị từ chối!!!</span>
-                        <span className="message__content"
-                        >Công ty dệt may kawashaki</span
-                        >
-                        <span className="message__time">30 phút trước</span>
-                      </div>
-                    </div>
-                    <div className="notification__active"></div>
-                  </div>
+                  <div className="notification__active"></div>
                 </div>
+                <div className="notification__container">
+                  <div className="notification__message">
+                    <AiTwotoneWarning size={50} />
+                    <div className="message">
+                      <span className="message__user-name">
+                        Hồ sơ của bạn đã bị từ chối!!!
+                      </span>
+                      <span className="message__content">
+                        Công ty dệt may kawashaki
+                      </span>
+                      <span className="message__time">30 phút trước</span>
+                    </div>
+                  </div>
+                  <div className="notification__active"></div>
+                </div>
+              </div>
+
 
                 <button
                   className="header-right__avt-info"
@@ -137,22 +171,25 @@ const Header = () => {
                       <button className="btn btn--outline property__btn">Đổi tài khoản</button>
                       <button className="btn btn--outline property__btn" onClick={handleLogout}>Đăng Xuất</button>
                     </div>
+
                   </div>
-                </>
-              </div>
-            )
-              : (
-                <div className="login-signup flex gap-4 font-semibold items-center">
-                  <Link to="/login" className="login__btn hover:text-blue-700">Đăng nhập</Link>
-                  <span className="text-xl">/</span>
-                  <Link to="/register" className="signup__btn hover:text-blue-700">Đăng ký</Link>
                 </div>
-              )
-          }
+              </>
+            </div>
+          ) : (
+            <div className="login-signup flex gap-4 font-semibold items-center">
+              <Link to="/login" className="login__btn hover:text-blue-700">
+                Đăng nhập
+              </Link>
+              <span className="text-xl">/</span>
+              <Link to="/register" className="signup__btn hover:text-blue-700">
+                Đăng ký
+              </Link>
+            </div>
+          )}
         </nav>
       </header>
     </>
-
   );
 };
 
