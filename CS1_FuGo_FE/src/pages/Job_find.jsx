@@ -196,7 +196,7 @@ const Job_find = () => {
                 </div>
                 <div className="card__fc">
                   <button className="btn--outline" onClick={() => navigate(`/jobs/${job._id}`)}>Xem chi tiết</button>
-                  <button className="btn--outline" onClick={() => navigate(`/application/job`)}>Ứng tuyển</button>
+                  <button className="btn--outline" onClick={() => navigate(`/application/job/${job._id}`)}>Ứng tuyển</button>
                 </div>
               </div>
             </div>
