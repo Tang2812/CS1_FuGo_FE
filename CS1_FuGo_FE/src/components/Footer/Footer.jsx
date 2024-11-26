@@ -12,7 +12,7 @@ const Footer = () => {
         <img src="/src/img/logo.png" alt="FuGo" />
         <p>
           Công ty của chúng tôi luôn cố gắng đem đến cho bạn
-          những công việc,những lựa chọn du học lí tưởng nhất.
+          những công việc, những lựa chọn du học lí tưởng nhất.
         </p>
         <p>Hãy bắt đầu giấc mơ của bạn ngay hôm nay!!!</p>
         <div className="social-icons">
