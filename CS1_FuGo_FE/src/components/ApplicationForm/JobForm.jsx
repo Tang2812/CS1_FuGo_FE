@@ -52,15 +52,13 @@ const JobForm = () => {
       console.log(`${key}: ${value}`);
     });
 
-    // console.log(auth.user._id);
-    console.log("formData: ", formData);
     const isValidEmail = validateEmail(formData.email);
     if (!isValidEmail) {
       toast.error('Invalid email')
       return;
     }
 
-    if (formData && formData.phone.length !== 11) {
+    if (formData && formData.phone.length !== 10) {
       toast.error('Invalid phone')
       return;
     }
@@ -68,6 +66,7 @@ const JobForm = () => {
 
     try {
       const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
+
       if (response.data.success) {
         alert("Job successfully submitted");
       }
@@ -95,7 +94,7 @@ const JobForm = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
       <form form
-        className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md grid gap-4 sm:grid-cols-1 lg:grid-cols-2"
+        className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md grid gap-4 sm:grid-cols-1 md:grid-cols-2"
         onSubmit={handleSubmit}
       >
         <h2 className="col-span-full text-2xl font-bold mb-4 text-center">

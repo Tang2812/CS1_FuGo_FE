@@ -11,11 +11,11 @@ const HomePageBanner = () => {
 
     return (
         <section>
-            <div className="container bg-[#EEEEEE] pt-5 pb-14">
+            <div className="homebanner-container bg-[#EEEEEE] pt-5 pb-14 px-5 sm:px-0">
                 <div className="grid grid-cols-12">
-                    <motion.div initial={{ x: 0 }} whileInView={{ x: 20, transition: { duration: 1 } }} className="hero__content col-span-6 py-8 px-32">
+                    <motion.div initial={{ x: 0 }} whileInView={{ x: 20, transition: { duration: 1 } }} className="hero__content col-span-12 lg:col-span-6 lg:py-8 lg:px-32 sm:px-3">
                         <div className="hero__subtitle flex gap-2 items-center text-pink-500 p-3 rounded-3xl shadow-xl w-fit bg-white mt-4 mb-8">
-                            <h2 className="font-semibold text-2xl">Quyết định tương lai của bạn</h2>
+                            <h2 className="font-semibold text-2xl md:text-base sm:text-nowrap sm:text-sm">Quyết định tương lai của bạn</h2>
                             <BsFillHandbagFill className="text-2xl" />
                         </div>
                         <h2 className="text-4xl font-semibold mt-4 mb-4"> Lựa chọn
@@ -36,13 +36,13 @@ const HomePageBanner = () => {
                             </button>
                         </div>
                     </motion.div>
-                    <motion.div initial={{ y: 0 }} whileInView={{ y: 10, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mx-4 mt-3">
+                    <motion.div initial={{ y: 0 }} whileInView={{ y: 10, transition: { duration: 1 } }} className="hero__img-box lg:col-span-2 col-span-4 pt-8 mx-4 mt-3">
                         <img src={heroImg} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover" />
                     </motion.div>
-                    <motion.div initial={{ y: 0 }} whileInView={{ y: 20, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mr-4 mt-5">
+                    <motion.div initial={{ y: 0 }} whileInView={{ y: 20, transition: { duration: 1 } }} className="hero__img-box lg:col-span-2 col-span-4 pt-8 mr-4 mt-5">
                         <img src={heroImg03} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover mt-5" />
                     </motion.div>
-                    <motion.div initial={{ y: 0 }} whileInView={{ y: 30, transition: { duration: 1 } }} className="hero__img-box col-span-2 pt-8 mr-4 mt-5">
+                    <motion.div initial={{ y: 0 }} whileInView={{ y: 30, transition: { duration: 1 } }} className="hero__img-box lg:col-span-2 col-span-4 pt-8 mr-4 mt-5">
                         <img src={heroImg02} alt="" className="w-100% h-[350px] rounded-3xl border-solid border-[2px] border-[#5D50C6] object-cover mt-10" />
                     </motion.div>
                 </div>
