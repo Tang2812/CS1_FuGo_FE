@@ -1,6 +1,7 @@
 import React from 'react';
 import { Facebook, Twitter, Linkedin, Youtube, Clock, MapPin, Share2 } from 'lucide-react';
 import tagImg from "../img/tagImg.jpg";
+import { FaMoneyBillWave } from "react-icons/fa";
 
 const StudyDetails = () => {
     return (
@@ -9,29 +10,38 @@ const StudyDetails = () => {
 
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Left Column - Job Details */}
                     <div className="md:col-span-2">
                         {/* Company Header */}
                         <div className="bg-white rounded-lg p-6 mb-6 shadow-sm">
-                            <div className="flex items-start justify-between">
+                            <div className="sm:flex sm:items-start sm:justify-between">
                                 <div className="flex space-x-4">
-                                    <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
                                     <div>
-                                        <h1 className="text-xl font-bold mb-2">TOKYO - 1 nam/nữ phiên dịch</h1>
-                                        <p className="text-gray-600 mb-2">Công ty Cổ phần SPRINGHILL SUITES VIỆT NAM</p>
+                                        <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
+                                        <h2 className=' text-green-600 font-semibold text-lg flex justify-center my-3 shadow-md'>Đang tuyển</h2>
+                                    </div>
+                                    <div>
+                                        <h2 className="text-xl font-bold mb-2">Vệ sinh nhà cửa</h2>
+                                        <p className="text-gray-600 mb-2">Cleaner Co.</p>
                                         <div className="flex items-center space-x-2 text-gray-500">
                                             <Clock className="w-4 h-4" />
                                             <span>Dự kiến xuất cảnh: 12/2024</span>
                                         </div>
                                         <div className="flex items-center space-x-2 text-gray-500">
                                             <MapPin className="w-4 h-4" />
-                                            <span>Tokyo, Nhật Bản</span>
+                                            <span>Aichi, Japan</span>
+                                        </div>
+                                        <div className="flex items-center space-x-2 text-gray-500">
+                                            <FaMoneyBillWave className="w-4 h-4" />
+                                            <span>1000$ - 2000$</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="space-y-2">
-                                    <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md">
+                                    <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md"
+                                    // onClick={() => navigate(`/application/job/${jobId}`)}
+                                    >
                                         Ứng tuyển ngay
                                     </button>
                                     <button className="w-full border border-green-500 text-green-500 px-4 py-2 rounded-md">

@@ -3,32 +3,43 @@ import { MdOutlinePerson } from "react-icons/md";
 import { MdLockOutline } from "react-icons/md";
 import { SiReaddotcv } from "react-icons/si";
 import { IoMdNotificationsOutline } from "react-icons/io";
+import { CiBoxList } from "react-icons/ci";
+import { useState } from "react";
 const Profile = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
-    <div className="flex flex-col sm:flex-row py-20 px-40">
+    <div className="flex flex-col gap-5 lg:flex-row px-12 py-16 md:py-20 xl:px-40">
+      <button
+        className="lg:hidden p-3 bg-gray-100 rounded-md shadow-lg"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <CiBoxList className="text-2xl" />
+      </button>
       {/* Sidebar */}
-      <div className="flex w-full h-1/3 justify-center  mr-14 sm:w-1/4 bg-white shadow-lg rounded-lg p-4 sm:mb-0 ">
-        <div>
-          <ul className="space-y-4 flex flex-col items-left">
-            <li className=" flex items-center">
+      <div className={`lg:flex lg:w-1/4 h-1/3 lg:justify-center mr-14 w-full bg-gray-50 shadow-lg rounded-lg p-4 sm:mb-0 ${isOpen ? "flex" : "hidden"}`}>
+        <div className="w-full">
+          <ul className="space-y-4 flex flex-col w-full">
+            <li className=" flex items-center hover:bg-blue-50 hover:w-full rounded-lg">
               <MdOutlinePerson />
-              <Link className="block p-2 rounded-lg">Thông tin cá nhân</Link>
+              <Link className="block p-2">
+                Thông tin cá nhân
+              </Link>
             </li>
-            <li className=" flex items-center">
+            <li className=" flex items-center hover:bg-blue-50 hover:w-full rounded-lg">
               <MdLockOutline />
-              <Link className="block p-2 hover:bg-blue-50 rounded-lg">
+              <Link className="block p-2">
                 Đặt lại mật khẩu
               </Link>
             </li>
-            <li className=" flex items-center">
+            <li className=" flex items-center hover:bg-blue-50 hover:w-full rounded-lg">
               <SiReaddotcv />
-              <Link className="block p-2 hover:bg-blue-50 rounded-lg">
+              <Link className="block p-2">
                 Quản lý CV
               </Link>
             </li>
-            <li className=" flex items-center">
+            <li className=" flex items-center hover:bg-blue-50 hover:w-full rounded-lg">
               <IoMdNotificationsOutline />
-              <Link className="block p-2 hover:bg-blue-50 rounded-lg">
+              <Link className="block p-2">
                 Thông báo
               </Link>
             </li>
@@ -37,7 +48,7 @@ const Profile = () => {
       </div>
 
       {/* Main Form */}
-      <form className="w-full sm:w-3/4 space-y-6">
+      <form className="lg:w-3/4 space-y-6">
         <h2 className="text-3xl font-semibold text-gray-900">
           Thông tin cá nhân
         </h2>

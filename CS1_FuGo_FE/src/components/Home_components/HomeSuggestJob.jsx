@@ -19,24 +19,10 @@ const HomeSuggest = () => {
                     <a href="/jobs" className="text-yellow-500">Xem tất cả &gt;</a>
                 </div>
             </div>
-            <div className="suggest-categories space-x-4 mb-[30px]">
-                <a href="#" className="category-item border-2 border-solid border-black rounded-[5px] px-4 py-2">
-                    Tất cả
-                </a>
-                <a href="#" className="category-item border-2 border-solid border-black rounded-[5px] px-4 py-2">
-                    Nhật Bản
-                </a>
-                <a href="#" className="category-item border-2 border-solid border-black rounded-[5px] px-4 py-2">
-                    Hàn Quốc
-                </a>
-                <a href="#" className="category-item border-2 border-solid border-black rounded-[5px] px-4 py-2">
-                    Đài Loan
-                </a>
-            </div>
-            <motion.div className="suggest-content grid grid-cols-4"
+            <motion.div className="suggest-content grid grid-cols-12"
                 initial={{ x: -60 }}
                 whileInView={{ x: 20, transition: { duration: 0.75 } }}>
-                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px] col-span-6 md:col-span-4 lg:col-span-3">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
@@ -55,7 +41,7 @@ const HomeSuggest = () => {
                     </div>
                 </a>
 
-                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px] col-span-6 md:col-span-4 lg:col-span-3">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
@@ -74,7 +60,7 @@ const HomeSuggest = () => {
                     </div>
                 </a>
 
-                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px] col-span-6 md:col-span-4 lg:col-span-3">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
@@ -93,7 +79,7 @@ const HomeSuggest = () => {
                     </div>
                 </a>
 
-                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px]">
+                <a href="/jobs/:id" className="suggest-tag bg-white shadow-2xl rounded-[10px] w-4/5 mb-5 hover:mt-[-4px] col-span-6 md:col-span-4 lg:col-span-3">
                     <img src={suggestTag} alt="" className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit" />
                     <div className="tag-content p-2">
                         <p className="text-lg font-semibold">Vệ sinh tòa nhà</p>
