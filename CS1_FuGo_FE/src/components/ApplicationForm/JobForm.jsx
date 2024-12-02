@@ -23,9 +23,10 @@ const JobForm = () => {
     }
   };
 
-  useEffect(() => {
-
-  }, []);
+  const validatePhoneNumber = (phone) => {
+    const regex = /^(0|\+84)(3|5|7|8|9)\d{8}$/;
+    return regex.test(phone);
+  };
 
   const validateEmail = (email) => {
     return String(email)
@@ -56,12 +57,13 @@ const JobForm = () => {
     console.log("formData: ", formData);
     const isValidEmail = validateEmail(formData.email);
     if (!isValidEmail) {
-      toast.error('Invalid email')
+      toast.error('Email không hợp lệ')
       return;
     }
 
-    if (formData && formData.phone.length !== 11) {
-      toast.error('Invalid phone')
+    const isPhoneNumber = validatePhoneNumber(formData.phone);
+    if (isPhoneNumber == false) {
+      toast.error('Số điện thoại không hợp lệ.')
       return;
     }
 
@@ -69,7 +71,8 @@ const JobForm = () => {
     try {
       const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
       if (response.data.success) {
-        alert("Job successfully submitted");
+        toast.success("Nộp CV thành công.");
+        navigate('/home');
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
