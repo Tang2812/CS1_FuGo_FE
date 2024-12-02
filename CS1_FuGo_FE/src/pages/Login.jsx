@@ -44,7 +44,7 @@ const Login = () => {
       const res = await axios.post(loginURL, data);
       console.log(">>Check res: ", res);
       if (res.data.accessToken) {
-        toast.success("Login succesfully");
+        toast.success("Đăng nhập thành công.");
         // set token
         setAuth({
           ...auth,

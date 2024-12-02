@@ -127,7 +127,6 @@ const Header = () => {
                 </div>
               </div>
 
-
               <button
                 className="header-right__avt-info"
                 type="button"
@@ -144,7 +143,10 @@ const Header = () => {
                 <div className="header__list-property">
                   <div className="property__primary">
                     <Link to="/profile" className="property__choice">
-                      <img src="/src/img/icon_personal.svg" alt="Thông tin cá nhân" />
+                      <img
+                        src="/src/img/icon_personal.svg"
+                        alt="Thông tin cá nhân"
+                      />
                       <span>Thông tin cá nhân</span>
                     </Link>
                     <Link to="#" className="property__choice">
@@ -168,27 +170,38 @@ const Header = () => {
                     </Link>
                   </div>
                   <div className="property__list-fc">
-                    <button className="btn btn--outline property__btn">Đổi tài khoản</button>
-                    <button className="btn btn--outline property__btn" onClick={handleLogout}>Đăng Xuất</button>
+                    <button className="btn btn--outline property__btn">
+                      Đổi tài khoản
+                    </button>
+                    <button
+                      className="btn btn--outline property__btn"
+                      onClick={handleLogout}
+                    >
+                      Đăng Xuất
+                    </button>
                   </div>
-
-
                 </div>
               </>
             </div>
           ) : (
             <div className="login-signup flex gap-4 font-semibold items-center">
-              <Link to="/login" className="login__btn hover:text-blue-700">
+              <Link
+                to="/login"
+                className="login__btn hover:text-gray-300 text-center bg-[#ff9f23d6] text-white rounded-[20px] py-1.5 px-2.5 text-sm w-[100px] transition-all duration-200"
+              >
                 Đăng nhập
               </Link>
-              <span className="text-xl">/</span>
-              <Link to="/register" className="signup__btn hover:text-blue-700">
+              {/* <span className="text-xl">/</span> */}
+              <Link
+                to="/register"
+                className="signup__btn hover:text-gray-400 text-center w-[100px] border border-[#ccc] rounded-[20px] py-1.5 px-2.5 text-sm transition-all duration-200"
+              >
                 Đăng ký
               </Link>
             </div>
           )}
         </nav>
-      </header >
+      </header>
     </>
   );
 };

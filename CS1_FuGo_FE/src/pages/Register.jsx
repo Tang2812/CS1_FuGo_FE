@@ -41,7 +41,7 @@ const Register = () => {
       const res = await axios.post(registerURL, data);
       if (res.data.success === true) {
         // console.log(">> Check res: ", res);
-        toast.success("Register successfully");
+        toast.success("Đăng ký thành công !");
         navigate("/login")
       }
       else {
