@@ -61,28 +61,28 @@ const Study_find = () => {
                             placeholder="nhập thông tin bạn muốn tìm kiếm"
                         />
                     </div>
-                    <div className="filters">
-                        <select className="filter">
+                    <div className="filters grid grid-cols-10">
+                        <select className="filter md:col-span-2 col-span-3">
                             <option>Quốc gia</option>
                         </select>
-                        <select className="filter">
+                        <select className="filter md:col-span-2 col-span-3">
                             <option>Mức lương</option>
                         </select>
-                        <select className="filter">
+                        <select className="filter md:col-span-2 col-span-3">
                             <option>Học vấn</option>
                         </select>
-                        <select className="filter">
+                        <select className="filter md:col-span-2 col-span-3">
                             <option>Ngành nghề</option>
                         </select>
-                        <select className="filter">
+                        <select className="filter md:col-span-2 col-span-3">
                             <option>Kinh nghiệm</option>
                         </select>
                     </div>
                 </div>
-                <div className="job-list">
+                <div className="job-list grid grid-cols-12">
                     {/* loop for list jobs */}
                     {jobs?.map((job, index) => (
-                        <div key={index} className="job-card">
+                        <div key={index} className="job-card xl:col-span-3 lg:col-span-4 md:col-span-5 sm:col-span-6 col-span-9">
                             {/* image jobs */}
                             <img src="/src/img/work_avt.png" alt="" />
                             <div className="job-card__content">
@@ -103,9 +103,9 @@ const Study_find = () => {
                                     <img src="/src/img/time.svg" alt="icon thoi gian" />
                                     <p> {job.jobStatus}</p>
                                 </div>
-                                <div className="card__fc">
-                                    <button className="btn--outline">Xem chi tiết</button>
-                                    <button className="btn--outline">Ứng tuyển</button>
+                                <div className="card__fc mt-3">
+                                    <button className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]">Xem chi tiết</button>
+                                    <button className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]">Ứng tuyển</button>
                                 </div>
                             </div>
                         </div>

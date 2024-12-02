@@ -103,11 +103,11 @@ const Job_find = () => {
               onChange={handleChange}
             />
           </div>
-          <div className="filters">
+          <div className="filters grid grid-cols-10">
             <select
               value={conditions.country}
               name="country"
-              className="filter"
+              className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
               <option value="">Quốc gia</option>
@@ -119,7 +119,7 @@ const Job_find = () => {
             <select
               value={conditions.salary}
               name="salary"
-              className="filter"
+              className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
               <option value="">Mức lương</option>
@@ -132,7 +132,7 @@ const Job_find = () => {
             <select
               value={conditions.educationalLevel}
               name="educationalLevel"
-              className="filter"
+              className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
               <option value="">Học vấn</option>
@@ -143,7 +143,7 @@ const Job_find = () => {
             <select
               value={conditions.profession}
               name="profession"
-              className="filter"
+              className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
               <option value="">Ngành nghề</option>
@@ -155,7 +155,7 @@ const Job_find = () => {
             <select
               value={conditions.experience}
               name="experience"
-              className="filter"
+              className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
               <option value="">Kinh nghiệm</option>
@@ -167,10 +167,10 @@ const Job_find = () => {
             </select>
           </div>
         </div>
-        <div className="job-list">
+        <div className="job-list grid grid-cols-12">
           {/* loop for list jobs */}
           {jobs?.map((job, index) => (
-            <div key={index} className="job-card">
+            <div key={index} className="job-card xl:col-span-3 lg:col-span-4 sm:col-span-6 col-span-9">
 
               {/* image jobs */}
               <img src="/src/img/work_avt.png" alt="" />
@@ -194,9 +194,9 @@ const Job_find = () => {
                   <img src="/src/img/time.svg" alt="icon thoi gian" />
                   <p> {job.jobStatus}</p>
                 </div>
-                <div className="card__fc">
-                  <button className="btn--outline" onClick={() => navigate(`/jobs/${job._id}`)}>Xem chi tiết</button>
-                  <button className="btn--outline" onClick={() => navigate(`/application/job/${job._id}`)}>Ứng tuyển</button>
+                <div className="card__fc mt-3">
+                  <button className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]" onClick={() => navigate(`/jobs/${job._id}`)}>Xem chi tiết</button>
+                  <button className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]" onClick={() => navigate(`/application/job/${job._id}`)}>Ứng tuyển</button>
                 </div>
               </div>
             </div>
