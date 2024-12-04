@@ -2,60 +2,77 @@
 footer {
     background-color: #f8f8f8;
     padding: 2rem 5%;
-  }
-  
-  .footer-content {
+}
+
+.footer-content {
     display: flex;
     justify-content: space-between;
-  }
-  
-  .company-info {
+}
+
+.company-info {
+    display: flex;
+    flex-direction: column;
     flex: 2;
     margin-right: 2rem;
-  }
-  
-  .company-info img {
-    height: 40px;
-    margin-bottom: 1rem;
-  }
-  
-  .social-icons {
+}
+
+.logo-footer img {
+    width: 14%;
+    height: 60px
+
+}
+
+.logo-name {
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.logo-footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+}
+
+
+.social-icons {
     display: flex;
     flex-direction: row;
     gap: 20px;
     margin-top: 1rem;
-  }
-  
-  .social-icons img {
+}
+
+.social-icons img {
     display: inline-block;
     width: 30px;
     height: 30px;
     margin-right: 10px;
     /* background-color: #0066cc; */
     border-radius: 50%;
-  }
-  
-  .footer-links {
+}
+
+.footer-links {
     flex: 3;
     display: flex;
     justify-content: space-between;
-  }
-  
-  .footer-links h5 {
+}
+
+.footer-links h5 {
     margin-bottom: 1rem;
     color: #0066cc;
-  }
-  
-  .footer-links ul {
+}
+
+.footer-links ul {
     list-style: none;
-  }
-  
-  .footer-links ul li {
+}
+
+.footer-links ul li {
     margin-bottom: 0.5rem;
-  }
-  
-  .footer-links ul li a {
+}
+
+.footer-links ul li a {
     text-decoration: none;
     color: #333;
-  }
+}
   
