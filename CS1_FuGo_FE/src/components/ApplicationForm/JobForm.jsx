@@ -38,9 +38,25 @@ const JobForm = () => {
 
   const handleSubmit = async (e) => {
 
-
-
     e.preventDefault();
+    // console.log("check formData: ", formData);
+    if (!formData.fullName || formData.gender || formData.phone
+      || !formData.email || !formData.education || !formData.language
+      || !formData.bio || !formData.image) {
+      toast.warning('Vui lòng nhập đầy đủ')
+      return;
+    }
+    const isValidEmail = validateEmail(formData.email);
+    if (!isValidEmail) {
+      toast.error('Email không hợp lệ')
+      return;
+    }
+
+    const isPhoneNumber = validatePhoneNumber(formData.phone);
+    if (isPhoneNumber == false) {
+      toast.error('Số điện thoại không hợp lệ.')
+      return;
+    }
     const formDataObj = new FormData();
     formDataObj.append("jobId", jobId);
     formDataObj.append("accountId", accountId);
@@ -52,19 +68,6 @@ const JobForm = () => {
     formDataObj.forEach((value, key) => {
       console.log(`${key}: ${value}`);
     });
-
-    const isValidEmail = validateEmail(formData.email);
-    if (!isValidEmail) {
-      toast.error('Email không hợp lệ')
-      return;
-    }
-
-
-    const isPhoneNumber = validatePhoneNumber(formData.phone);
-    if (isPhoneNumber == false) {
-      toast.error('Số điện thoại không hợp lệ.')
-      return;
-    }
 
 
     try {
@@ -114,7 +117,7 @@ const JobForm = () => {
             placeholder="Họ và tên"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-
+            required
           />
         </div>
 
@@ -123,7 +126,7 @@ const JobForm = () => {
           <label className="block mb-2">Giới tính</label>
           <select
             name="gender"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
           >
@@ -141,7 +144,7 @@ const JobForm = () => {
             type="tel"
             name="phone"
             placeholder="**********"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
           />
@@ -151,11 +154,12 @@ const JobForm = () => {
         <div>
           <label className="block mb-2">Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="examples@example.com"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
+            required
           />
         </div>
 
@@ -164,7 +168,7 @@ const JobForm = () => {
           <label className="block mb-2">Trình độ học vấn</label>
           <select
             name="education"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
           >
@@ -182,7 +186,7 @@ const JobForm = () => {
           <input
             type="text"
             name="language"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             placeholder="Ví dụ: Tiếng Nhật N4"

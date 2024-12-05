@@ -10,6 +10,7 @@ const Register = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
   const navigate = useNavigate();
 
   const handleRole = (role) => {
@@ -20,10 +21,39 @@ const Register = () => {
     if (!role) {
       setRole('user');
     }
-  })
+  });
+
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!username || !email || !password || !confirmPassword) {
+      toast.warning("Vui nhập đầy đủ!");
+      return;
+    }
+    if (username.length < 3 || username.length > 20) {
+      toast.warning("Vui nhập tên người dùng nhiều hơn 3 ký tự và ít hơn 20 kí tự!");
+      return;
+    }
+    const isValidEmail = validateEmail(email);
+    if (!isValidEmail) {
+      toast.error('Email không hợp lệ')
+      return;
+    }
+    if (password.length < 3) {
+      toast.warning('Vui lòng nhập mật khẩu nhiều hơn 3 kí tự')
+      return;
+    }
+    if (!isChecked) {
+      toast.warning("Vui lòng đồng ý với các điều khoản dịch vụ!");
+      return;
+    }
     try {
       const registerURL = `http://localhost:3000/api/v1/auth/register`;
       const data = {
@@ -34,7 +64,7 @@ const Register = () => {
       };
       if (confirmPassword !== data.password) {
         return toast.error(
-          "Password and confirm password do not match!"
+          "Mật khẩu không khớp!"
         );
       }
 
@@ -83,13 +113,13 @@ const Register = () => {
               >Nhà tuyển dụng
               </button>
             </div>
-            <input type="text" placeholder="Tên đăng nhập" required id="username" onChange={(e) => setUsername(e.target.value)} />
-            <input type="email" placeholder="Email" required id="email" onChange={(e) => setEmail(e.target.value)} />
+            <input type="text" placeholder="Tên người dùng (3-20 kí tự)" required id="username" onChange={(e) => setUsername(e.target.value)} />
+            <input type="email" placeholder="Email (example@gmail.com)" required id="email" onChange={(e) => setEmail(e.target.value)} />
             <input type="password" placeholder="Mật khẩu" required id="password" onChange={(e) => setPassword(e.target.value)} />
             <input type="password" placeholder="Nhập lại mật khẩu" required id="confirmPassword" onChange={(e) => setConfirmPassword(e.target.value)} />
 
             <div className="checkbox-container">
-              <input type="checkbox" id="terms" required />
+              <input type="checkbox" id="terms" required checked={isChecked} onChange={(e) => setIsChecked(e.target.checked)} />
               <label htmlFor="terms">
                 Tôi đồng ý với các điều khoản dịch vụ
               </label>
