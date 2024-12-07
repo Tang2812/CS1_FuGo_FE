@@ -1,10 +1,11 @@
 import React from "react";
 import PartnerDashboard from "../pages/PartnerDashboard";
 import ViewListJobCV from "../components/JobCV/ViewListJobCV";
-import ViewListSudyAbroadCV from "../components/StudyCV/ViewListSudyAbroadCV";
+import ViewListSudyAbroadCV from "../components/StudyCV/ViewListStudyAbroadCV";
 import { Navigate, Route, Routes } from "react-router-dom";
 import ViewListJob from "../components/JobCV/ViewListJob";
 import ViewDetailCV from "../components/JobCV/ViewDetailCV";
+import ProfileReview from "../components/JobCV/ProfileReview";
 
 const PartnerRouter = () => {
   return (
@@ -15,6 +16,7 @@ const PartnerRouter = () => {
         <Route path="/partner/jobCV-application" element={<ViewListJob />} />
         <Route path="/partner/job/listCV/:id" element={<ViewListJobCV />} />
         <Route path="/partner/job/listCV/detail/:id" element={<ViewDetailCV />} />
+        <Route path="/partner/job/review" element={<ProfileReview />} />
         <Route path="/partner/studyAbroad-application" element={<ViewListSudyAbroadCV />} />
       </Route>
     </Routes>
