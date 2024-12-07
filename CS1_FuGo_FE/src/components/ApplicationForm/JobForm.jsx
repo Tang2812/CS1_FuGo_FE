@@ -23,9 +23,10 @@ const JobForm = () => {
     }
   };
 
-  useEffect(() => {
-
-  }, []);
+  const validatePhoneNumber = (phone) => {
+    const regex = /^(0|\+84)(3|5|7|8|9)\d{8}$/;
+    return regex.test(phone);
+  };
 
   const validateEmail = (email) => {
     return String(email)
@@ -37,9 +38,25 @@ const JobForm = () => {
 
   const handleSubmit = async (e) => {
 
-
-
     e.preventDefault();
+    // console.log("check formData: ", formData);
+    if (!formData.fullName || formData.gender || formData.phone
+      || !formData.email || !formData.education || !formData.language
+      || !formData.bio || !formData.image) {
+      toast.warning('Vui lòng nhập đầy đủ')
+      return;
+    }
+    const isValidEmail = validateEmail(formData.email);
+    if (!isValidEmail) {
+      toast.error('Email không hợp lệ')
+      return;
+    }
+
+    const isPhoneNumber = validatePhoneNumber(formData.phone);
+    if (isPhoneNumber == false) {
+      toast.error('Số điện thoại không hợp lệ.')
+      return;
+    }
     const formDataObj = new FormData();
     formDataObj.append("jobId", jobId);
     formDataObj.append("accountId", accountId);
@@ -52,24 +69,13 @@ const JobForm = () => {
       console.log(`${key}: ${value}`);
     });
 
-    // console.log(auth.user._id);
-    console.log("formData: ", formData);
-    const isValidEmail = validateEmail(formData.email);
-    if (!isValidEmail) {
-      toast.error('Invalid email')
-      return;
-    }
-
-    if (formData && formData.phone.length !== 11) {
-      toast.error('Invalid phone')
-      return;
-    }
-
 
     try {
       const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
+
       if (response.data.success) {
-        alert("Job successfully submitted");
+        toast.success("Nộp CV thành công.");
+        navigate('/home');
       }
     } catch (error) {
       if (error.response && !error.response.data.success) {
@@ -95,7 +101,7 @@ const JobForm = () => {
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
       <form form
-        className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md grid gap-4 sm:grid-cols-1 lg:grid-cols-2"
+        className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md grid gap-4 sm:grid-cols-1 md:grid-cols-2"
         onSubmit={handleSubmit}
       >
         <h2 className="col-span-full text-2xl font-bold mb-4 text-center">
@@ -111,7 +117,7 @@ const JobForm = () => {
             placeholder="Họ và tên"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-
+            required
           />
         </div>
 
@@ -120,7 +126,7 @@ const JobForm = () => {
           <label className="block mb-2">Giới tính</label>
           <select
             name="gender"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
           >
@@ -138,7 +144,7 @@ const JobForm = () => {
             type="tel"
             name="phone"
             placeholder="**********"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
           />
@@ -148,11 +154,12 @@ const JobForm = () => {
         <div>
           <label className="block mb-2">Email</label>
           <input
-            type="text"
+            type="email"
             name="email"
             placeholder="examples@example.com"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
+            required
           />
         </div>
 
@@ -161,7 +168,7 @@ const JobForm = () => {
           <label className="block mb-2">Trình độ học vấn</label>
           <select
             name="education"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
           >
@@ -179,7 +186,7 @@ const JobForm = () => {
           <input
             type="text"
             name="language"
-
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             placeholder="Ví dụ: Tiếng Nhật N4"

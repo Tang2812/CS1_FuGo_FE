@@ -7,10 +7,10 @@ const HomeReview = () => {
             <h1 className="homeReview-title flex justify-center text-xl font-semibold p-3">
                 Reviews
             </h1>
-            <motion.div className="reviews-contents grid grid-cols-3 ml-5"
+            <motion.div className="reviews-contents grid grid-cols-12 mx-5"
                 initial={{ x: -60 }}
                 whileInView={{ x: 20, transition: { duration: 0.75 } }}>
-                <div className="review-tag w-[85%] p-3 shadow-2xl rounded-xl hover:mt-[-4px]">
+                <div className="review-tag mt-6 w-[85%] p-3 shadow-2xl rounded-xl hover:mt-[-4px] lg:col-span-4 md:col-span-6 col-span-12">
                     <div className="tag-header flex gap-[10px]">
                         <img src={userReviewAvatar} className="tag-header-img w-32 rounded-full shadow-2xl mb-3 mr-2" alt="" />
                         <div className="tag-header-info my-3">
@@ -26,7 +26,7 @@ const HomeReview = () => {
                     </div>
                 </div>
 
-                <div className="review-tag w-[85%] p-3 shadow-2xl rounded-xl hover:mt-[-4px]">
+                <div className="review-tag mt-6 w-[85%] p-3 shadow-2xl rounded-xl hover:mt-[-4px] lg:col-span-4 md:col-span-6 col-span-12">
                     <div className="tag-header flex gap-[10px]">
                         <img src={userReviewAvatar} className="tag-header-img w-32 rounded-full shadow-2xl mb-3 mr-2" alt="" />
                         <div className="tag-header-info my-3">
@@ -42,7 +42,7 @@ const HomeReview = () => {
                     </div>
                 </div>
 
-                <div className="review-tag w-[85%] p-3 shadow-2xl rounded-xl hover:mt-[-4px]">
+                <div className="review-tag mt-6 w-[85%] p-3 shadow-2xl rounded-xl hover:mt-[-4px] lg:col-span-4 md:col-span-6 col-span-12">
                     <div className="tag-header flex gap-[10px]">
                         <img src={userReviewAvatar} className="tag-header-img w-32 rounded-full shadow-2xl mb-3 mr-2" alt="" />
                         <div className="tag-header-info my-3">

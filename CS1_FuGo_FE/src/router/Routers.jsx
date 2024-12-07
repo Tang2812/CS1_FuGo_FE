@@ -12,6 +12,8 @@ import JobDetail from "../pages/JobDetails";
 import StudyDetails from "../pages/StudyDetails";
 import Job_cv_detail from "../pages/Job_cv_detail.jsx";
 import Profile from "../pages/Profile.jsx";
+import ForgotPasword from "../pages/ForgotPasword.jsx";
+
 
 const Routers = () => {
     return (
@@ -23,6 +25,7 @@ const Routers = () => {
             <Route path="/news-detail" element={<New_detail />} />
             <Route path="/register" element={<Register />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/forgot-password" element={<ForgotPasword />} />
             <Route path="/jobs" element={<Job_find />} />
             <Route path="/jobs/:id" element={<JobDetail />} />
             <Route path="/study" element={<Study_find />} />

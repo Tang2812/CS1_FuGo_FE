@@ -164,20 +164,17 @@ nav ul li a {
 }
 
 .sidebar-content {
-    display: flex;
-    flex-direction: column;
-    padding: 8px;
-    padding-top: 0px;
-   
-    background-color: rgba(217, 217, 217, 1);
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 0px;
+  background-color: rgba(217, 217, 217, 1);
+  gap: 24px;
 }
 
 .sidebar-content h3 {
   display: flex;
   justify-content: center;
   color: #f8f8f8;
-
   margin-bottom: 1rem;
   background-color: #0066cc;
 }
@@ -186,6 +183,7 @@ nav ul li a {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  padding: 0 8px;
 }
 
 .handbook-item img {
@@ -194,6 +192,10 @@ nav ul li a {
   object-fit: cover;
   margin-right: 1rem;
   border-radius: 5px;
+}
+
+.handbook-item p {
+  font-size: 14px;
 }
 
 /* Footer styles */
@@ -218,9 +220,9 @@ footer {
 }
 
 .social-icons {
-    display: flex;
-    flex-direction: row;
-    gap: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
   margin-top: 1rem;
 }
 

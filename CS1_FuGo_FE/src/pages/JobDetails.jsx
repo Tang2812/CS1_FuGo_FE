@@ -41,16 +41,16 @@ const JobDetails = () => {
 
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 py-8">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Left Column - Job Details */}
                     <div className="md:col-span-2">
                         {/* Company Header */}
                         <div className="bg-white rounded-lg p-6 mb-6 shadow-sm">
-                            <div className="flex items-start justify-between">
+                            <div className="sm:flex sm:items-start sm:justify-between">
                                 <div className="flex space-x-4">
                                     <div>
                                         <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
-                                        <h2 className=' text-green-600 font-semibold text-lg flex justify-center mt-3 shadow-md'>{job.jobStatus}</h2>
+                                        <h2 className=' text-green-600 font-semibold text-lg flex justify-center my-3 shadow-md'>{job.jobStatus}</h2>
                                     </div>
                                     <div>
                                         <h2 className="text-xl font-bold mb-2">{job.title}</h2>
