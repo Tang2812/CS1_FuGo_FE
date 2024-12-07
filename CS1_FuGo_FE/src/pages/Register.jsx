@@ -71,10 +71,9 @@ const Register = () => {
       const res = await axios.post(registerURL, data);
       if (res.data.success === true) {
         // console.log(">> Check res: ", res);
-        toast.success("Đăng ký thành công !");
+        toast.success("Register successfully");
         navigate("/login")
-      }
-      else {
+      } else {
         toast.error("Failed to register");
       }
 
@@ -89,7 +88,6 @@ const Register = () => {
   }
 
 
-
   return (
     <>
       <meta charSet="UTF-8" />
@@ -98,7 +96,14 @@ const Register = () => {
       <link rel="stylesheet" href="/src/stylesheet/register.css" />
       <div className="container">
         <div className="form-section">
-          <img src="/src/img/logo.png" alt="FuGo Logo" className="logo mb-5" />
+          <div>
+            <div className="logo-register">
+              <img src="/src/img/logo.png" alt="FuGo Logo" className="" />
+              <label className="logo-name-register">Fugo</label>
+            </div>
+
+          </div>
+
           <h2>Đăng ký tài khoản mới</h2>
 
           <form className="form-dang-ky">

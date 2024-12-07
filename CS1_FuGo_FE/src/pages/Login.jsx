@@ -89,7 +89,11 @@ const Login = () => {
       <link rel="stylesheet" href="/src/stylesheet/login.css" />
       <div className="container">
         <div className="form-section">
-          <img src="/src/img/logo.png" alt="FuGo Logo" className="logo mb-5" />
+          <div className="logo-login">
+            <img src="/src/img/logo.png" alt="FuGo Logo" className="mb-5"/>
+            <label className="logo-name-login">Fugo</label>
+          </div>
+
           <h2 className="text-xl font-semibold">Đăng nhập</h2>
           <form className="form-dang-ky">
             <input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />

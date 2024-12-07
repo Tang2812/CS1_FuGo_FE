@@ -35,12 +35,13 @@ const Header = () => {
         <nav>
           <div className="logo">
             <Link to="/home">
-              <img src="/src/img/logo.png" alt="FuGo" />
+              <img src="/src/img/logo.png" alt="FuGo"/>
             </Link>
+            <label className="logo-name">Fugo</label>
           </div>
           <ul>
             <li>
-              <Link to="/home" className="font-semibold hover:text-blue-700">
+            <Link to="/home" className="font-semibold hover:text-blue-700">
                 Trang chủ
               </Link>
             </li>
@@ -127,6 +128,7 @@ const Header = () => {
                 </div>
               </div>
 
+
               <button
                 className="header-right__avt-info"
                 type="button"
@@ -143,10 +145,7 @@ const Header = () => {
                 <div className="header__list-property">
                   <div className="property__primary">
                     <Link to="/profile" className="property__choice">
-                      <img
-                        src="/src/img/icon_personal.svg"
-                        alt="Thông tin cá nhân"
-                      />
+                      <img src="/src/img/icon_personal.svg" alt="Thông tin cá nhân" />
                       <span>Thông tin cá nhân</span>
                     </Link>
                     <Link to="#" className="property__choice">
@@ -170,35 +169,82 @@ const Header = () => {
                     </Link>
                   </div>
                   <div className="property__list-fc">
-                    <button className="btn btn--outline property__btn">
-                      Đổi tài khoản
-                    </button>
-                    <button
-                      className="btn btn--outline property__btn"
-                      onClick={handleLogout}
-                    >
-                      Đăng Xuất
-                    </button>
+                    <button className="btn btn--outline property__btn">Đổi tài khoản</button>
+                    <button className="btn btn--outline property__btn" onClick={handleLogout}>Đăng Xuất</button>
                   </div>
                 </div>
+
+                  <div>
+                      <>
+                          <label htmlFor="nav-mobile-input" className="header-right__nav-mobile">
+                              <img src="/src/img/nav_mobile.svg" alt="nav mobile icon" />
+                          </label>
+                          <input
+                              hidden
+                              type="checkbox"
+                              className="nav__input"
+                              id="nav-mobile-input"
+                          />
+                          <label htmlFor="nav-mobile-input" className="nav__overlay" />
+                          <nav className="nav-mobile">
+                              <label htmlFor="nav-mobile-input" className="x-icon">
+                                  <img src="/src/img/x_icon.svg" alt="x-icon" />
+                              </label>
+                              <ul className="nav-mobile__list">
+                                  <li>
+                                      <a href="#" className="text--base font-primary nav-mobile__link">
+                                          Support
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#" className="text--base font-primary nav-mobile__link">
+                                          Language
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#" className="text--base font-primary nav-mobile__link">
+                                          List your property
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#" className="text--base font-primary nav-mobile__link">
+                                          Home
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#" className="text--base font-primary nav-mobile__link">
+                                          About
+                                      </a>
+                                  </li>
+                                  <li>
+                                      <a href="#" className="text--base font-primary nav-mobile__link">
+                                          Help
+                                      </a>
+                                  </li>
+                              </ul>
+                          </nav>
+                      </>
+                  </div>
               </>
             </div>
           ) : (
-            <div className="login-signup flex gap-4 font-semibold items-center">
-              <Link
-                to="/login"
-                className="login__btn hover:text-gray-300 text-center bg-[#ff9f23d6] text-white rounded-[20px] py-1.5 px-2.5 text-sm w-[100px] transition-all duration-200"
-              >
-                Đăng nhập
-              </Link>
-              {/* <span className="text-xl">/</span> */}
-              <Link
-                to="/register"
-                className="signup__btn hover:text-gray-400 text-center w-[100px] border border-[#ccc] rounded-[20px] py-1.5 px-2.5 text-sm transition-all duration-200"
-              >
-                Đăng ký
-              </Link>
-            </div>
+              <div className="login-signup flex gap-4 font-semibold items-center">
+                  <Link
+                      to="/login"
+                      className="login__btn hover:text-blue-700 border-2 border-blue-500 rounded-[30px] px-4 py-2"
+                  >
+                      Đăng nhập
+                  </Link>
+                  <span className="text-xl">/</span>
+                  <Link
+                      to="/register"
+                      className="signup__btn hover:text-blue-700 border-2 border-blue-500 rounded-[30px] px-4 py-2"
+                  >
+                      Đăng ký
+                  </Link>
+              </div>
+
+
           )}
         </nav>
       </header>
