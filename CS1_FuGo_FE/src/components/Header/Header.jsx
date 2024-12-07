@@ -154,7 +154,7 @@ const Header = () => {
                     </Link>
                     <Link to="#" className="property__choice">
                       <AiOutlineAudit />
-                      <span>Chỉnh sửa trang các nhân</span>
+                      <span>Chỉnh sửa trang cá nhân</span>
                     </Link>
                   </div>
                   <div className="property-line" />
