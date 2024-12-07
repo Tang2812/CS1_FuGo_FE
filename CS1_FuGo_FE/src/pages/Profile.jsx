@@ -5,7 +5,6 @@ import { SiReaddotcv } from "react-icons/si";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CiBoxList } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
-import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useAuth } from "../context/AuthContext";
 import { useState, useEffect } from "react";
@@ -118,7 +117,7 @@ const Profile = () => {
     };
     fetchProfileData();
   }, []);
-  
+
 //   Hao
     const [isOpen, setIsOpen] = useState(false);
   const [auth, setAuth] = useAuth();
