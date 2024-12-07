@@ -28,11 +28,23 @@ const Login = () => {
     }
   }, [location.pathname]);
 
+  const validateEmail = (email) => {
+    return String(email)
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      );
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!email || !password) {
       toast.warning("Please enter both username and password.");
+      return;
+    }
+    const isValidEmail = validateEmail(email);
+    if (!isValidEmail) {
+      toast.error('Email không hợp lệ')
       return;
     }
     try {
@@ -91,9 +103,8 @@ const Login = () => {
             </button>
           </form>
           <div className="signup-link">
-            <p>
-              Bạn chưa có tài khoản? <a href="/register">Đăng ký</a>
-            </p>
+            <p className='mb-2'><a href="/forgot-password">Quên mật khẩu</a></p>
+            <p>Bạn chưa có tài khoản? <a href="/register">Đăng ký</a></p>
           </div>
         </div>
         <div className="image-section">

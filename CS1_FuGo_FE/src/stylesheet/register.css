@@ -37,10 +37,12 @@ html {
     display: flex;
     flex-direction: row;
     align-items: center;
+
     img {
         width: 100px;
     }
-    .logo-name-register{
+
+    .logo-name-register {
         font-size: 2rem;
     }
 }
@@ -86,7 +88,7 @@ input[type="password"] {
 }
 
 .signup-button {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     background-color: #7e57c2;
     color: white;

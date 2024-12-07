@@ -1,12 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MdOutlinePerson } from "react-icons/md";
 import { MdLockOutline } from "react-icons/md";
 import { SiReaddotcv } from "react-icons/si";
 import { IoMdNotificationsOutline } from "react-icons/io";
 import { CiBoxList } from "react-icons/ci";
-import { useState } from "react";
+import { FaRegHeart } from "react-icons/fa";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { useAuth } from "../context/AuthContext";
+
 const Profile = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [auth, setAuth] = useAuth();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedAuth = localStorage.getItem("auth");
+    const parsedAuth = storedAuth ? JSON.parse(storedAuth) : null;
+    if (!parsedAuth || !parsedAuth.user) {
+      toast.warning("Không xác thực");
+      navigate('/login');
+      window.scrollTo(0, 0);
+    }
+  }, [auth, navigate]);
   return (
     <div className="flex flex-col gap-5 lg:flex-row px-12 py-16 md:py-20 xl:px-40">
       <button
@@ -33,7 +49,7 @@ const Profile = () => {
             </li>
             <li className=" flex items-center hover:bg-blue-50 hover:w-full rounded-lg">
               <SiReaddotcv />
-              <Link className="block p-2">
+              <Link className="block p-2" to="/list-cv">
                 Quản lý CV
               </Link>
             </li>
@@ -41,6 +57,12 @@ const Profile = () => {
               <IoMdNotificationsOutline />
               <Link className="block p-2">
                 Thông báo
+              </Link>
+            </li>
+            <li className=" flex items-center hover:bg-blue-50 hover:w-full rounded-lg">
+              <FaRegHeart />
+              <Link className="block p-2">
+                Yêu thích
               </Link>
             </li>
           </ul>

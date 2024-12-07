@@ -69,6 +69,7 @@ nav ul li a {
   height: 40px;
   border-radius: 50%;
 }
+
 /* Hero section styles */
 main {
   width: 100%;
@@ -145,6 +146,7 @@ article {
   height: 1px;
   background-color: rgba(225, 225, 225, 1);
 }
+
 .hero__image {
   display: flex;
   width: 100%;
@@ -181,7 +183,6 @@ aside {
 .sidebar-content {
   display: flex;
   flex-direction: column;
-  padding: 8px;
   padding-top: 0px;
   background-color: rgba(217, 217, 217, 1);
   gap: 24px;
@@ -200,6 +201,7 @@ aside {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
+  padding: 0 8px;
 }
 
 .handbook-item img {
@@ -210,15 +212,20 @@ aside {
   border-radius: 5px;
 }
 
+.handbook-item p {
+  font-size: 14px;
+}
+
 /* quang cao style */
 .quang-cao {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+  justify-content: center;
 }
 
 .quang-cao__news-item {
-  width: 400px ;
+  width: 400px;
   display: flex;
   flex-direction: row;
   gap: 30px;
@@ -242,6 +249,7 @@ aside {
   gap: 50px;
   color: dimgrey;
 }
+
 /* Footer styles */
 footer {
   background-color: #f8f8f8;
