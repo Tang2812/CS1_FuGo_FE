@@ -39,13 +39,12 @@ const JobForm = () => {
   const handleSubmit = async (e) => {
 
     e.preventDefault();
-    // console.log("check formData: ", formData);
-    if (!formData.fullName || formData.gender || formData.phone
+    if (!formData.fullName || !formData.gender || !formData.phone 
       || !formData.email || !formData.education || !formData.language
-      || !formData.bio || !formData.image) {
-      toast.warning('Vui lòng nhập đầy đủ')
+      || !formData.bio || !formData.image || formData.image.size === 0) {
+      toast.warning('Vui lòng nhập đầy đủ thông tin');
       return;
-    }
+    }    
     const isValidEmail = validateEmail(formData.email);
     if (!isValidEmail) {
       toast.error('Email không hợp lệ')
