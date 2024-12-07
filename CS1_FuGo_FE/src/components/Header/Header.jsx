@@ -175,73 +175,98 @@ const Header = () => {
                 </div>
 
                   <div>
-                      <>
-                          <label htmlFor="nav-mobile-input" className="header-right__nav-mobile">
-                              <img src="/src/img/nav_mobile.svg" alt="nav mobile icon" />
-                          </label>
-                          <input
-                              hidden
-                              type="checkbox"
-                              className="nav__input"
-                              id="nav-mobile-input"
+                    <>
+                      <label htmlFor="nav-mobile-input" className="header-right__nav-mobile">
+                        <img src="/src/img/nav_mobile.svg" alt="nav mobile icon"/>
+                      </label>
+                      <input
+                          hidden
+                          type="checkbox"
+                          className="nav__input"
+                          id="nav-mobile-input"
+                      />
+                      <label htmlFor="nav-mobile-input" className="nav__overlay"/>
+                      <nav className="nav-mobile">
+                        <label htmlFor="nav-mobile-input" className="x-icon">
+                          <img src="/src/img/x_icon.svg" alt="x-icon"/>
+                        </label>
+                        <div className="nav-account__avt">
+                          <img
+                              src="/src/img/avatar.png"
+                              alt=""
+                              className="nav-mobile__avt"
                           />
-                          <label htmlFor="nav-mobile-input" className="nav__overlay" />
-                          <nav className="nav-mobile">
-                              <label htmlFor="nav-mobile-input" className="x-icon">
-                                  <img src="/src/img/x_icon.svg" alt="x-icon" />
-                              </label>
-                              <ul className="nav-mobile__list">
-                                  <li>
-                                      <a href="#" className="text--base font-primary nav-mobile__link">
-                                          Support
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#" className="text--base font-primary nav-mobile__link">
-                                          Language
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#" className="text--base font-primary nav-mobile__link">
-                                          List your property
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#" className="text--base font-primary nav-mobile__link">
-                                          Home
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#" className="text--base font-primary nav-mobile__link">
-                                          About
-                                      </a>
-                                  </li>
-                                  <li>
-                                      <a href="#" className="text--base font-primary nav-mobile__link">
-                                          Help
-                                      </a>
-                                  </li>
-                              </ul>
-                          </nav>
-                      </>
+                          <span className="nav-mobile__name-acount">Tan DVN</span>
+                        </div>
+
+                        <div className="container-account-function-nav">
+                          <ul className="nav-mobile__list">
+                            <li>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                Trang chủ
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                Lịch sử
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                Việc làm
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                Du học
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                tin tức
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                Hỗ trợ
+                              </Link>
+                            </li>
+                            <li>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                Chia sẻ
+                              </Link>
+                              <Link to="#" className="text--base font-primary nav-mobile__link">
+                                Quản lí CV
+                              </Link>
+                            </li>
+                          </ul>
+                          <div className="property__list-fc">
+                            <button className="btn btn--outline property__btn">Đổi tài khoản</button>
+                            <button className="btn btn--outline property__btn" onClick={handleLogout}>Đăng Xuất
+                            </button>
+                          </div>
+                        </div>
+
+                      </nav>
+                    </>
                   </div>
               </>
             </div>
           ) : (
               <div className="login-signup flex gap-4 font-semibold items-center">
-                  <Link
-                      to="/login"
-                      className="login__btn hover:text-blue-700 border-2 border-blue-500 rounded-[30px] px-4 py-2"
-                  >
-                      Đăng nhập
-                  </Link>
-                  <span className="text-xl">/</span>
-                  <Link
-                      to="/register"
-                      className="signup__btn hover:text-blue-700 border-2 border-blue-500 rounded-[30px] px-4 py-2"
-                  >
-                      Đăng ký
-                  </Link>
+                <Link
+                    to="/login"
+                    className="login__btn hover:text-blue-700 border-2 border-blue-500 rounded-[30px] px-4 py-2"
+                >
+                  Đăng nhập
+                </Link>
+                <span className="text-xl">/</span>
+                <Link
+                    to="/register"
+                    className="signup__btn hover:text-blue-700 border-2 border-blue-500 rounded-[30px] px-4 py-2"
+                >
+                  Đăng ký
+                </Link>
               </div>
 
 

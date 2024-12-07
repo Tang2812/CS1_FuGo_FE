@@ -267,9 +267,11 @@ nav ul li a {
     animation: fadeIn linear 0.3s;
     z-index: 3;
 }
-.header-right__nav-mobile{
+
+.header-right__nav-mobile {
     display: none;
 }
+
 @keyframes fadeIn {
     from {
         display: none;
@@ -285,6 +287,7 @@ nav ul li a {
 }
 
 .nav-mobile {
+    width: 50%;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -299,6 +302,13 @@ nav ul li a {
     z-index: 4;
 }
 
+.container-account-function-nav{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
 .nav__input:checked ~ .nav-mobile {
     transform: translateX(0%);
     z-index: 3;
@@ -351,7 +361,7 @@ nav ul li a {
 .nav-mobile__link {
     text-decoration: none;
     display: block;
-    padding: 8px 0px;
+    padding: 8px 0;
     color: black;
 }
 
@@ -374,7 +384,7 @@ nav ul li a {
         gap: 20px;
     }
 
-    .header-right__nav-mobile{
+    .header-right__nav-mobile {
         display: flex;
     }
 }
