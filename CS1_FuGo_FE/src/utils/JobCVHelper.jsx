@@ -48,6 +48,41 @@ export const columnsCV = [
   },
 ];
 
+export const columnsReviewed = [
+  {
+    name: "STT",
+    selector: (row) => row.sno,
+    sortable: true,
+    grow: 1,
+  },
+  {
+    name: "Tên ứng viên",
+    selector: (row) => row.name,
+    sortable: true,
+    grow: 1,
+  },
+  {
+    name: "Tình trạng",
+    selector: (row) => row.status,
+    cell: (row) => (
+      <span
+        style={{
+          color: row.status === "Từ chối" ? "red" : row.status === "Chấp nhận" ? "green" : "inherit",
+          fontWeight: row.status === "Từ chối" || row.status === "Chấp nhận" ? "bold" : "normal",
+        }}
+      >
+        {row.status}
+      </span>
+    ),
+    grow: 1,
+  },
+  {
+    name: "Ngày duyệt",
+    selector: (row) => row.date,
+    grow: 1,
+  }
+];
+
 export const JobCVButtons = ({ Id }) => {
   const navigate = useNavigate();
   return (
