@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import DataTable from "react-data-table-component";
-import { columnsReviewed, conditionalRowStyles } from "../../utils/JobCVHelper";
+import { columnsReviewed } from "../../utils/JobCVHelper";
 
 const ProfileReview = () => {
   const [listCV, setListCV] = useState([]);
