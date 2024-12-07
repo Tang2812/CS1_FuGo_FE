@@ -26,7 +26,7 @@ const Header = () => {
         address: "",
         height: "",
         weight: "",
-        bio: "", // added bio
+        bio: "",
         user_img: null,
     });
 
