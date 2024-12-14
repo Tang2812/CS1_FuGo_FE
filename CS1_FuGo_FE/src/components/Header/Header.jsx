@@ -1,6 +1,6 @@
-import {Link, useNavigate} from "react-router-dom";
-import {useAuth} from "../../context/AuthContext";
-import {toast} from "react-toastify";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 import {
     AiFillTag,
     AiFillTool,
@@ -9,28 +9,12 @@ import {
     AiOutlineMail,
     AiTwotoneWarning,
 } from "react-icons/ai";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import dayjs from "dayjs";
 
 const Header = () => {
 
-    const [profileData, setProfileData] = useState({
-        accountId: "",
-        username: "",
-        phone: "",
-        birthday: "",
-        gender: "",
-        status_to_go: "",
-        country: "",
-        address: "",
-        height: "",
-        weight: "",
-        bio: "",
-        user_img: null,
-    });
-
-    const [isNewProfile, setIsNewProfile] = useState(false); // Check if it's a new profile
+    const [userImg, setUserImg] = useState(null);
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
 
@@ -47,12 +31,11 @@ const Header = () => {
 
     // Fetch user profile data from the backend
     useEffect(() => {
-        console.log("Profile data updated:", profileData);
         const fetchProfileData = async () => {
             try {
                 const authData = JSON.parse(localStorage.getItem("auth"));
                 if (!authData || !authData.user || !authData.token) {
-                    alert("Không tìm thấy thông tin xác thực người dùng");
+                    toast.warning("Không tìm thấy thông tin xác thực người dùng");
                     return;
                 }
                 const userId = authData.user._id; // Get _id from user
@@ -70,31 +53,12 @@ const Header = () => {
 
                 if (response.data && response.data.success) {
                     const userData = response.data.data;
-
-                    setProfileData({
-                        accountId: userData.accountId || "",
-                        username: userData.username || "",
-                        phone: userData.phone || "", // Nếu `phone` có trong backend
-                        birthday: userData.birthday
-                            ? dayjs(userData.birthday).format("YYYY-MM-DD") // Chuyển thành `dd-mm-yyyy`
-                            : "",
-                        gender: userData.gender || "",
-                        status_to_go: userData.status_to_go || "",
-                        country: userData.country || "",
-                        address: userData.address || "",
-                        height: userData.height || "",
-                        weight: userData.weight || "",
-                        bio: userData.bio || "",
-                        user_img: userData.user_img || null,
-                    });
-                } else {
-                    // If no data, set the profile as new
-                    setIsNewProfile(true);
+                    // console.log(userData.user_img);
+                    setUserImg(userData.user_img);
                 }
-                console.log(profileData.user_img)
+                // console.log(userImg);
             } catch (error) {
                 console.error("Error fetching profile data:", error);
-                setIsNewProfile(true); // Mark the profile as new if error occurs
             }
         };
         fetchProfileData();
@@ -102,15 +66,15 @@ const Header = () => {
 
     return (
         <>
-            <meta charSet="UTF-8"/>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <meta charSet="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
             <title>FuGo - Đăng ký tài khoản mới</title>
-            <link rel="stylesheet" href="/src/stylesheet/header.css"/>
+            <link rel="stylesheet" href="/src/stylesheet/header.css" />
             <header>
                 <nav>
                     <div className="logo">
                         <Link to="/home">
-                            <img src="/src/img/logo.png" alt="FuGo"/>
+                            <img src="/src/img/logo.png" alt="FuGo" />
                         </Link>
                         <label className="logo-name">Fugo</label>
                     </div>
@@ -173,14 +137,14 @@ const Header = () => {
                                 <h2>Notification</h2>
                                 <div className="notification__container">
                                     <div className="notification__message">
-                                        <AiOutlineMail size={50}/>
+                                        <AiOutlineMail size={50} />
                                         <div className="message">
-                      <span className="message__user-name">
-                        Hồ sơ của bạn đã được duyệt!!!{" "}
-                      </span>
+                                            <span className="message__user-name">
+                                                Hồ sơ của bạn đã được duyệt!!!{" "}
+                                            </span>
                                             <span className="message__content">
-                        Công ty TNHH The King
-                      </span>
+                                                Công ty TNHH The King
+                                            </span>
                                             <span className="message__time">1 phút trước</span>
                                         </div>
                                     </div>
@@ -188,14 +152,14 @@ const Header = () => {
                                 </div>
                                 <div className="notification__container">
                                     <div className="notification__message">
-                                        <AiTwotoneWarning size={50}/>
+                                        <AiTwotoneWarning size={50} />
                                         <div className="message">
-                      <span className="message__user-name">
-                        Hồ sơ của bạn đã bị từ chối!!!
-                      </span>
+                                            <span className="message__user-name">
+                                                Hồ sơ của bạn đã bị từ chối!!!
+                                            </span>
                                             <span className="message__content">
-                        Công ty dệt may kawashaki
-                      </span>
+                                                Công ty dệt may kawashaki
+                                            </span>
                                             <span className="message__time">30 phút trước</span>
                                         </div>
                                     </div>
@@ -210,7 +174,7 @@ const Header = () => {
                                 title="avt button"
                             >
                                 <img
-                                    src={profileData.user_img}
+                                    src={userImg}
                                     alt="User profile"
                                     className="user-avatar"
                                 />
@@ -220,26 +184,26 @@ const Header = () => {
                                 <div className="header__list-property">
                                     <div className="property__primary">
                                         <Link to="/profile" className="property__choice">
-                                            <img src="/src/img/icon_personal.svg" alt="Thông tin cá nhân"/>
+                                            <img src="/src/img/icon_personal.svg" alt="Thông tin cá nhân" />
                                             <span>Thông tin cá nhân</span>
                                         </Link>
                                         <Link to="#" className="property__choice">
-                                            <AiFillTag/>
+                                            <AiFillTag />
                                             <span>Liên kết tài khoản</span>
                                         </Link>
                                         <Link to="#" className="property__choice">
-                                            <AiOutlineAudit/>
+                                            <AiOutlineAudit />
                                             <span>Chỉnh sửa trang cá nhân</span>
                                         </Link>
                                     </div>
-                                    <div className="property-line"/>
+                                    <div className="property-line" />
                                     <div className="property__primary">
                                         <Link to="#" className="property__choice">
-                                            <AiFillTool/>
+                                            <AiFillTool />
                                             <span>Cài đặt</span>
                                         </Link>
                                         <Link to="#" className="property__choice">
-                                            <AiOutlineLock/>
+                                            <AiOutlineLock />
                                             <span>Đổi mật khẩu</span>
                                         </Link>
                                     </div>
@@ -254,7 +218,7 @@ const Header = () => {
                                 <div>
                                     <>
                                         <label htmlFor="nav-mobile-input" className="header-right__nav-mobile">
-                                            <img src="/src/img/nav_mobile.svg" alt="nav mobile icon"/>
+                                            <img src="/src/img/nav_mobile.svg" alt="nav mobile icon" />
                                         </label>
                                         <input
                                             hidden
@@ -262,14 +226,14 @@ const Header = () => {
                                             className="nav__input"
                                             id="nav-mobile-input"
                                         />
-                                        <label htmlFor="nav-mobile-input" className="nav__overlay"/>
+                                        <label htmlFor="nav-mobile-input" className="nav__overlay" />
                                         <nav className="nav-mobile">
                                             <label htmlFor="nav-mobile-input" className="x-icon">
-                                                <img src="/src/img/x_icon.svg" alt="x-icon"/>
+                                                <img src="/src/img/x_icon.svg" alt="x-icon" />
                                             </label>
                                             <div className="nav-account__avt">
                                                 <img
-                                                    src={profileData.user_img}
+                                                    src={userImg}
                                                     alt=""
                                                     className="nav-mobile__avt"
                                                 />
@@ -280,47 +244,47 @@ const Header = () => {
                                                 <ul className="nav-mobile__list">
                                                     <li>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             Trang chủ
                                                         </Link>
                                                     </li>
                                                     <li>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             Lịch sử
                                                         </Link>
                                                     </li>
                                                     <li>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             Việc làm
                                                         </Link>
                                                     </li>
                                                     <li>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             Du học
                                                         </Link>
                                                     </li>
                                                     <li>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             tin tức
                                                         </Link>
                                                     </li>
                                                     <li>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             Hỗ trợ
                                                         </Link>
                                                     </li>
                                                     <li>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             Chia sẻ
                                                         </Link>
                                                         <Link to="#"
-                                                              className="text--base font-primary nav-mobile__link">
+                                                            className="text--base font-primary nav-mobile__link">
                                                             Quản lí CV
                                                         </Link>
                                                     </li>
@@ -329,7 +293,7 @@ const Header = () => {
                                                     <button className="btn btn--outline property__btn">Đổi tài khoản
                                                     </button>
                                                     <button className="btn btn--outline property__btn"
-                                                            onClick={handleLogout}>Đăng Xuất
+                                                        onClick={handleLogout}>Đăng Xuất
                                                     </button>
                                                 </div>
                                             </div>

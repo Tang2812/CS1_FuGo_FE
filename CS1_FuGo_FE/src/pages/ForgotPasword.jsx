@@ -41,10 +41,13 @@ const ForgotPasword = () => {
       <meta charSet="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>FuGo - Quên mật khẩu</title>
-      <link rel="stylesheet" href="/src/stylesheet/login.css" />
+      <link rel="stylesheet" href="/src/stylesheet/forgot_password.css" />
       <div className="container">
         <div className="form-section">
-          <img src="/src/img/logo.png" alt="FuGo Logo" className="logo mb-5" />
+          <div className="logo-login">
+            <img src="/src/img/logo.png" alt="FuGo Logo" className="mb-5" />
+            <label className="logo-name-login">Fugo</label>
+          </div>
           <h2 className="text-xl font-semibold">Quên mật khẩu</h2>
 
           {isSent
