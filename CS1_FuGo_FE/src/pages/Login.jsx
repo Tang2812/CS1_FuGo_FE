@@ -54,7 +54,7 @@ const Login = () => {
         password,
       };
       const res = await axios.post(loginURL, data);
-      console.log(">>Check res: ", res);
+      // console.log(">>Check res: ", res);
       if (res.data.accessToken) {
         toast.success("Đăng nhập thành công.");
         // set token
@@ -79,7 +79,7 @@ const Login = () => {
     }
   }
 
-  console.log(auth);
+  // console.log(auth);
 
   return (
     <>
@@ -90,7 +90,7 @@ const Login = () => {
       <div className="container">
         <div className="form-section">
           <div className="logo-login">
-            <img src="/src/img/logo.png" alt="FuGo Logo" className="mb-5"/>
+            <img src="/src/img/logo.png" alt="FuGo Logo" className="mb-5" />
             <label className="logo-name-login">Fugo</label>
           </div>
 

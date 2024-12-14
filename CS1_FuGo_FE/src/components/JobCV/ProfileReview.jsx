@@ -24,7 +24,7 @@ const ProfileReview = () => {
             status: cv.status,
             date: new Date(cv.updatedAt).toLocaleDateString(),
           }));
-          
+
           setListCV(data);
         }
       } catch (error) {
@@ -54,7 +54,7 @@ const ProfileReview = () => {
             />
           </div>
           <div className="mt-5">
-            <DataTable columns={columnsReviewed} data={listCV}  pagination />
+            <DataTable columns={columnsReviewed} data={listCV} pagination />
           </div>
         </div>
       )}

@@ -71,7 +71,7 @@ const Profile = () => {
       try {
         const authData = JSON.parse(localStorage.getItem("auth"));
         if (!authData || !authData.user || !authData.token) {
-          alert("Không tìm thấy thông tin xác thực người dùng");
+          toast.error("Không tìm thấy thông tin xác thực người dùng");
           return;
         }
         const userId = authData.user._id; // Get _id from user
@@ -118,8 +118,8 @@ const Profile = () => {
     fetchProfileData();
   }, []);
 
-//   Hao
-    const [isOpen, setIsOpen] = useState(false);
+  //   Hao
+  const [isOpen, setIsOpen] = useState(false);
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
 
@@ -139,7 +139,7 @@ const Profile = () => {
 
     const authData = JSON.parse(localStorage.getItem("auth"));
     if (!authData || !authData.user || !authData.token) {
-      alert("Không tìm thấy thông tin xác thực người dùng");
+      toast.warning("Không tìm thấy thông tin xác thực người dùng");
       return;
     }
     const userId = authData.user._id;
@@ -170,7 +170,7 @@ const Profile = () => {
           }
         );
         console.log("Profile created successfully:", response.data);
-        alert("Tạo thông tin cá nhân thành công");
+        toast.success("Tạo thông tin cá nhân thành công");
         setIsNewProfile(false);
       } else {
         // If the profile exists, update it
@@ -184,12 +184,36 @@ const Profile = () => {
             },
           }
         );
-        console.log("Profile updated successfully:", response.data);
-        alert("Cập nhật thông tin thành công");
+        console.log("check res update: ", response.data.data);
+        if (response.data && response.data.success) {
+          const userData = response.data.data;
+
+          setProfileData({
+            accountId: userData.accountId || "",
+            username: userData.username || "",
+            phone: userData.phone || "", // Nếu `phone` có trong backend
+            birthday: userData.birthday
+              ? dayjs(userData.birthday).format("YYYY-MM-DD") // Chuyển thành `dd-mm-yyyy`
+              : "",
+            gender: userData.gender || "",
+            status_to_go: userData.status_to_go || "",
+            country: userData.country || "",
+            address: userData.address || "",
+            height: userData.height || "",
+            weight: userData.weight || "",
+            bio: userData.bio || "",
+            user_img: userData.user_img || null,
+          });
+          toast.success("Cập nhật thông tin thành công");
+          navigate('/profile', { replace: true });
+        } else {
+          toast.error("Lỗi, không thể cập nhật!!");
+        }
+
       }
     } catch (error) {
       console.error("Error submitting profile:", error);
-      alert("Không thể cập nhật thông tin");
+      toast.error("Không thể cập nhật thông tin");
     }
   };
 
@@ -240,7 +264,7 @@ const Profile = () => {
       </div>
 
       {/* Main Form */}
-      <form className="lg:w-3/4 space-y-6">
+      <form className="lg:w-3/4 space-y-6" onSubmit={handleSubmit}>
         <h2 className="text-3xl font-semibold text-gray-900">
           Thông tin cá nhân
         </h2>
