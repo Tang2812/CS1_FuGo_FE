@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, BrowserRouter } from "react-router-dom";
+import {Routes, Route, Navigate, BrowserRouter} from "react-router-dom";
 import HomePage from "../pages/HomePage";
 import News from "../pages/News";
 import New_detail from "../pages/New_detail";
@@ -13,27 +13,29 @@ import StudyDetails from "../pages/StudyDetails";
 import Job_cv_detail from "../pages/Job_cv_detail.jsx";
 import Profile from "../pages/Profile.jsx";
 import ForgotPasword from "../pages/ForgotPasword.jsx";
+import {ForgotPassword_step2} from "../pages/ForgotPassword_step2.jsx";
 
 
 const Routers = () => {
     return (
 
         <Routes>
-            <Route path="/" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<HomePage />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/news-detail" element={<New_detail />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/forgot-password" element={<ForgotPasword />} />
-            <Route path="/jobs" element={<Job_find />} />
-            <Route path="/jobs/:id" element={<JobDetail />} />
-            <Route path="/study" element={<Study_find />} />
-            <Route path="/study/:id" element={<StudyDetails />} />
-            <Route path="/list-cv" element={<List_Cv />} />
-            <Route path="/job_cv_detail" element={<Job_cv_detail />} />
-            <Route path="/application/job/:id" element={<JobForm />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/" element={<Navigate to="/home"/>}/>
+            <Route path="/home" element={<HomePage/>}/>
+            <Route path="/news" element={<News/>}/>
+            <Route path="/news-detail" element={<New_detail/>}/>
+            <Route path="/register" element={<Register/>}/>
+            <Route path="/login" element={<Login/>}/>
+            <Route path="/forgot-password" element={<ForgotPasword/>}/>
+            <Route path="/forgot-password-step2" element={<ForgotPassword_step2/>}/>
+            <Route path="/jobs" element={<Job_find/>}/>
+            <Route path="/jobs/:id" element={<JobDetail/>}/>
+            <Route path="/study" element={<Study_find/>}/>
+            <Route path="/study/:id" element={<StudyDetails/>}/>
+            <Route path="/list-cv" element={<List_Cv/>}/>
+            <Route path="/job_cv_detail" element={<Job_cv_detail/>}/>
+            <Route path="/application/job/:id" element={<JobForm/>}/>
+            <Route path="/profile" element={<Profile/>}/>
         </Routes>
 
     );
