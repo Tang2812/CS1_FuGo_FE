@@ -12,27 +12,27 @@ const HomePagePartnersStudy = () => {
                 </div>
                 <div className="partner-tag col-span-6 sm:col-span-4 lg:col-span-2">
                     <a href="#">
-                        <img src={partnerImg} alt="" />
+                        <img src='/src/img/school/school_1.png' alt="" />
                     </a>
                 </div>
                 <div className="partner-tag col-span-6 sm:col-span-4 lg:col-span-2">
                     <a href="#">
-                        <img src={partnerImg} alt="" />
+                        <img src='/src/img/school/school_2.png' alt=""/>
                     </a>
                 </div>
                 <div className="partner-tag col-span-6 sm:col-span-4 lg:col-span-2">
                     <a href="#">
-                        <img src={partnerImg} alt="" />
+                        <img src='/src/img/school/school_3.png' alt=""/>
                     </a>
                 </div>
                 <div className="partner-tag col-span-6 sm:col-span-4 lg:col-span-2">
                     <a href="#">
-                        <img src={partnerImg} alt="" />
+                        <img src='/src/img/school/school_4.png' alt=""/>
                     </a>
                 </div>
                 <div className="partner-tag col-span-6 sm:col-span-4 lg:col-span-2">
                     <a href="#">
-                        <img src={partnerImg} alt="" />
+                        <img src='/src/img/school/img.png' alt=""/>
                     </a>
                 </div>
             </div>

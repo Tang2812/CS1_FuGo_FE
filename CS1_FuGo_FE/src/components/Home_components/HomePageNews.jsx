@@ -30,7 +30,7 @@ const HomePageNews = () => {
                 <div className="content-tag mx-5 col-span-12 mb-5 md:col-span-6 lg:col-span-4 bg-white rounded-[10px] shadow-2xl p-[12px] w-full sm:w-[90%] hover:mt-[-4px]">
                     <div className="content-tag-header flex">
                         <div className="tag-header-img ml-3 w-40 border-black border-2 border-solid">
-                            <img src={tagHeader} alt="" className="w-[100%] h-[100%]" />
+                            <img src="/src/img/new_img/new_1.png" alt="" className="w-[100%] h-[100%]" />
                         </div>
                         <div className="tag-header ml-3">
                             <p className="tag-header-title text-[20px] font-semibold">Vệ sinh tòa nhà</p>
@@ -45,7 +45,7 @@ const HomePageNews = () => {
                 <div className="content-tag mx-5 col-span-12 mb-5 md:col-span-6 lg:col-span-4 bg-white rounded-[10px] shadow-2xl p-[12px] w-full sm:w-[90%] hover:mt-[-4px]">
                     <div className="content-tag-header flex">
                         <div className="tag-header-img ml-3 w-40 border-black border-2 border-solid">
-                            <img src={tagHeader} alt="" className="w-[100%] h-[100%]" />
+                            <img src="/src/img/new_img/new_2.png" alt="" className="w-[100%] h-[100%]" />
                         </div>
                         <div className="tag-header ml-3">
                             <p className="tag-header-title text-[20px] font-semibold">Vệ sinh tòa nhà</p>
