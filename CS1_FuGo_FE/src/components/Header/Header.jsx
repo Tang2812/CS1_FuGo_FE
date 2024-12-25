@@ -31,6 +31,13 @@ const Header = () => {
 
     // Fetch user profile data from the backend
     useEffect(() => {
+        const authData = JSON.parse(localStorage.getItem("auth"));
+            if (authData && authData.user && authData.user.user_img) {
+                setUserImg(authData.user.user_img);  // Lấy ảnh từ localStorage trước
+            } else {
+                setUserImg("/src/img/logo.png");
+            }
+
         const fetchProfileData = async () => {
             try {
                 const authData = JSON.parse(localStorage.getItem("auth"));
@@ -55,6 +62,14 @@ const Header = () => {
                     const userData = response.data.data;
                     // console.log(userData.user_img);
                     setUserImg(userData.user_img);
+                    const updateAuthData = {
+                        ...authData,
+                        user: {
+                            ...authData.user,
+                            user_img: userData.user_img,
+                        }
+                    };
+                    localStorage.setItem("auth", JSON.stringify(updateAuthData));
                 }
                 // console.log(userImg);
             } catch (error) {
@@ -114,11 +129,13 @@ const Header = () => {
                                 Chia sẻ
                             </Link>
                         </li>
+                        {auth.user && (
                         <li>
                             <Link to="/list-cv" className="font-semibold hover:text-blue-700">
                                 Quản lí CV
                             </Link>
                         </li>
+                    )}
                     </ul>
                     {auth.user ? (
                         <div className="user-controls">

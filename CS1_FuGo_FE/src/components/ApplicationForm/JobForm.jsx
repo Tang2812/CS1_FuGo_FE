@@ -41,7 +41,7 @@ const JobForm = () => {
     e.preventDefault();
     if (!formData.fullName || !formData.gender || !formData.phone 
       || !formData.email || !formData.education || !formData.language
-      || !formData.bio || !formData.image || formData.image.size === 0) {
+      || !formData.bio) {
       toast.warning('Vui lòng nhập đầy đủ thông tin');
       return;
     }    

@@ -172,6 +172,9 @@ const Profile = () => {
         console.log("Profile created successfully:", response.data);
         toast.success("Tạo thông tin cá nhân thành công");
         setIsNewProfile(false);
+        setTimeout(() => {
+          window.location.reload(); // Tự động refresh trang sau khi tạo mới thành công
+        }, 2000);
       } else {
         // If the profile exists, update it
         const response = await axios.put(
@@ -205,6 +208,9 @@ const Profile = () => {
             user_img: userData.user_img || null,
           });
           toast.success("Cập nhật thông tin thành công");
+          setTimeout(() => {
+            window.location.reload(); // Tự động refresh trang sau khi tạo mới thành công
+          }, 2000);
           navigate('/profile', { replace: true });
         } else {
           toast.error("Lỗi, không thể cập nhật!!");
