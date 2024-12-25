@@ -25,6 +25,7 @@ const Header = () => {
             user: null,
             token: "",
         });
+        setUserImg("/src/img/logo.png");
         localStorage.removeItem("auth");
         navigate("/login");
     };
@@ -33,7 +34,7 @@ const Header = () => {
     useEffect(() => {
         const authData = JSON.parse(localStorage.getItem("auth"));
             if (authData && authData.user && authData.user.user_img) {
-                setUserImg(authData.user.user_img);  // Lấy ảnh từ localStorage trước
+                setUserImg(authData.user.user_img);  
             } else {
                 setUserImg("/src/img/logo.png");
             }
@@ -42,7 +43,6 @@ const Header = () => {
             try {
                 const authData = JSON.parse(localStorage.getItem("auth"));
                 if (!authData || !authData.user || !authData.token) {
-                    toast.warning("Không tìm thấy thông tin xác thực người dùng");
                     return;
                 }
                 const userId = authData.user._id; // Get _id from user
@@ -77,7 +77,7 @@ const Header = () => {
             }
         };
         fetchProfileData();
-    }, []);
+    }, [auth?.user?._id]);
 
     return (
         <>
