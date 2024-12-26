@@ -56,7 +56,7 @@ const Login = () => {
       const res = await axios.post(loginURL, data);
       // console.log(">>Check res: ", res);
       if (res.data.accessToken) {
-        toast.success("Đăng nhập thành công.");
+        // toast.success("Đăng nhập thành công.");
         // set token
         setAuth({
           ...auth,
@@ -70,6 +70,7 @@ const Login = () => {
         };
         localStorage.setItem("auth", JSON.stringify(authToken));
         navigate("/");
+        window.location.reload();
       } else {
         toast.error("Failed to login");
       }

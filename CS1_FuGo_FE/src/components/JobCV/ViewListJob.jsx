@@ -60,7 +60,7 @@ const ViewListJob = () => {
               className="px-4 py-0.5 rounded border"
             />
             <Link
-              to="/admin-dashboard/add-department"
+              to="/partner/add-department"
               className="px-4 py-1 bg-teal-600 rounded text-white"
             >
               Thêm công việc mới

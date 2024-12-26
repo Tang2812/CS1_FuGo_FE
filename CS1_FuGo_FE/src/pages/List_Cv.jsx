@@ -1,7 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
+import { toast } from "react-toastify";
 
 const List_Cv = () => {
+    const [auth, setAuth] = useAuth();
+    const navigate = useNavigate();
     const { ListCV, setListCV } = useState([]);
     useEffect(() => {
         getALlCv();
@@ -11,6 +15,22 @@ const List_Cv = () => {
         setListCV(response.content);
         setTotalPages(response.totalPages);
     };
+
+    useEffect(() => {
+        const storedAuth = localStorage.getItem("auth");
+        const parsedAuth = storedAuth ? JSON.parse(storedAuth) : null;
+        console.log(">> Check auth: ", parsedAuth);
+        if (!parsedAuth || !parsedAuth.user) {
+            toast.warning("Bạn cần đăng nhập trước để xem CVs!");
+            navigate('/login');
+            window.scrollTo(0, 0);
+        }
+        // else {
+        //     const userId = auth?.user?._id || parsedAuth?.user?._id;
+        //     setAccountId(userId);
+        // }
+    }, [auth, navigate]);
+
     return (
 
         <>

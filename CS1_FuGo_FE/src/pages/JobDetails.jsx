@@ -9,6 +9,8 @@ import { toast } from 'react-toastify';
 const JobDetails = () => {
 
     const [job, setJob] = useState([]);
+    const [partner, setPartner] = useState([]);
+    const [partnerId, setPartnerId] = useState("");
     const params = useParams();
     const location = useLocation();
     const navigate = useNavigate();
@@ -16,24 +18,48 @@ const JobDetails = () => {
     const jobId = params.id;
 
     const getJobData = (id) => {
-        return axios.get(`http://localhost:3000/api/v1/jobs/${id}`)
+        return axios.get(`http://localhost:3000/api/v1/jobs/${id}`);
+    };
+
+    const getPartnerData = (id) => {
+        return axios.get(`http://localhost:3000/api/v1/partners/${id}`);
     };
 
     useEffect(() => {
         fetchJobData();
-    }, [jobId])
+    }, [jobId]);
 
     const fetchJobData = async () => {
         try {
             const res = await getJobData(jobId);
+            // console.log(">>Check res: ", res?.data?.data);
             setJob(res?.data?.data);
+            setPartnerId(res?.data?.data?.partnerId);
         } catch (error) {
             if (error.response && !error.response.data.success) {
                 toast(error.response.data.error);
             }
         }
-
     };
+
+    useEffect(() => {
+        fetchPartnerData();
+    }, [partnerId]);
+
+    const fetchPartnerData = async () => {
+        // console.log(">> check partnerId: ", partnerId);
+        try {
+            const res = await getPartnerData(partnerId);
+            // console.log(">>Check res partner: ", res);
+            setPartner(res?.data?.data);
+        } catch (error) {
+            if (error.response && !error.response.data.success) {
+                toast(error.response.data.error);
+            }
+        }
+    };
+
+    // console.log(">>Check partner : ", partner);
 
     return (
         <div className="min-h-screen bg-gray-50">
@@ -49,7 +75,7 @@ const JobDetails = () => {
                             <div className="sm:flex sm:items-start sm:justify-between">
                                 <div className="flex space-x-4">
                                     <div>
-                                        <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
+                                        <img src={job.image ? job.image : tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
                                         <h2 className=' text-green-600 font-semibold text-lg flex justify-center my-3 shadow-md'>{job.jobStatus}</h2>
                                     </div>
                                     <div>
@@ -144,10 +170,10 @@ const JobDetails = () => {
                                 </div>
                                 <div className="p-4">
                                     <div className="space-y-2">
-                                        <p><span className="font-semibold">Họ tên:</span> Nguyễn Hoàng</p>
+                                        <p><span className="font-semibold">Họ tên:</span> {partner.contact_person}</p>
                                         <p><span className="font-semibold">Chức vụ:</span> Nhân viên</p>
-                                        <p><span className="font-semibold">Điện thoại:</span> 0903367182</p>
-                                        <p><span className="font-semibold">Email:</span> huongquyen.tuyendung@gmail.com</p>
+                                        <p><span className="font-semibold">Điện thoại:</span> {partner.contact_phone_person}</p>
+                                        <p><span className="font-semibold">Email:</span> tuyendung@gmail.com</p>
                                     </div>
                                 </div>
                             </div>

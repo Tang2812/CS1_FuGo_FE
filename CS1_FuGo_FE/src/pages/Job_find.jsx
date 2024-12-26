@@ -57,6 +57,8 @@ const Job_find = () => {
   const fetchJob = async (page) => {
     try {
       const response = await fetchData(page);
+      // let jobOfPage = response?.data?.data;
+      // console.log("check res: ", jobOfPage);
       setJobs(response?.data?.data);
       setTotalPages(Math.ceil(response?.data?.jobCount / 8));
     } catch (error) {
@@ -78,8 +80,12 @@ const Job_find = () => {
 
   const handlePageClick = (event) => {
     fetchJob(+event.selected);
-  }
+    // console.log("+event.selected: ", +event.selected);
+  };
 
+
+
+  console.log("check res: ", jobs);
 
   return (
     <>
@@ -173,7 +179,7 @@ const Job_find = () => {
             <div key={index} className="job-card xl:col-span-3 lg:col-span-4 sm:col-span-6 col-span-9">
 
               {/* image jobs */}
-              <img src="/src/img/work_avt.png" alt="" />
+              <img src={job.image} alt="" className="h-[200px] w-[355px] object-cover" />
               <div className="job-card__content">
                 {/* name job */}
                 <h2><b>{job.title}</b></h2>

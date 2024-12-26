@@ -1,13 +1,44 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Facebook, Twitter, Linkedin, Youtube, Clock, MapPin, Share2 } from 'lucide-react';
-import tagImg from "../img/tagImg.jpg";
 import { FaMoneyBillWave } from "react-icons/fa";
+import tagImg from "../img/tagImg.jpg";
+import axios from 'axios';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { FaRegClock } from "react-icons/fa";
 
 const StudyDetails = () => {
+
+    const [study, setStudy] = useState([]);
+    const [partnerId, setPartnerId] = useState("");
+    const params = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
+
+    const studyId = params.id;
+    useEffect(() => {
+        fetchJobData();
+    }, [studyId]);
+
+    const getJobData = (id) => {
+        return axios.get(`http://localhost:3000/api/v1/study/${id}`);
+    };
+
+    const fetchJobData = async () => {
+        try {
+            const res = await getJobData(studyId);
+            console.log(">>Check res: ", res?.data?.data);
+            setStudy(res?.data?.data);
+            // setPartnerId(res?.data?.data?.partnerId);
+        } catch (error) {
+            if (error.response && !error.response.data.success) {
+                toast(error.response.data.error);
+            }
+        }
+    };
+
     return (
         <div className="min-h-screen bg-gray-50">
-
-
             {/* Main Content */}
             <div className="max-w-7xl mx-auto px-4 py-8">
                 <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-8">
@@ -21,26 +52,26 @@ const StudyDetails = () => {
                                         <img src={tagImg} alt="Company Logo" className="w-32 h-32 object-cover" />
                                         <h2 className=' text-green-600 font-semibold text-lg flex justify-center my-3 shadow-md'>Đang tuyển</h2>
                                     </div>
-                                    <div>
-                                        <h2 className="text-xl font-bold mb-2">Vệ sinh nhà cửa</h2>
-                                        <p className="text-gray-600 mb-2">Cleaner Co.</p>
+                                    <div className='w-9/12'>
+                                        <h2 className="text-xl font-bold mb-2">{study.title}</h2>
+                                        <p className="text-gray-600 mb-2">{study.partner_name}</p>
                                         <div className="flex items-center space-x-2 text-gray-500">
                                             <Clock className="w-4 h-4" />
                                             <span>Dự kiến xuất cảnh: 12/2024</span>
                                         </div>
                                         <div className="flex items-center space-x-2 text-gray-500">
                                             <MapPin className="w-4 h-4" />
-                                            <span>Aichi, Japan</span>
+                                            <span>{study.location}</span>
                                         </div>
                                         <div className="flex items-center space-x-2 text-gray-500">
-                                            <FaMoneyBillWave className="w-4 h-4" />
-                                            <span>1000$ - 2000$</span>
+                                            <FaRegClock className="w-4 h-4" />
+                                            <span>{study.duration}</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div className="space-y-2">
                                     <button className="w-full bg-green-500 text-white px-4 py-2 rounded-md"
-                                    // onClick={() => navigate(`/application/job/${jobId}`)}
+                                        onClick={() => navigate(`/application/study/${studyId}`)}
                                     >
                                         Ứng tuyển ngay
                                     </button>
@@ -59,15 +90,15 @@ const StudyDetails = () => {
                                     <h2 className="text-white font-semibold">CHI TIẾT THÔNG TIN</h2>
                                 </div>
                                 <div className="p-4">
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 gap-4">
                                         <div>
-                                            <p className="font-semibold mb-2">Hình thức:</p>
-                                            <p>Xuất khẩu lao động</p>
+                                            <p className="font-semibold mb-2">Mô tả:</p>
+                                            <p>{study.description}</p>
                                         </div>
-                                        <div>
+                                        {/* <div>
                                             <p className="font-semibold mb-2">Đối tượng:</p>
                                             <p>Xuất khẩu lao động trọn gói</p>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -78,15 +109,15 @@ const StudyDetails = () => {
                                     <h2 className="text-white font-semibold">YÊU CẦU ỨNG VIÊN</h2>
                                 </div>
                                 <div className="p-4">
-                                    <div className="grid grid-cols-2 gap-4">
+                                    <div className="grid grid-cols-1 gap-4">
                                         <div>
-                                            <p className="font-semibold mb-2">Giới tính:</p>
-                                            <p>Nam</p>
+                                            <p className="font-semibold mb-2"></p>
+                                            <p>{study.requirements}</p>
                                         </div>
-                                        <div>
+                                        {/* <div>
                                             <p className="font-semibold mb-2">Số lượng thi tuyển:</p>
                                             <p>10</p>
-                                        </div>
+                                        </div> */}
                                     </div>
                                 </div>
                             </div>
@@ -98,10 +129,10 @@ const StudyDetails = () => {
                                 </div>
                                 <div className="p-4">
                                     <div className="space-y-2">
-                                        <p><span className="font-semibold">Họ tên:</span> Nguyễn Hoàng</p>
+                                        <p><span className="font-semibold">Họ tên:</span> {study.partner_name}</p>
                                         <p><span className="font-semibold">Chức vụ:</span> Nhân viên</p>
-                                        <p><span className="font-semibold">Điện thoại:</span> 0903367182</p>
-                                        <p><span className="font-semibold">Email:</span> huongquyen.tuyendung@gmail.com</p>
+                                        <p><span className="font-semibold">Điện thoại:</span> {study.partner_phone}</p>
+                                        <p><span className="font-semibold">Email:</span> {study.partner_email}</p>
                                     </div>
                                 </div>
                             </div>

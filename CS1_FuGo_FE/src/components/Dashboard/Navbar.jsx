@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const Navbar = () => {
-  const [contactName, setContactName] = useState({});
+  const [contactName, setContactName] = useState("");
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();
 
@@ -38,21 +38,22 @@ const Navbar = () => {
           },
         }
       );
+      // console.log(">> check res: ", response.data.data);
 
       if (response.data.success) {
-        setContactName(response.data.data[0]);
+        setContactName(response?.data?.data?.company_name);
       }
-      // console.log(contactName);
+
     };
     fetchData();
   }, []);
-
+  console.log(contactName);
   return (
     <div className="flex items-center text-white justify-between h-12 bg-teal-600 px-5">
-      <p>Xin chào, {contactName.contact_person} </p>
+      <p>Xin chào, {contactName}</p>
       <button className="px-4 py-1 bg-teal-700 hover:bg-teal-800 rounded" onClick={handleLogout}>Logout</button>
     </div>
   )
 }
 
-export default Navbar
+export default Navbar;
