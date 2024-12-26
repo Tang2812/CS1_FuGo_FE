@@ -85,8 +85,6 @@ const Job_find = () => {
 
 
 
-  console.log("check res: ", jobs);
-
   return (
     <>
       <section className="hero">

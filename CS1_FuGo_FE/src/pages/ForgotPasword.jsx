@@ -22,7 +22,8 @@ const ForgotPasword = () => {
 
     const sendEmail = async (mail) => {
         try {
-            const response = await axios.post('http://localhost:3000/api/v1/auth/password/email',mail);
+            console.log(mail);
+            const response = await axios.post('http://localhost:3000/api/v1/auth/password/email',{email: mail});
             console.log(response);
         } catch (error) {
             console.log(error);
