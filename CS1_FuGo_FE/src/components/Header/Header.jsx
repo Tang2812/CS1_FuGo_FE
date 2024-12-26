@@ -11,10 +11,12 @@ import {
 } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import avatar from "../../img/avatar.png"
 
 const Header = () => {
 
     const [userImg, setUserImg] = useState(null);
+    const [role, setRole] = useState("");
     const [auth, setAuth] = useAuth();
     const navigate = useNavigate();
 
@@ -42,6 +44,8 @@ const Header = () => {
         const fetchProfileData = async () => {
             try {
                 const authData = JSON.parse(localStorage.getItem("auth"));
+                setRole(authData.user.role);
+                // console.log("authData:", authData.user.role);
                 if (!authData || !authData.user || !authData.token) {
                     return;
                 }
@@ -56,7 +60,7 @@ const Header = () => {
                         },
                     }
                 );
-                console.log("API Response:", response.data);
+                // console.log("API Response:", response.data);
 
                 if (response.data && response.data.success) {
                     const userData = response.data.data;
@@ -191,7 +195,7 @@ const Header = () => {
                                 title="avt button"
                             >
                                 <img
-                                    src={userImg}
+                                    src={userImg ? userImg : avatar}
                                     alt="User profile"
                                     className="user-avatar"
                                 />
@@ -208,10 +212,15 @@ const Header = () => {
                                             <AiFillTag />
                                             <span>Liên kết tài khoản</span>
                                         </Link>
-                                        <Link to="#" className="property__choice">
-                                            <AiOutlineAudit />
-                                            <span>Chỉnh sửa trang cá nhân</span>
-                                        </Link>
+                                        {role && role === "partner" ?
+                                            <Link to="/partner" className="property__choice">
+                                                <AiOutlineAudit />
+                                                <span>Dashboard</span>
+                                            </Link>
+                                            :
+                                            <></>
+                                        }
+
                                     </div>
                                     <div className="property-line" />
                                     <div className="property__primary">

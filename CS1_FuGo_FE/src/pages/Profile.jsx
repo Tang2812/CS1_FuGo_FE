@@ -274,6 +274,7 @@ const Profile = () => {
         <h2 className="text-3xl font-semibold text-gray-900">
           Thông tin cá nhân
         </h2>
+        <h4 className="font-semibold text-red-600">Vui lòng điền đầy đủ thông tin (*)</h4>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div>
             <label className="block text-sm font-medium">Họ và Tên</label>
