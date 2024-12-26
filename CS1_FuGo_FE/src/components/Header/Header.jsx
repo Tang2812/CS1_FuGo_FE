@@ -25,17 +25,24 @@ const Header = () => {
             user: null,
             token: "",
         });
+        setUserImg("/src/img/logo.png");
         localStorage.removeItem("auth");
         navigate("/login");
     };
 
     // Fetch user profile data from the backend
     useEffect(() => {
+        const authData = JSON.parse(localStorage.getItem("auth"));
+            if (authData && authData.user && authData.user.user_img) {
+                setUserImg(authData.user.user_img);  
+            } else {
+                setUserImg("/src/img/logo.png");
+            }
+
         const fetchProfileData = async () => {
             try {
                 const authData = JSON.parse(localStorage.getItem("auth"));
                 if (!authData || !authData.user || !authData.token) {
-                    toast.warning("Không tìm thấy thông tin xác thực người dùng");
                     return;
                 }
                 const userId = authData.user._id; // Get _id from user
@@ -55,6 +62,14 @@ const Header = () => {
                     const userData = response.data.data;
                     // console.log(userData.user_img);
                     setUserImg(userData.user_img);
+                    const updateAuthData = {
+                        ...authData,
+                        user: {
+                            ...authData.user,
+                            user_img: userData.user_img,
+                        }
+                    };
+                    localStorage.setItem("auth", JSON.stringify(updateAuthData));
                 }
                 // console.log(userImg);
             } catch (error) {
@@ -62,7 +77,7 @@ const Header = () => {
             }
         };
         fetchProfileData();
-    }, []);
+    }, [auth?.user?._id]);
 
     return (
         <>
@@ -114,11 +129,13 @@ const Header = () => {
                                 Chia sẻ
                             </Link>
                         </li>
+                        {auth.user && (
                         <li>
                             <Link to="/list-cv" className="font-semibold hover:text-blue-700">
                                 Quản lí CV
                             </Link>
                         </li>
+                    )}
                     </ul>
                     {auth.user ? (
                         <div className="user-controls">
