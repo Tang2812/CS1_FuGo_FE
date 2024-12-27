@@ -178,7 +178,7 @@ const ViewDetailCV = () => {
                 <p className="text-lg font-bold">Ngoại ngữ: </p>
                 <p className="text-lg">{candidate.job_cv_id.language}</p>
               </div>
-              <div className="flex space-x-3 mb-5">
+              <div className="flex flex-col  mb-5">
                 <p className="text-lg font-bold">Mô tả về bản thân: </p>
                 <p className="text-lg">{candidate.job_cv_id.bio}</p>
               </div>
