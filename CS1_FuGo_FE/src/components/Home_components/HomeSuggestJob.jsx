@@ -31,10 +31,13 @@ const HomeSuggest = () => {
 
         const authData = JSON.parse(localStorage.getItem("auth"));
         if (!authData?.user?._id) {
-           toast.warning("Bạn cần đăng nhập để dùng chức năng này!!!");
+            toast.warning("Bạn cần đăng nhập để dùng chức năng này!!!");
             return;
         }
-        if (!authData?.user?._id || !localStorage.getItem("clickedJobs")) return;
+        if (!authData?.user?._id || !localStorage.getItem("clickedJobs")) {
+            console.log("id va click")
+            return;
+        }
 
         const userId = authData.user._id;
         const data = {
@@ -52,6 +55,7 @@ const HomeSuggest = () => {
                     },
                 }
             );
+            console.log("user infor: ", userInfor);
             data.user_profile.push(userInfor.data.data);
 
             // Lấy job được click nhiều nhất
@@ -75,13 +79,15 @@ const HomeSuggest = () => {
             setClickedJobs({});
         } catch (error) {
             console.error("Error sending data:", error);
+            toast.warning("Bạn cần có thông tin cá nhân để sử dụng chức năng này")
         }
+        navigate("/");
     };
 
     // Xử lý đăng xuất
     const handleLogout = async () => {
         await handleBeforeUnload(); // Gửi dữ liệu trước khi đăng xuất
-        navigate("/");
+
     };
 
     // Fetch jobs data
@@ -130,13 +136,24 @@ const HomeSuggest = () => {
         getJobsFromRecommend();
     }, []);
 
-    // Add beforeunload event listener
     useEffect(() => {
-        window.addEventListener("beforeunload", handleBeforeUnload);
-        return () => {
-            window.removeEventListener("beforeunload", handleBeforeUnload);
+        let timeoutId;
+        const resetTimer = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(handleBeforeUnload, 10 * 60 * 1000); // 10 minutes in milliseconds
         };
-    }, [jobs]); // Add jobs as dependency since we need it in handleBeforeUnload
+        const activityEvents = ['mousemove', 'keypress', 'scroll', 'click'];
+        activityEvents.forEach(event => {
+            window.addEventListener(event, resetTimer);
+        });
+        resetTimer(); // Initialize timer when component mounts
+        return () => {
+            clearTimeout(timeoutId);
+            activityEvents.forEach(event => {
+                window.removeEventListener(event, resetTimer);
+            });
+        };
+    }, [jobs]);
 
     // Pagination
     const indexOfLastJob = currentPage * jobsPerPage;
@@ -216,16 +233,16 @@ const HomeSuggest = () => {
             </div>
 
             {/* Click Information */}
-            {/*<div className="click-info mt-5">*/}
-            {/*    <h2 className="font-semibold mb-2">Click Information:</h2>*/}
-            {/*    <ul>*/}
-            {/*        {Object.entries(clickedJobs).map(([jobId, clickCount]) => (*/}
-            {/*            <li key={jobId}>*/}
-            {/*                Job ID: {jobId}, Click Count: {clickCount}*/}
-            {/*            </li>*/}
-            {/*        ))}*/}
-            {/*    </ul>*/}
-            {/*</div>*/}
+            <div className="click-info mt-5">
+                <h2 className="font-semibold mb-2">Click Information:</h2>
+                <ul>
+                    {Object.entries(clickedJobs).map(([jobId, clickCount]) => (
+                        <li key={jobId}>
+                            Job ID: {jobId}, Click Count: {clickCount}
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>
     );
 };
