@@ -194,7 +194,7 @@ const HomeSuggest = () => {
                         onClick={() => handleJobClick(job._id)}
                     >
                         <img
-                            src={suggestTag}
+                            src={job.image ? job.image : suggestTag}
                             alt=""
                             className="tag-img rounded-tl-[10px] rounded-tr-[10px] w-fit"
                         />
@@ -233,16 +233,16 @@ const HomeSuggest = () => {
             </div>
 
             {/* Click Information */}
-            <div className="click-info mt-5">
-                <h2 className="font-semibold mb-2">Click Information:</h2>
-                <ul>
-                    {Object.entries(clickedJobs).map(([jobId, clickCount]) => (
-                        <li key={jobId}>
-                            Job ID: {jobId}, Click Count: {clickCount}
-                        </li>
-                    ))}
-                </ul>
-            </div>
+            {/*<div className="click-info mt-5">*/}
+            {/*    <h2 className="font-semibold mb-2">Click Information:</h2>*/}
+            {/*    <ul>*/}
+            {/*        {Object.entries(clickedJobs).map(([jobId, clickCount]) => (*/}
+            {/*            <li key={jobId}>*/}
+            {/*                Job ID: {jobId}, Click Count: {clickCount}*/}
+            {/*            </li>*/}
+            {/*        ))}*/}
+            {/*    </ul>*/}
+            {/*</div>*/}
         </div>
     );
 };
