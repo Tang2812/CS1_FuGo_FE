@@ -29,6 +29,7 @@ const Header = () => {
         });
         setUserImg("/src/img/logo.png");
         localStorage.removeItem("auth");
+        localStorage.removeItem("clickedJobs");
         navigate("/login");
     };
 
