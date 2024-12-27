@@ -38,12 +38,11 @@ const Navbar = () => {
           },
         }
       );
-      // console.log(">> check res: ", response.data.data);
+      console.log(">> check res: ", response.data.data);
 
       if (response.data.success) {
         setContactName(response?.data?.data?.company_name);
       }
-
     };
     fetchData();
   }, []);
@@ -51,9 +50,14 @@ const Navbar = () => {
   return (
     <div className="flex items-center text-white justify-between h-12 bg-teal-600 px-5">
       <p>Xin chào, {contactName}</p>
-      <button className="px-4 py-1 bg-teal-700 hover:bg-teal-800 rounded" onClick={handleLogout}>Logout</button>
+      <button
+        className="px-4 py-1 bg-teal-700 hover:bg-teal-800 rounded"
+        onClick={handleLogout}
+      >
+        Logout
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export default Navbar;
