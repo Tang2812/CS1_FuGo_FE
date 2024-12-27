@@ -3,7 +3,14 @@ import "../stylesheet/find_jobs.css";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { get } from "react-hook-form";
-import ReactPaginate from 'react-paginate';
+import ReactPaginate from "react-paginate";
+import {
+  countryOptions,
+  educationOptions,
+  experienceOptions,
+  professionOptions,
+  salaryOptions,
+} from "../../data/jobOptions";
 const Job_find = () => {
   const [jobs, setJobs] = useState([]);
   const [keyWord, setKeyWord] = useState("");
@@ -20,7 +27,6 @@ const Job_find = () => {
     profession: "",
     experience: "",
   });
-
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,7 +58,7 @@ const Job_find = () => {
 
   const fetchData = (page) => {
     return axios.get(`http://localhost:3000/api/v1/jobs?page=${page}`);
-  }
+  };
 
   const fetchJob = async (page) => {
     try {
@@ -66,9 +72,7 @@ const Job_find = () => {
         alert(error.response.data.error);
       }
     }
-
   };
-
 
   useEffect(() => {
     fetchJob(0);
@@ -114,11 +118,15 @@ const Job_find = () => {
               className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
-              <option value="">Quốc gia</option>
-              <option value="Đài Loan">Đài Loan</option>
-              <option value="Nhật Bản">Nhật Bản</option>
-              <option value="Hàn Quốc">Hàn Quốc</option>
-              <option value="USA">Mỹ</option>
+              {countryOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  className="max-h-48 overflow-auto"
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
             <select
               value={conditions.salary}
@@ -126,12 +134,15 @@ const Job_find = () => {
               className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
-              <option value="">Mức lương</option>
-              <option value="10000000-15000000">10-15 triệu</option>
-              <option value="15000000-20000000">15-20 triệu</option>
-              <option value="25000000-30000000">25-30 triệu</option>
-              <option value="30000000-35000000">30-35 triệu</option>
-              <option value="35000000-50000000">30-50 triệu</option>
+              {salaryOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  className="max-h-48 overflow-auto"
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
             <select
               value={conditions.educationalLevel}
@@ -139,10 +150,15 @@ const Job_find = () => {
               className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
-              <option value="">Học vấn</option>
-              <option value="THPT">THPT</option>
-              <option value="Cao đẳng">Cao đẳng</option>
-              <option value="Đại học">Đại học</option>
+              {educationOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  className="max-h-48 overflow-auto"
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
             <select
               value={conditions.profession}
@@ -150,11 +166,15 @@ const Job_find = () => {
               className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
-              <option value="">Ngành nghề</option>
-              <option value="Hàn">Hàn</option>
-              <option value="Lắp ráp">Lắp ráp</option>
-              <option value="Software Engineering">Software Engineering</option>
-              <option value="Data Analyst">Data Analyst</option>
+              {professionOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  className="max-h-48 overflow-auto"
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
             <select
               value={conditions.experience}
@@ -162,25 +182,36 @@ const Job_find = () => {
               className="filter md:col-span-2 col-span-3"
               onChange={handleChange}
             >
-              <option value="">Kinh nghiệm</option>
-              <option value="0">Không yêu cầu</option>
-              <option value="2">2 năm</option>
-              <option value="3">3 năm</option>
-              <option value="4">4 năm</option>
-              <option value="5">5 năm</option>
+              {experienceOptions.map((option) => (
+                <option
+                  key={option.value}
+                  value={option.value}
+                  className="max-h-48 overflow-auto"
+                >
+                  {option.label}
+                </option>
+              ))}
             </select>
           </div>
         </div>
         <div className="job-list grid grid-cols-12">
           {/* loop for list jobs */}
           {jobs?.map((job, index) => (
-            <div key={index} className="job-card xl:col-span-3 lg:col-span-4 sm:col-span-6 col-span-9">
-
+            <div
+              key={index}
+              className="job-card xl:col-span-3 lg:col-span-4 sm:col-span-6 col-span-9 flex flex-col"
+            >
               {/* image jobs */}
-              <img src={job.image} alt="" className="h-[200px] w-[355px] object-cover" />
-              <div className="job-card__content">
+              <img
+                src={job.image}
+                alt=""
+                className="w-full h-auto max-h-[200px] object-cover object-center"
+              />
+              <div className="job-card__content flex-grow flex flex-col">
                 {/* name job */}
-                <h2><b>{job.title}</b></h2>
+                <h2>
+                  <b>{job.title}</b>
+                </h2>
                 <div className="job-card__info">
                   {/*Salary  */}
                   <img src="/src/img/incon_money.svg" alt="icon tien" />
@@ -198,9 +229,19 @@ const Job_find = () => {
                   <img src="/src/img/time.svg" alt="icon thoi gian" />
                   <p> {job.jobStatus}</p>
                 </div>
-                <div className="card__fc mt-3">
-                  <button className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]" onClick={() => navigate(`/jobs/${job._id}`)}>Xem chi tiết</button>
-                  <button className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]" onClick={() => navigate(`/application/job/${job._id}`)}>Ứng tuyển</button>
+                <div className="card__fc mt-3 mt-auto">
+                  <button
+                    className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]"
+                    onClick={() => navigate(`/jobs/${job._id}`)}
+                  >
+                    Xem chi tiết
+                  </button>
+                  <button
+                    className="btn--outline text-nowrap md:leading-4 md:py-[10px] md:px-4 sm:leading-3 sm:py-[8px] sm:px-[12px]"
+                    onClick={() => navigate(`/application/job/${job._id}`)}
+                  >
+                    Ứng tuyển
+                  </button>
                 </div>
               </div>
             </div>
