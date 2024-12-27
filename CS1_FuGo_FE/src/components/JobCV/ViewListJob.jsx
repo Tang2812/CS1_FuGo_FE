@@ -17,6 +17,8 @@ const ViewListJob = () => {
   useEffect(() => {
     const fetchListJob = async () => {
       setDepLoading(true);
+      console.log(partnerIdRef.current);
+      
       try {
         const response = await axios.post(
           "http://localhost:3000/api/v1/partners/job/view",

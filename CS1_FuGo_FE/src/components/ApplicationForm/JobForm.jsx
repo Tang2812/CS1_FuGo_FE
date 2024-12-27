@@ -96,6 +96,34 @@ const JobForm = () => {
       setAccountId(userId);
     }
   }, [auth, navigate]);
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const authData = JSON.parse(localStorage.getItem("auth"));
+        const userId = authData.user._id; // Get _id from user
+        const token = authData.token;
+
+        const response = await axios.get(
+          `http://localhost:3000/api/v1/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        // console.log("API Response:", response.data);
+
+        if (response.data && response.data.success) {
+          setFormData(response.data.data);
+        } else {
+          setFormData({});
+        }
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+    fetchProfileData();
+  }, []);
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
@@ -107,16 +135,17 @@ const JobForm = () => {
           Ứng tuyển CV của bạn
         </h2>
 
-        {/* Họ và tên */}
-        <div>
+       {/* Họ và tên */}
+       <div>
           <label className="block mb-2">Họ và tên</label>
           <input
             type="text"
-            name="fullName"
+            name="username"
             placeholder="Họ và tên"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             required
+            value={formData.username}
           />
         </div>
 
@@ -128,6 +157,7 @@ const JobForm = () => {
             required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
+            value={formData.gender}
           >
             <option value="">Chọn giới tính</option>
             <option value="Nam">Nam</option>
@@ -146,6 +176,7 @@ const JobForm = () => {
             required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
+            value={formData.phone}
           />
         </div>
 
@@ -159,6 +190,7 @@ const JobForm = () => {
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             required
+            value={formData.email}
           />
         </div>
 

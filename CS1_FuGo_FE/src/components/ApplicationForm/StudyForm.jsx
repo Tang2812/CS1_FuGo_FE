@@ -10,6 +10,7 @@ const StudyForm = () => {
   const [auth, setAuth] = useAuth();
   const [accountId, setAccountId] = useState("");
   const [email, setEmail] = useState("");
+  const [token, setToken] = useState("");
   const navigate = useNavigate();
   const jobId = params.id;
 
@@ -70,37 +71,71 @@ const StudyForm = () => {
 
     return;
 
-    try {
-      const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
+    // try {
+    //   const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
 
-      if (response.data.success) {
-        toast.success("Nộp CV thành công.");
-        navigate('/home');
-      }
-    } catch (error) {
-      if (error.response && !error.response.data.success) {
-        alert(error.response.data.error);
-      }
-    }
+    //   if (response.data.success) {
+    //     toast.success("Nộp CV thành công.");
+    //     navigate('/home');
+    //   }
+    // } catch (error) {
+    //   if (error.response && !error.response.data.success) {
+    //     alert(error.response.data.error);
+    //   }
+    // }
   };
 
   useEffect(() => {
     const storedAuth = localStorage.getItem("auth");
     const parsedAuth = storedAuth ? JSON.parse(storedAuth) : null;
+    // console.log(">> Check parsedAuth: ", parsedAuth);
+    // console.log(">> Check auth: ", auth);
     if (!parsedAuth || !parsedAuth.user) {
       toast.warning("Bạn cần đăng nhập trước khi nộp CV!");
-      navigate('/login');
+navigate('/login');
       window.scrollTo(0, 0);
     }
     else {
       const userId = auth?.user?._id || parsedAuth?.user?._id;
       setAccountId(userId);
+      setToken(auth?.token);
     }
   }, [auth, navigate]);
 
+  useEffect(() => {
+    const fetchProfileData = async () => {
+      try {
+        const authData = JSON.parse(localStorage.getItem("auth"));
+        const userId = authData.user._id; // Get _id from user
+        const token = authData.token;
+
+        const response = await axios.get(
+          `http://localhost:3000/api/v1/users/${userId}`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        // console.log("API Response:", response.data);
+
+        if (response.data && response.data.success) {
+          setFormData(response.data.data);
+        } else {
+          setFormData({});
+        }
+      } catch (error) {
+        console.error("Error fetching profile data:", error);
+      }
+    };
+    fetchProfileData();
+  }, []);
+
+  // console.log("Check form data: ", formData);
+
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
-      <form form
+      <form
         className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md grid gap-4 sm:grid-cols-1 md:grid-cols-2"
         onSubmit={handleSubmit}
       >
@@ -113,11 +148,12 @@ const StudyForm = () => {
           <label className="block mb-2">Họ và tên</label>
           <input
             type="text"
-            name="fullName"
+            name="username"
             placeholder="Họ và tên"
+            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
+            value={formData.username}
           />
         </div>
 
@@ -129,6 +165,7 @@ const StudyForm = () => {
             required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
+            value={formData.gender}
           >
             <option value="">Chọn giới tính</option>
             <option value="Nam">Nam</option>
@@ -147,6 +184,7 @@ const StudyForm = () => {
             required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
+            value={formData.phone}
           />
         </div>
 
@@ -154,12 +192,13 @@ const StudyForm = () => {
         <div>
           <label className="block mb-2">Email</label>
           <input
-            type="email"
+type="email"
             name="email"
             placeholder="examples@example.com"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             required
+            value={formData.email}
           />
         </div>
 
