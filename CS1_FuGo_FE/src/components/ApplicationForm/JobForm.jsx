@@ -5,97 +5,118 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
 const JobForm = () => {
-  const params = useParams();
-  const [formData, setFormData] = useState({});
-  const [auth, setAuth] = useAuth();
+  const { id: jobId } = useParams();
+  const [formData, setFormData] = useState({
+    username: "",
+    gender: "",
+    phone: "",
+    email: "",
+    education: "",
+    language: "",
+    bio: "",
+    image: null,
+  });
+  const [auth] = useAuth();
   const [accountId, setAccountId] = useState("");
-  const [email, setEmail] = useState("");
   const navigate = useNavigate();
-  const jobId = params.id;
 
-
+  // Xử lý thay đổi input
   const handleChange = (e) => {
     const { name, value, files } = e.target;
-    if (name === "image") {
-      setFormData((prevData) => ({ ...prevData, [name]: files[0] }));
-    } else {
-      setFormData((prevData) => ({ ...prevData, [name]: value }));
-    }
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: files ? files[0] : value,
+    }));
   };
 
-  const validatePhoneNumber = (phone) => {
-    const regex = /^(0|\+84)(3|5|7|8|9)\d{8}$/;
-    return regex.test(phone);
-  };
+  // Xác thực email
+  const validateEmail = (email) =>
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(email).toLowerCase());
 
-  const validateEmail = (email) => {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
+  // Xác thực số điện thoại
+  const validatePhoneNumber = (phone) =>
+    /^(0|\+84)(3|5|7|8|9)\d{8}$/.test(phone);
 
   const handleSubmit = async (e) => {
-
     e.preventDefault();
-    if (!formData.fullName || !formData.gender || !formData.phone 
-      || !formData.email || !formData.education || !formData.language
-      || !formData.bio) {
-      toast.warning('Vui lòng nhập đầy đủ thông tin');
-      return;
-    }    
-    const isValidEmail = validateEmail(formData.email);
-    if (!isValidEmail) {
-      toast.error('Email không hợp lệ')
+
+    const { username, gender, phone, email, education, language, bio, image } =
+      formData;
+
+    // Kiểm tra thông tin
+    if (
+      !username ||
+      !gender ||
+      !phone ||
+      !email ||
+      !education ||
+      !language ||
+      !bio ||
+      !image
+    ) {
+      toast.warning("Vui lòng nhập đầy đủ thông tin");
       return;
     }
 
-    const isPhoneNumber = validatePhoneNumber(formData.phone);
-    if (isPhoneNumber == false) {
-      toast.error('Số điện thoại không hợp lệ.')
+    // Kiểm tra file ảnh
+    if (image && image.size === 0) {
+      toast.warning("Hình ảnh không hợp lệ");
       return;
     }
+
+    if (!validateEmail(email)) {
+      toast.error("Email không hợp lệ");
+      return;
+    }
+
+    if (!validatePhoneNumber(phone)) {
+      toast.error("Số điện thoại không hợp lệ");
+      return;
+    }
+
+    // Chuẩn bị dữ liệu gửi đi
     const formDataObj = new FormData();
     formDataObj.append("jobId", jobId);
     formDataObj.append("accountId", accountId);
+    Object.entries(formData).forEach(([key, value]) =>
+      formDataObj.append(key, value)
+    );
+    formDataObj.forEach((value, key) => console.log(`${key}: ${value}`));
 
-    Object.keys(formData).forEach((key) => {
-      formDataObj.append(key, formData[key]);
-    })
-
-    formDataObj.forEach((value, key) => {
-      console.log(`${key}: ${value}`);
-    });
-
-
+    
+    
     try {
-      const response = await axios.post("http://localhost:3000/api/v1/jobs/apply", formDataObj)
+      const { data } = await axios.post(
+        "http://localhost:3000/api/v1/jobs/apply",
+        formDataObj
+      );
 
-      if (response.data.success) {
+      if (data.success) {
         toast.success("Nộp CV thành công.");
-        navigate('/home');
+        navigate("/home");
+      } else {
+        toast.error(data.message || "Đã xảy ra lỗi. Vui lòng thử lại.");
       }
     } catch (error) {
-      if (error.response && !error.response.data.success) {
-        alert(error.response.data.error);
-      }
+      const errorMessage =
+        error.response?.data?.message || "Có lỗi xảy ra, vui lòng thử lại.";
+      toast.error(errorMessage);
     }
   };
 
+  // Kiểm tra trạng thái đăng nhập
   useEffect(() => {
     const storedAuth = localStorage.getItem("auth");
     const parsedAuth = storedAuth ? JSON.parse(storedAuth) : null;
+
     if (!parsedAuth || !parsedAuth.user) {
       toast.warning("Bạn cần đăng nhập trước khi nộp CV!");
-      navigate('/login');
-      window.scrollTo(0, 0);
+      navigate("/login");
+    } else {
+      setAccountId(parsedAuth.user._id);
     }
-    else {
-      const userId = auth?.user?._id || parsedAuth?.user?._id;
-      setAccountId(userId);
-    }
-  }, [auth, navigate]);
+  }, [navigate]);
+
   useEffect(() => {
     const fetchProfileData = async () => {
       try {
@@ -127,7 +148,7 @@ const JobForm = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100 py-6">
-      <form form
+      <form
         className="w-full max-w-4xl p-6 bg-white rounded-lg shadow-md grid gap-4 sm:grid-cols-1 md:grid-cols-2"
         onSubmit={handleSubmit}
       >
@@ -135,8 +156,7 @@ const JobForm = () => {
           Ứng tuyển CV của bạn
         </h2>
 
-       {/* Họ và tên */}
-       <div>
+        <div>
           <label className="block mb-2">Họ và tên</label>
           <input
             type="text"
@@ -144,17 +164,14 @@ const JobForm = () => {
             placeholder="Họ và tên"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
             value={formData.username}
           />
         </div>
 
-        {/* Giới tính */}
         <div>
           <label className="block mb-2">Giới tính</label>
           <select
             name="gender"
-            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             value={formData.gender}
@@ -166,21 +183,18 @@ const JobForm = () => {
           </select>
         </div>
 
-        {/* Số điện thoại */}
         <div>
           <label className="block mb-2">Số điện thoại</label>
           <input
             type="tel"
             name="phone"
             placeholder="**********"
-            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
             value={formData.phone}
           />
         </div>
 
-        {/* Email */}
         <div>
           <label className="block mb-2">Email</label>
           <input
@@ -189,19 +203,17 @@ const JobForm = () => {
             placeholder="examples@example.com"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            required
             value={formData.email}
           />
         </div>
 
-        {/* Trình độ học vấn */}
         <div>
           <label className="block mb-2">Trình độ học vấn</label>
           <select
             name="education"
-            required
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
+            value={formData.education}
           >
             <option value="">Chọn trình độ học vấn</option>
             <option value="Cấp 3">Cấp 3</option>
@@ -211,20 +223,18 @@ const JobForm = () => {
           </select>
         </div>
 
-        {/* Kỹ năng ngoại ngữ */}
         <div>
           <label className="block mb-2">Kỹ năng ngoại ngữ</label>
           <input
             type="text"
             name="language"
-            required
+            placeholder="Ví dụ: Tiếng Nhật N4"
             onChange={handleChange}
             className="w-full p-2 mb-4 border border-gray-300 rounded"
-            placeholder="Ví dụ: Tiếng Nhật N4"
+            value={formData.language}
           />
         </div>
 
-        {/* Mô tả bản thân */}
         <div className="col-span-full">
           <label className="block text-sm font-medium mb-2">
             Mô tả bản thân
@@ -235,10 +245,10 @@ const JobForm = () => {
             placeholder="Mô tả bản thân bạn"
             rows="4"
             onChange={handleChange}
+            value={formData.bio}
           ></textarea>
         </div>
 
-        {/* Ảnh CV */}
         <div className="col-span-full">
           <label className="block mb-2">Ảnh CV</label>
           <input
@@ -250,7 +260,6 @@ const JobForm = () => {
           />
         </div>
 
-        {/* Nút Nộp hồ sơ */}
         <div className="col-span-full">
           <button
             type="submit"
@@ -259,8 +268,8 @@ const JobForm = () => {
             Nộp hồ sơ
           </button>
         </div>
-      </form >
-    </div >
+      </form>
+    </div>
   );
 };
 
